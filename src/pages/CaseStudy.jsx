@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from 'framer-motion'
 import PageMeta from '../components/PageMeta'
 import CaseStudySection from '../components/CaseStudySection'
 import CaseStudyNav from '../components/CaseStudyNav'
-import ImageGallery from '../components/ImageGallery'
 import Tag from '../components/Tag'
 import Button from '../components/Button'
 import ExternalLink from '../components/ExternalLink'
@@ -247,7 +246,6 @@ export default function CaseStudy() {
           >
             <CaseStudyNav
               sections={project.sections}
-              showGallery={project.gallery?.length > 0}
               accent={accent}
             />
           </aside>
@@ -256,7 +254,6 @@ export default function CaseStudy() {
             <CaseStudyNav
               variant="mobile"
               sections={project.sections}
-              showGallery={project.gallery?.length > 0}
               accent={accent}
             />
             {project.sections.map((section, i) => (
@@ -269,13 +266,6 @@ export default function CaseStudy() {
               />
             ))}
 
-            {project.gallery?.length > 0 && (
-              <section id="gallery" className="scroll-mt-24 border-t border-line pt-12">
-                <p className="text-chapter mb-2">Gallery</p>
-                <h2 className="font-display mb-8 text-2xl text-ink md:text-3xl">Visuals</h2>
-                <ImageGallery images={project.gallery} accent={accent} />
-              </section>
-            )}
           </div>
         </div>
       </section>

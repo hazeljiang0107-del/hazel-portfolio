@@ -525,16 +525,18 @@ function SocReportCompare({ caption, accent }) {
 function FlowStep({ step, index, mood, accent }) {
   return (
     <div className="min-w-0">
-      <div className="mb-3 flex items-baseline gap-3">
-        <span
-          className="text-label tabular-nums"
-          style={{ color: accent }}
-        >
-          {String(index + 1).padStart(2, '0')}
-        </span>
-        <p className="text-sm font-medium text-ink">{step.label}</p>
+      <div className="mb-4 max-w-2xl">
+        <div className="flex items-baseline gap-3">
+          <span className="text-label tabular-nums" style={{ color: accent }}>
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <h3 className="font-display text-lg text-ink">{step.label}</h3>
+        </div>
+        {step.description && (
+          <p className="mt-2 text-sm leading-relaxed text-ink-secondary">{step.description}</p>
+        )}
       </div>
-      <SectionImage src={step.src} alt={step.alt} mood={mood} />
+      <SectionImage src={step.src} alt={step.alt} mood={mood} fullBleed />
     </div>
   )
 }
@@ -631,11 +633,22 @@ function BeforeAfter({
   )
 }
 
-function FlowShowcase({ steps, mood, accent }) {
+function FlowShowcase({ steps, mood, accent, layout }) {
   const desktopFlow = mood === 'zingerman-deli'
+  const stackFlow = layout === 'stack' || mood === 'surveys-of-consumers'
   const cardWidth = desktopFlow
     ? 'w-[min(520px,calc(100vw-4rem))]'
     : 'w-[min(320px,calc(100vw-4rem))]'
+
+  if (stackFlow) {
+    return (
+      <div className="min-w-0 space-y-14">
+        {steps.map((step, i) => (
+          <FlowStep key={step.label} step={step} index={i} mood={mood} accent={accent} />
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div className="min-w-0">
@@ -744,12 +757,22 @@ function TodoBlock({ message, accent }) {
   )
 }
 
+function cardGridClass(count) {
+  if (count <= 1) return 'grid-cols-1'
+  if (count === 2) return 'grid-cols-1 sm:grid-cols-2'
+  if (count === 3) return 'grid-cols-1 sm:grid-cols-3'
+  if (count === 4) return 'grid-cols-2 lg:grid-cols-4'
+  if (count === 5) return 'grid-cols-2 md:grid-cols-5'
+  return 'grid-cols-2 lg:grid-cols-3'
+}
+
 function BriefCards({ items }) {
   const prefersReducedMotion = useReducedMotion()
+  const gridClass = cardGridClass(items.length)
 
   return (
     <motion.div
-      className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3"
+      className={`grid gap-px bg-line ${gridClass}`}
       variants={staggerContainer}
       {...(prefersReducedMotion ? {} : staggerInView)}
     >
@@ -796,38 +819,47 @@ function FeatureCards({ items, mood }) {
   )
 }
 
+function SitemapGrid({ images, mood, caption, accent }) {
+  const prefersReducedMotion = useReducedMotion()
+  if (!images?.length) return null
+
+  return (
+    <motion.div className="min-w-0 space-y-3" {...(prefersReducedMotion ? {} : reveal(0))}>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {images.map((item) => (
+          <figure key={item.name} className="min-w-0">
+            <p className="text-label mb-2" style={{ color: accent }}>
+              {item.name}
+            </p>
+            <div className={`overflow-hidden ${imageStageClass(mood)}`}>
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="block h-auto w-full object-contain object-top"
+                loading="lazy"
+              />
+            </div>
+          </figure>
+        ))}
+      </div>
+      {caption && <p className="text-meta">{caption}</p>}
+    </motion.div>
+  )
+}
+
 function CompetitorCards({ items, image, images, mood, accent }) {
   const prefersReducedMotion = useReducedMotion()
-  const gallery = images?.length ? images : image ? [image] : []
 
   return (
     <div className="min-w-0 space-y-6">
-      {gallery.length > 0 && (
-        <motion.div
-          className={`grid gap-6 ${gallery.length > 1 ? 'lg:grid-cols-3' : ''}`}
-          variants={staggerContainer}
-          {...(prefersReducedMotion ? {} : staggerInView)}
-        >
-          {gallery.map((asset) => (
-            <motion.div
-              key={asset.src}
-              className="min-w-0"
-              variants={prefersReducedMotion ? undefined : staggerItem}
-            >
-              {asset.label && (
-                <p className="text-label mb-2" style={{ color: accent }}>
-                  {asset.label}
-                </p>
-              )}
-              <SectionImage
-                src={asset.src}
-                alt={asset.alt}
-                caption={asset.caption}
-                mood={mood}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+      {images?.length ? (
+        <SitemapGrid images={images} mood={mood} caption={image?.caption} accent={accent} />
+      ) : (
+        image && (
+          <motion.div {...(prefersReducedMotion ? {} : reveal(0))}>
+            <SectionImage src={image.src} alt={image.alt} caption={image.caption} mood={mood} />
+          </motion.div>
+        )
       )}
       <motion.div
         className="grid gap-px bg-line md:grid-cols-2"
@@ -886,11 +918,12 @@ function PainPointCards({ items, accent, responseLabel = 'Opportunity' }) {
 
 function StatCards({ items, accent, note }) {
   const prefersReducedMotion = useReducedMotion()
+  const gridClass = cardGridClass(items.length)
 
   return (
     <div className="min-w-0 space-y-4">
       <motion.div
-        className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3"
+        className={`grid gap-px bg-line ${gridClass}`}
         variants={staggerContainer}
         {...(prefersReducedMotion ? {} : staggerInView)}
       >
@@ -1381,7 +1414,12 @@ export default function CaseStudyModules({ modules, accent, mood }) {
             <SocReportCompare caption={module.caption} accent={accentColor} />
           )}
           {module.type === 'flow-showcase' && (
-            <FlowShowcase steps={module.steps} mood={mood} accent={accentColor} />
+            <FlowShowcase
+              steps={module.steps}
+              mood={mood}
+              accent={accentColor}
+              layout={module.layout}
+            />
           )}
           {module.type === 'responsive-showcase' && (
             <ResponsiveShowcase screens={module.screens} mood={mood} />

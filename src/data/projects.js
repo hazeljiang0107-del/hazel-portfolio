@@ -124,35 +124,68 @@ export const projects = [
         id: 'solution',
         title: 'What we built',
         content: [
-          'We redesigned a decades-old consumer economic data website so journalists, researchers, and policymakers can find America\'s most-watched consumer confidence index in seconds — while keeping the two-site structure.',
+          'Two paths share one header, Main | Data toggle, and search bar: a search spine for analytical questions, and a reports browse path for users who know the release cadence but not the keyword.',
         ],
         modules: [
           {
-            type: 'feature-cards',
+            type: 'brief-cards',
             items: [
               {
-                title: 'Home page',
-                description: 'Search-first architecture with headline metrics and release cues at entry.',
-                image: {
-                  src: '/assets/soc/figma/home.png',
-                  alt: 'Redesigned SoC homepage with search-first architecture',
-                },
+                title: 'Search spine',
+                description:
+                  'Home → filtered results → report match or recovery. Answers “where is the data?” without clicking through every tab.',
               },
               {
-                title: 'Post-search page',
-                description: 'Filter and specify reports — so users stop guessing which PDF has the right table.',
-                image: {
-                  src: '/assets/soc/figma/search.png',
-                  alt: 'Post-search results with filters',
-                },
+                title: 'Reports path',
+                description:
+                  'All Reports → monthly taxonomy. Answers “what came out this month?” when users browse by release, not keyword.',
+              },
+            ],
+          },
+          {
+            type: 'flow-showcase',
+            steps: [
+              {
+                label: 'Home',
+                description:
+                  'Search-first entry with headline ICS metrics, next-release cue, and a persistent Main | Data toggle — orientation before navigation.',
+                src: '/assets/soc/figma/final/home.png',
+                alt: 'SoC redesigned homepage with search bar, headline metrics, and Main Data toggle',
               },
               {
-                title: 'All reports',
-                description: 'Reorganized information architecture for monthly releases and special reports.',
-                image: {
-                  src: '/assets/soc/figma/reports.png',
-                  alt: 'All reports page with reorganized taxonomy',
-                },
+                label: 'Post-search results',
+                description:
+                  'One results hub returns charts, tables, and reports together. Sidebar filters narrow by category, timeframe, and demographic without leaving the page.',
+                src: '/assets/soc/figma/final/post-search.png',
+                alt: 'Post-search results with sidebar filters and mixed chart table report results',
+              },
+              {
+                label: 'Report found',
+                description:
+                  'When a query matches, a data-selection panel surfaces the specific report with PDF / Excel links — V1 links to existing files until live data ships.',
+                src: '/assets/soc/figma/final/report-found.png',
+                alt: 'Search results with matched report and data selection panel',
+              },
+              {
+                label: 'No report found',
+                description:
+                  'When search misses, the interface suggests filter adjustments and related content instead of a dead end.',
+                src: '/assets/soc/figma/final/no-report-found.png',
+                alt: 'Empty search results state with recovery guidance',
+              },
+              {
+                label: 'All reports',
+                description:
+                  'Browse path for users who know the release cadence: monthly and special reports grouped under filterable taxonomy, not unstructured link lists.',
+                src: '/assets/soc/figma/final/all-reports.png',
+                alt: 'All reports page with monthly and special report categories',
+              },
+              {
+                label: 'Monthly release',
+                description:
+                  'Scoped to one release month — reports, charts, and files for that cycle in one place, with breadcrumbs back to the full archive.',
+                src: '/assets/soc/figma/final/monthly-release.png',
+                alt: 'Monthly release view with report cards and file links',
               },
             ],
           },
@@ -172,12 +205,6 @@ export const projects = [
                   'Ship V1 as better navigation + search that links to existing files; design V2 for the same UI once live data infrastructure exists.',
               },
             ],
-          },
-          {
-            type: 'media',
-            src: '/assets/soc/soc-05.jpg',
-            alt: 'Mid-fidelity to high-fidelity evolution of the explore data page',
-            caption: 'Evidence — Iteration from mid-fi structure to final hierarchy, toggle, and spacing.',
           },
         ],
       },
@@ -247,7 +274,7 @@ export const projects = [
               {
                 title: 'IA + prototyping',
                 description:
-                  'Proposed sitemap, Crazy 8s, mid-fi to hi-fi iteration, and a developer-ready spec for handoff.',
+                  'Proposed sitemap, Crazy 8s, hi-fi screens, and a developer-ready spec for handoff.',
               },
             ],
           },
@@ -298,7 +325,7 @@ export const projects = [
         modules: [
           {
             type: 'stat-cards',
-            note: 'Source: SoC Live Site Survey CSV export · n = 127. SPSS descriptives from analysis output (listwise n varies by item).',
+            note: 'Source: SoC Live Site Survey CSV export · n = 127.',
             items: [
               {
                 value: '127',
@@ -306,24 +333,30 @@ export const projects = [
                 detail: 'Verified row count from the Feb 19, 2026 live-site export.',
               },
               {
+                value: '60',
+                label: 'First-time visitors',
+                detail: '47% of respondents (60 / 127) were on their first visit.',
+              },
+            ],
+          },
+          {
+            type: 'stat-cards',
+            note: 'SPSS descriptives from analysis output (listwise n varies by item · scale 1–5).',
+            items: [
+              {
                 value: '3.50',
                 label: 'Mean ease of finding info',
-                detail: 'EaseFinding_num · n = 117 · scale 1–5 (SPSS descriptives).',
+                detail: 'EaseFinding_num · n = 117.',
               },
               {
                 value: '3.97',
                 label: 'Mean label clarity',
-                detail: 'LabelClarity_num · n = 74 · scale 1–5 (SPSS descriptives).',
+                detail: 'LabelClarity_num · n = 74.',
               },
               {
                 value: '4.10',
                 label: 'Mean presentation clarity',
-                detail: 'PresentationClarity_num · n = 73 · scale 1–5 (SPSS descriptives).',
-              },
-              {
-                value: '60',
-                label: 'First-time visitors',
-                detail: '47% of respondents (60 / 127) were on their first visit.',
+                detail: 'PresentationClarity_num · n = 73.',
               },
             ],
           },
@@ -410,9 +443,10 @@ export const projects = [
         modules: [
           {
             type: 'media',
-            src: '/assets/soc/research/affinity-mapping.jpg',
-            alt: 'Affinity diagram clustering SoC user pain points',
-            caption: 'Evidence — Affinity mapping across navigation, meaning, findability, literacy, and release trust.',
+            src: '/assets/soc/research/affinity-participant-themes.png',
+            alt: 'Participant quotes and themes affinity diagram — dual site system, information hierarchy, and competitive gaps',
+            caption:
+              'Evidence — Affinity diagram from FigJam: participant quotes clustered into dual-site navigation, information hierarchy, and competitive analysis themes.',
           },
           {
             type: 'insight-cards',
@@ -480,62 +514,68 @@ export const projects = [
         id: 'competitive',
         title: 'Competitive patterns',
         content: [
-          'Trusted economic-data platforms set the baseline users already know — search-first entry, sticky filters, and clear release/documentation pathways — which made SoC gaps feel like missing infrastructure rather than taste preferences.',
+          'We mapped FRED, BLS, and Census site structures against SoC’s dual-site IA. Competitors share search-first entry, sticky filters, and in-page metadata — patterns SoC lacked, which made gaps feel like missing infrastructure rather than taste.',
         ],
         modules: [
           {
             type: 'competitor-cards',
+            image: {
+              caption:
+                'Evidence — Site maps from FigJam competitive analysis (FRED, BLS, Census, and current SoC).',
+            },
             images: [
               {
-                label: 'FRED',
-                src: '/assets/soc/research/sitemap-fred.jpg',
-                alt: 'FRED site map: search-first home into release calendar, tools, news, blog, and about',
-                caption: 'Evidence — FRED IA mapped from competitive review.',
+                name: 'FRED',
+                src: '/assets/soc/research/sitemaps/fred.png',
+                alt: 'FRED site map — search-first home, release calendar, topic filters, and in-page chart tools',
               },
               {
-                label: 'BLS',
-                src: '/assets/soc/research/sitemap-bls.jpg',
-                alt: 'BLS site map: home into subjects, data tools, publications, and economic releases',
-                caption: 'Evidence — BLS IA mapped from competitive review.',
+                name: 'U.S. Census',
+                src: '/assets/soc/research/sitemaps/census.png',
+                alt: 'U.S. Census site map — explore hub, sticky filters, and in-page table/chart viewer',
               },
               {
-                label: 'U.S. Census',
-                src: '/assets/soc/research/sitemap-census.jpg',
-                alt: 'U.S. Census site map: explore home into tables, maps, charts, profiles, and filter pages',
-                caption: 'Evidence — Census data.census.gov IA mapped from competitive review.',
+                name: 'BLS',
+                src: '/assets/soc/research/sitemaps/bls.png',
+                alt: 'BLS site map — subject filters, economic releases, and publication detail pages',
+              },
+              {
+                name: 'SoC (current)',
+                src: '/assets/soc/research/sitemaps/soc-current.png',
+                alt: 'Current SoC site map — fragmented Main Site and Data Site with duplicate navigation',
               },
             ],
             items: [
               {
                 name: 'FRED',
                 points: [
-                  'Search-first home with trending terms, browse-by, and at-a-glance entry.',
-                  'Release calendar → topic pages → deep filters (concepts, geography, frequency, source).',
-                  'In-chart actions: download, related data, time-range tags, and tutorials for digging deeper.',
-                ],
-              },
-              {
-                name: 'BLS',
-                points: [
-                  'Home surfaces announcements, calendar, and all releases before deep navigation.',
-                  'Subjects and Data Tools use dropdown filters into study pages with next-release cues.',
-                  'Publication detail pages lead with takeaways, monthly changes, charts, and contact.',
+                  'Search-first home with trending terms, latest releases, and browse-by-topic entry.',
+                  'Release calendar → topic filters → in-page charts with download, next-release date, and related series.',
+                  'Tutorials and API tools surfaced from About — lowest friction for analysts in our review.',
                 ],
               },
               {
                 name: 'U.S. Census',
                 points: [
-                  'Explore-first home: search + quick links into tables, maps, charts, profiles, microdata.',
-                  'Shared filter page with left sticky filters before opening any document.',
-                  'In-page preview pane plus download / cite / share / API beside methodology notes.',
+                  'Single explore hub: Tables, Maps, Charts, Profiles, and Microdata from one home.',
+                  'Sticky left-side filters persist across results; documents open in-page with cite/share/API tools.',
+                  'Methodology and table notes stay attached to the data view — not buried in FAQs.',
+                ],
+              },
+              {
+                name: 'BLS',
+                points: [
+                  'Home pairs calendar dates with new links, trending topics, and a global search.',
+                  'Subject and release dropdowns filter by inflation, pay, unemployment, and geography.',
+                  'Publication pages show headline numbers, monthly changes, and next release alongside charts.',
                 ],
               },
               {
                 name: 'SoC gap',
                 points: [
-                  'No comparable search/filter hub across Main and Data.',
-                  'Dual-site orientation and time labeling lagged competitor clarity.',
-                  'Release schedule and methodology stay buried instead of living beside the data.',
+                  'Two parallel sites (Main + Data) with overlapping HOME / Tables / Charts labels and no shared search hub.',
+                  'Demographic filters live in dropdowns instead of a persistent filter panel; PDFs replace in-page data.',
+                  'Release schedule, methodology, and cross-site context are harder to find than on every baseline.',
                 ],
               },
             ],
@@ -622,21 +662,9 @@ export const projects = [
           },
           {
             type: 'media',
-            src: '/assets/soc/figma/sitemap-trifold.png',
-            alt: 'Proposed SoC site map designed around the dual-site constraint',
-            caption: 'Evidence — Sitemap from the final expo trifold: designed around keeping Main and Data separate.',
-          },
-          {
-            type: 'media',
             src: '/assets/soc/research/proposed-sitemap.png',
             alt: 'Detailed proposed SoC site map with search hub and content groups',
             caption: 'Evidence — Detailed proposed sitemap used during IA synthesis.',
-          },
-          {
-            type: 'media',
-            src: '/assets/soc/soc-02.jpg',
-            alt: 'Crazy 8s homepage wireframes and early data-site sketches',
-            caption: 'Evidence — Early IA exploration: search-led home, featured charts, and filtered data-site concepts.',
           },
           {
             type: 'insight-cards',
@@ -739,7 +767,7 @@ export const projects = [
                 finding: 'Users lose orientation across Main and Data.',
                 response: 'Persistent Main | Data control and shared header chrome.',
                 image: {
-                  src: '/assets/soc/figma/home.png',
+                  src: '/assets/soc/figma/final/home.png',
                   alt: 'Redesigned homepage with Main and Data orientation',
                 },
               },
@@ -747,7 +775,7 @@ export const projects = [
                 finding: 'Headline and release cues are buried.',
                 response: 'Metric cards with explicit time context and search-first entry.',
                 image: {
-                  src: '/assets/soc/figma/home.png',
+                  src: '/assets/soc/figma/final/home.png',
                   alt: 'Homepage metric cards and search-first architecture',
                 },
               },
@@ -755,7 +783,7 @@ export const projects = [
                 finding: 'Manual clicking cannot scale to analytical questions.',
                 response: 'Post-search filters so users can specify reports without guessing PDFs.',
                 image: {
-                  src: '/assets/soc/figma/search.png',
+                  src: '/assets/soc/figma/final/post-search.png',
                   alt: 'Post-search page with filters and report specification',
                 },
               },
@@ -797,10 +825,12 @@ export const projects = [
             ],
           },
           {
-            type: 'media',
-            src: '/assets/soc/figma/affinity-trifold.png',
-            alt: 'Usability testing affinity diagram from expo trifold',
-            caption: 'Evidence — Usability testing affinity diagram featured on the expo trifold.',
+            type: 'video',
+            src: '/assets/soc/demo/prototype-walkthrough.mp4',
+            alt: 'Prototype walkthrough across home, search results, and reports screens',
+            url: 'data.sca.isr.umich.edu',
+            caption:
+              'Final hi-fi prototype walkthrough — search spine and reports path with crossfades between screens.',
           },
           {
             type: 'todo',
@@ -840,18 +870,7 @@ export const projects = [
             ],
           },
         ],
-      }
-    ],
-    gallery: [
-      { src: '/assets/soc/research/affinity-mapping.jpg', alt: 'Affinity mapping synthesis' },
-      { src: '/assets/soc/figma/affinity-trifold.png', alt: 'Usability testing affinity diagram' },
-      { src: '/assets/soc/research/persona-daniel.jpg', alt: 'Returning professional persona' },
-      { src: '/assets/soc/research/journey-map.jpg', alt: 'SoC experience journey map' },
-      { src: '/assets/soc/figma/sitemap-trifold.png', alt: 'Dual-site sitemap from expo trifold' },
-      { src: '/assets/soc/research/proposed-sitemap.png', alt: 'Proposed SoC information architecture' },
-      { src: '/assets/soc/figma/home.png', alt: 'Search-first homepage' },
-      { src: '/assets/soc/figma/search.png', alt: 'Post-search filters and report specification' },
-      { src: '/assets/soc/figma/reports.png', alt: 'Reorganized all-reports taxonomy' },
+      },
     ],
   },
   {
@@ -950,16 +969,6 @@ export const projects = [
           'If I continued, I would explore personalized object selection and longitudinal studies on whether repeated use strengthens emotional grounding over time.',
         ],
       },
-    ],
-    gallery: [
-      { src: '/assets/echoes/echoes-01.jpg', alt: 'Echoes You Can Touch project hero with VR carnival and wearable device' },
-      { src: '/assets/echoes/echoes-02.jpg', alt: 'Background research on adult transitional objects and attachment stages' },
-      { src: '/assets/echoes/echoes-03.jpg', alt: 'User interviews, insights diagram, and concept mindmap' },
-      { src: '/assets/echoes/echoes-04.jpg', alt: 'Design process showing environment portals and carnival map' },
-      { src: '/assets/echoes/echoes-05.jpg', alt: 'Interaction framework and transitional object design by scene' },
-      { src: '/assets/echoes/echoes-06.jpg', alt: 'Air sac prototyping, Arduino implementation, and user testing' },
-      { src: '/assets/echoes/echoes-07.jpg', alt: 'VR storyboard showing player journey through carnival portals' },
-      { src: '/assets/echoes/echoes-08.jpg', alt: 'Final VR scenes — bedroom, playground, cinema, and reminiscence tent' },
     ],
   },
   {
@@ -1683,17 +1692,6 @@ export const projects = [
         ],
       },
     ],
-    gallery: [
-      { src: '/assets/fractal-oasis/fractal-oasis-01.jpg', alt: 'Fractal Oasis hero with modular structure and app mockups' },
-      { src: '/assets/fractal-oasis/fractal-oasis-02.jpg', alt: 'LA urban heat island background and historical development' },
-      { src: '/assets/fractal-oasis/fractal-oasis-03.jpg', alt: 'Research on unequal park access and stakeholder mapping' },
-      { src: '/assets/fractal-oasis/fractal-oasis-04.jpg', alt: 'Insights, ideation sketches, and Green Credit ecosystem map' },
-      { src: '/assets/fractal-oasis/fractal-oasis-05.jpg', alt: 'Pocket Kit structure analysis and app interface display' },
-      { src: '/assets/fractal-oasis/fractal-oasis-06.jpg', alt: 'Vertical garden modular design and Arduino irrigation' },
-      { src: '/assets/fractal-oasis/fractal-oasis-07.jpg', alt: 'City Park structure zones and architectural renders' },
-      { src: '/assets/fractal-oasis/fractal-oasis-08.jpg', alt: 'Physical city park model and smart irrigation details' },
-      { src: '/assets/fractal-oasis/fractal-oasis-09.jpg', alt: 'Final community visualization with QR plant claiming' },
-    ],
   },
   {
     id: 'zingerman-deli',
@@ -2207,20 +2205,6 @@ export const projects = [
           'Next time I would prototype cart micro-feedback earlier and A/B brand density against task time, so personality and completion do not trade off late in the process.',
         ],
       },
-    ],
-    gallery: [
-      { src: '/assets/zingerman/homepage-desktop.png', alt: 'Final homepage — desktop' },
-      { src: '/assets/zingerman/product-listing-desktop.png', alt: 'Menu listing with filters — desktop' },
-      { src: '/assets/zingerman/product-detail-desktop.png', alt: 'Product detail — desktop' },
-      { src: '/assets/zingerman/cart-desktop.png', alt: 'Cart page — desktop' },
-      { src: '/assets/zingerman/checkout-desktop.png', alt: 'Checkout — desktop' },
-      { src: '/assets/zingerman/confirmation-desktop.png', alt: 'Order confirmation — desktop' },
-      { src: '/assets/zingerman/homepage-mobile.png', alt: 'Homepage — mobile' },
-      { src: '/assets/zingerman/cart-mobile.png', alt: 'Cart — mobile' },
-      { src: '/assets/zingerman/checkout-mobile.png', alt: 'Checkout — mobile' },
-      { src: '/assets/zingerman/confirmation-mobile.png', alt: 'Confirmation — mobile' },
-      { src: '/assets/zingerman/wireframe-home.png', alt: 'Homepage wireframe' },
-      { src: '/assets/zingerman/wireframe-listing.png', alt: 'Listing wireframe' },
     ],
   },
   {
@@ -2948,20 +2932,6 @@ export const projects = [
           'Multi-modal interaction only works when each input has a defined role — touch for exploration, voice for hands-free, haptics for urgency, AI for prediction.',
         ],
       },
-    ],
-    gallery: [
-      { src: '/assets/stellantis/research/problem-friction.png', alt: 'Problem statement and How Might We' },
-      { src: '/assets/stellantis/research/hud-scenarios.png', alt: 'HUD merge-risk and predictive scenarios' },
-      { src: '/assets/stellantis/research/system-logic.png', alt: 'Sensing and intervention system logic' },
-      { src: '/assets/stellantis/center-home.png', alt: 'Center display home' },
-      { src: '/assets/stellantis/navigation-route.png', alt: 'Navigation route preview' },
-      { src: '/assets/stellantis/navigation-map-overlay.png', alt: 'Navigation map overlay' },
-      { src: '/assets/stellantis/media.png', alt: 'Media module' },
-      { src: '/assets/stellantis/media-source-switch.png', alt: 'Media source switching' },
-      { src: '/assets/stellantis/driver-display-gauges.png', alt: 'Driver display gauges' },
-      { src: '/assets/stellantis/hud-on-road.png', alt: 'HUD on-road' },
-      { src: '/assets/stellantis/vehicle-controls.png', alt: 'Vehicle controls' },
-      { src: '/assets/stellantis/style-guide.png', alt: 'Style guide' },
     ],
   },
 ]

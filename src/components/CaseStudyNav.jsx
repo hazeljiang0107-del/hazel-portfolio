@@ -1,14 +1,10 @@
 export default function CaseStudyNav({
   sections,
-  showGallery = true,
   variant = 'sidebar',
   accent,
 }) {
   const accentColor = accent || 'var(--color-accent-warm)'
-  const links = [
-    ...sections.map((section) => ({ id: section.id, label: section.title })),
-    ...(showGallery ? [{ id: 'gallery', label: 'Gallery' }] : []),
-  ]
+  const links = sections.map((section) => ({ id: section.id, label: section.title }))
 
   if (variant === 'mobile') {
     return (
