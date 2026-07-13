@@ -3,7 +3,6 @@
   "echoes-hero": "/assets/echoes-hero.jpg",
   "still-here-hero": "/assets/still-here-hero.jpg",
   "fractal-oasis-hero": "/assets/fractal-oasis-hero.jpg",
-  "yeastguard-hero": "/assets/yeastguard-hero.jpg",
   "echoes": [
     "/assets/echoes/echoes-01.jpg",
     "/assets/echoes/echoes-02.jpg",
@@ -36,15 +35,5 @@
     "/assets/fractal-oasis/fractal-oasis-08.jpg",
     "/assets/fractal-oasis/fractal-oasis-09.jpg",
     "/assets/fractal-oasis/fractal-oasis-10.jpg"
-  ],
-  "yeastguard": [
-    "/assets/yeastguard/yeastguard-01.jpg",
-    "/assets/yeastguard/yeastguard-02.jpg",
-    "/assets/yeastguard/yeastguard-03.jpg",
-    "/assets/yeastguard/yeastguard-04.jpg",
-    "/assets/yeastguard/yeastguard-05.jpg",
-    "/assets/yeastguard/yeastguard-06.jpg",
-    "/assets/yeastguard/yeastguard-07.jpg",
-    "/assets/yeastguard/yeastguard-08.jpg"
   ]
 }

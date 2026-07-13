@@ -360,41 +360,43 @@ export const projects = [
             ],
           },
           {
-            type: 'bar-list',
-            note: 'Visit purpose — select all that apply (n = 127).',
-            items: [
-              { label: 'Check latest release / publication date', value: 43 },
-              { label: 'Find headline data (e.g. ICS)', value: 38 },
-              { label: 'Compare sentiment for analysis', value: 38 },
-              { label: 'Explore historical / demographic data', value: 31 },
-              { label: 'Learn about survey / methodology', value: 31 },
-              { label: 'Interpret the latest data', value: 30 },
-              { label: 'Download data files (CSV / Excel / PDF)', value: 22 },
-            ],
-          },
-          {
-            type: 'bar-list',
-            note: 'Self-described role (n = 127).',
-            items: [
-              { label: 'Business / private sector', value: 37 },
-              { label: 'Academic', value: 28 },
-              { label: 'General public', value: 27 },
-              { label: 'Government / public policy', value: 8 },
-              { label: 'Journalist / media', value: 7 },
-              { label: 'Think tank / non-profit', value: 3 },
-            ],
-          },
-          {
-            type: 'bar-list',
-            note: 'Navigation experience — select all that apply (n = 127).',
-            items: [
-              { label: 'Familiar — know where things usually are', value: 32 },
-              { label: 'Structure / labels made it easy', value: 24 },
-              { label: 'Made sense, but took a few clicks', value: 21 },
-              { label: 'Relied on trial and error', value: 21 },
-              { label: 'Unable to find specific data', value: 15 },
-              { label: 'Organization felt confusing', value: 13 },
-              { label: 'Data seemed inconsistent / unexpected', value: 8 },
+            type: 'bar-chart-grid',
+            charts: [
+              {
+                note: 'Visit purpose — select all that apply (n = 127).',
+                items: [
+                  { label: 'Check latest release / publication date', shortLabel: 'Latest release', value: 43 },
+                  { label: 'Find headline data (e.g. ICS)', shortLabel: 'Headline data', value: 38 },
+                  { label: 'Compare sentiment for analysis', shortLabel: 'Compare sentiment', value: 38 },
+                  { label: 'Explore historical / demographic data', shortLabel: 'Historical data', value: 31 },
+                  { label: 'Learn about survey / methodology', shortLabel: 'Methodology', value: 31 },
+                  { label: 'Interpret the latest data', shortLabel: 'Interpret data', value: 30 },
+                  { label: 'Download data files (CSV / Excel / PDF)', shortLabel: 'Download files', value: 22 },
+                ],
+              },
+              {
+                note: 'Self-described role (n = 127).',
+                items: [
+                  { label: 'Business / private sector', shortLabel: 'Business', value: 37 },
+                  { label: 'Academic', shortLabel: 'Academic', value: 28 },
+                  { label: 'General public', shortLabel: 'Public', value: 27 },
+                  { label: 'Government / public policy', shortLabel: 'Government', value: 8 },
+                  { label: 'Journalist / media', shortLabel: 'Journalist', value: 7 },
+                  { label: 'Think tank / non-profit', shortLabel: 'Think tank', value: 3 },
+                ],
+              },
+              {
+                note: 'Navigation experience — select all that apply (n = 127).',
+                items: [
+                  { label: 'Familiar — know where things usually are', shortLabel: 'Familiar', value: 32 },
+                  { label: 'Structure / labels made it easy', shortLabel: 'Clear structure', value: 24 },
+                  { label: 'Made sense, but took a few clicks', shortLabel: 'Few clicks', value: 21 },
+                  { label: 'Relied on trial and error', shortLabel: 'Trial & error', value: 21 },
+                  { label: 'Unable to find specific data', shortLabel: "Couldn't find", value: 15 },
+                  { label: 'Organization felt confusing', shortLabel: 'Confusing', value: 13 },
+                  { label: 'Data seemed inconsistent / unexpected', shortLabel: 'Inconsistent', value: 8 },
+                ],
+              },
             ],
           },
         ],
@@ -478,36 +480,54 @@ export const projects = [
         id: 'competitive',
         title: 'Competitive patterns',
         content: [
-          'Trusted economic-data platforms set the baseline users already know — search, consistent labeling, and clearer data hierarchy — which made SoC gaps feel like missing infrastructure rather than taste preferences.',
+          'Trusted economic-data platforms set the baseline users already know — search-first entry, sticky filters, and clear release/documentation pathways — which made SoC gaps feel like missing infrastructure rather than taste preferences.',
         ],
         modules: [
           {
             type: 'competitor-cards',
-            image: {
-              src: '/assets/soc/soc-03.jpg',
-              alt: 'Site map comparison between SoC and competitor platforms',
-              caption: 'Evidence — Competitor / IA comparison artifact used during synthesis.',
-            },
+            images: [
+              {
+                label: 'FRED',
+                src: '/assets/soc/research/sitemap-fred.jpg',
+                alt: 'FRED site map: search-first home into release calendar, tools, news, blog, and about',
+                caption: 'Evidence — FRED IA mapped from competitive review.',
+              },
+              {
+                label: 'BLS',
+                src: '/assets/soc/research/sitemap-bls.jpg',
+                alt: 'BLS site map: home into subjects, data tools, publications, and economic releases',
+                caption: 'Evidence — BLS IA mapped from competitive review.',
+              },
+              {
+                label: 'U.S. Census',
+                src: '/assets/soc/research/sitemap-census.jpg',
+                alt: 'U.S. Census site map: explore home into tables, maps, charts, profiles, and filter pages',
+                caption: 'Evidence — Census data.census.gov IA mapped from competitive review.',
+              },
+            ],
             items: [
               {
                 name: 'FRED',
                 points: [
-                  'Search-first entry into series and charts.',
-                  'Familiar pattern for professional analysts referenced in persona research.',
+                  'Search-first home with trending terms, browse-by, and at-a-glance entry.',
+                  'Release calendar → topic pages → deep filters (concepts, geography, frequency, source).',
+                  'In-chart actions: download, related data, time-range tags, and tutorials for digging deeper.',
                 ],
               },
               {
                 name: 'BLS',
                 points: [
-                  'Clearer pathways into releases, tables, and documentation.',
-                  'Used in competitive site-map review for navigation baselines.',
+                  'Home surfaces announcements, calendar, and all releases before deep navigation.',
+                  'Subjects and Data Tools use dropdown filters into study pages with next-release cues.',
+                  'Publication detail pages lead with takeaways, monthly changes, charts, and contact.',
                 ],
               },
               {
                 name: 'U.S. Census',
                 points: [
-                  'Stronger expectations for explore / data landing patterns.',
-                  'Informed how users expect to move from overview into filtered datasets.',
+                  'Explore-first home: search + quick links into tables, maps, charts, profiles, microdata.',
+                  'Shared filter page with left sticky filters before opening any document.',
+                  'In-page preview pane plus download / cite / share / API beside methodology notes.',
                 ],
               },
               {
@@ -515,6 +535,7 @@ export const projects = [
                 points: [
                   'No comparable search/filter hub across Main and Data.',
                   'Dual-site orientation and time labeling lagged competitor clarity.',
+                  'Release schedule and methodology stay buried instead of living beside the data.',
                 ],
               },
             ],
@@ -1672,109 +1693,6 @@ export const projects = [
       { src: '/assets/fractal-oasis/fractal-oasis-07.jpg', alt: 'City Park structure zones and architectural renders' },
       { src: '/assets/fractal-oasis/fractal-oasis-08.jpg', alt: 'Physical city park model and smart irrigation details' },
       { src: '/assets/fractal-oasis/fractal-oasis-09.jpg', alt: 'Final community visualization with QR plant claiming' },
-    ],
-  },
-  {
-    id: 'yeastguard',
-    slug: 'yeastguard',
-    title: 'YeastGuard',
-    subtitle: 'A bio-based insert for two-piece ostomy pouches that calms the first splash, reduces sting, and extends comfortable wear.',
-    tagline: 'A bio-based ostomy insert from upcycled brewer\'s yeast that calms first-hit irritation.',
-    featured: true,
-    featuredSize: 'standard',
-    order: 7,
-    type: 'Individual Project',
-    role: 'Product & Service Designer',
-    timeline: '2024',
-    tools: ['Figma', 'Illustrator', 'Rhino'],
-    methods: ['Interviews', 'Material Testing', 'Service Design', 'Prototyping'],
-    categories: ['Healthcare', 'Product Design', 'System Design'],
-    accent: '#d4a017',
-    thumbnail: '/assets/yeastguard-hero.jpg',
-    heroImage: '/assets/yeastguard-hero.jpg',
-    summary:
-      'YeastGuard turns spent brewer\'s yeast into a sterile alginate gel insert that sits inside the pouch — adsorbing bile-salt micelles and gently thickening output without changing the user\'s routine.',
-    overview:
-      'Work spans material experiments, benchtop tests, packaging, service flow, and patient feedback. The insert uses upcycled brewer\'s yeast and alginate to create a low-profile, vent-safe cushion that improves comfort at the stoma interface — addressing the real burden of internal pouch chemistry, not just external barriers.',
-    sections: [
-      {
-        id: 'problem',
-        title: 'Problem / Challenge',
-        content: [
-          'Over 725,000–1,000,000 people in the U.S. live with an ostomy. Daily challenges include micro-leaks that burn skin, unpredictable "first-hit" exposure inside the bag, and fear of odor and social embarrassment.',
-          'The real burden is the internal chemistry of the pouch — thin, watery output, nighttime pooling, and bile-salt irritation — not just the external appliance.',
-        ],
-      },
-      {
-        id: 'research',
-        title: 'Research / Context',
-        content: [
-          'Spent brewer\'s yeast (SBY) is a nutrient-rich brewery byproduct — roughly 15–18 tons per 10,000 hL of beer — often treated as industrial waste despite containing β-glucan, mannoproteins, and chitin with biomedical potential.',
-          'Interviewed Stephanie (nurse), Olivia (NGO volunteer), and Emily (college student). Themes: output unpredictability, nighttime pooling, odor anxiety, and social discrimination.',
-        ],
-      },
-      {
-        id: 'insights',
-        title: 'Key Insights',
-        content: [
-          'Patients need a solution that stabilizes and neutralizes effluent at the source — inside the pouch — without blocking flow or changing their routine.',
-          'Placement matters: outside the flange avoids flow blockage; inside placement risks degrading material and slowing output.',
-          '8% SBY + 2% alginate optimally balances fast pH stabilization with minimal flow resistance.',
-        ],
-      },
-      {
-        id: 'goals',
-        title: 'Design Goals',
-        content: [
-          'Develop an upcycled SBY-alginate insert that reduces first-hit irritation and odor at the stoma interface.',
-          'Design perforated geometry that maintains vent safety and flow clearance.',
-          'Create packaging, instructions, and a service blueprint for trial-to-reorder patient journey.',
-        ],
-      },
-      {
-        id: 'process',
-        title: 'Process / Iterations',
-        content: [
-          'Stage 1 — Formula screening: tested Groups A (8% yeast, 2% alginate), B (12% yeast), and C (higher alginate). Group A reached target pH fastest with highest clarity and minimal flow impact.',
-          'Stage 2 — Surface area & geometry: compared four molded textures. Pebbled/cellular pattern (Group C) provided best contact without blocking flow.',
-          'Stage 3 — Stability: 7-day immersion tests confirmed 2% alginate + 8% SBY maintained integrity. Developed branding, exploded-view product diagram, packaging, and 4-step user guide.',
-        ],
-      },
-      {
-        id: 'solution',
-        title: 'Final Design',
-        content: [
-          'A thin, drop-in insert with yeast bio-material cushion between breathable mesh layers. Perforated tongue adsorbs bile-salt micelles, gently thickens watery output, and supports milder micro-pH under the flange.',
-          'Packaging: sterile foil packet in branded box with step-by-step IFU. Product line includes Slim, Plus, High-Output, Pediatric, and OEM variants.',
-          'Service blueprint maps discover → trial kit → first fit → wear & assess → reorder across customer journey, frontstage, backstage, and support processes.',
-        ],
-      },
-      {
-        id: 'outcome',
-        title: 'Outcome / Impact',
-        content: [
-          'User testing with Ammon (26, 2-year stoma patient): "The first-hit sting dropped dramatically and my skin stayed calm. Wear time stretched from about a day to a day-and-a-half with no clogging or vent issues."',
-          'Environmental upcycling + gentler first-hit chemistry → fewer skin flares, longer comfortable wear, lower cost and waste.',
-        ],
-      },
-      {
-        id: 'reflection',
-        title: 'Reflection',
-        content: [
-          'YeastGuard taught me that healthcare product design sits at the intersection of material science, patient dignity, and service systems. The benchtop rigor and the patient quote mattered equally.',
-          'Next steps: clinical validation, slimmer daytime variant, and brewery partnership for SBY supply chain.',
-        ],
-      },
-    ],
-    gallery: [
-      { src: '/assets/yeastguard/yeastguard-01.jpg', alt: 'YeastGuard hero with product in use on ostomy pouch' },
-      { src: '/assets/yeastguard/yeastguard-02.jpg', alt: 'Spent brewer\'s yeast background and user pain point research' },
-      { src: '/assets/yeastguard/yeastguard-03.jpg', alt: 'Ostomy pouch structure analysis and material experiments' },
-      { src: '/assets/yeastguard/yeastguard-04.jpg', alt: 'Formula screening results and geometry testing stages' },
-      { src: '/assets/yeastguard/yeastguard-05.jpg', alt: 'Surface area tests and stability time-to-failure analysis' },
-      { src: '/assets/yeastguard/yeastguard-06.jpg', alt: 'Branding, product exploded view, and packaging design' },
-      { src: '/assets/yeastguard/yeastguard-07.jpg', alt: 'Product detail, usage instructions, and user scenario testing' },
-      { src: '/assets/yeastguard/yeastguard-08.jpg', alt: 'Service blueprint and future product roadmap' },
     ],
   },
   {

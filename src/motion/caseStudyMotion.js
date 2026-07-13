@@ -75,5 +75,13 @@ export const barGrow = (delay = 0) => ({
   transition: { duration: DURATION.slow, delay, ease: EASE_OUT },
 })
 
+/** vertical bar grow — transform only (scaleY from baseline) */
+export const barGrowY = (delay = 0) => ({
+  initial: { scaleY: 0 },
+  whileInView: { scaleY: 1 },
+  viewport: VIEWPORT,
+  transition: { duration: DURATION.slow, delay, ease: EASE_OUT },
+})
+
 /** count-up duration from recipe (~900ms, ease-out cubic) */
 export const COUNT_DURATION_MS = 900

@@ -9,6 +9,7 @@ import {
   STAGGER,
   VIEWPORT,
   barGrow,
+  barGrowY,
   reveal,
   staggerContainer,
   staggerInView,
@@ -795,14 +796,37 @@ function FeatureCards({ items, mood }) {
   )
 }
 
-function CompetitorCards({ items, image, mood, accent }) {
+function CompetitorCards({ items, image, images, mood, accent }) {
   const prefersReducedMotion = useReducedMotion()
+  const gallery = images?.length ? images : image ? [image] : []
 
   return (
     <div className="min-w-0 space-y-6">
-      {image && (
-        <motion.div {...(prefersReducedMotion ? {} : reveal(0))}>
-          <SectionImage src={image.src} alt={image.alt} caption={image.caption} mood={mood} />
+      {gallery.length > 0 && (
+        <motion.div
+          className={`grid gap-6 ${gallery.length > 1 ? 'lg:grid-cols-3' : ''}`}
+          variants={staggerContainer}
+          {...(prefersReducedMotion ? {} : staggerInView)}
+        >
+          {gallery.map((asset) => (
+            <motion.div
+              key={asset.src}
+              className="min-w-0"
+              variants={prefersReducedMotion ? undefined : staggerItem}
+            >
+              {asset.label && (
+                <p className="text-label mb-2" style={{ color: accent }}>
+                  {asset.label}
+                </p>
+              )}
+              <SectionImage
+                src={asset.src}
+                alt={asset.alt}
+                caption={asset.caption}
+                mood={mood}
+              />
+            </motion.div>
+          ))}
         </motion.div>
       )}
       <motion.div
@@ -893,40 +917,79 @@ function StatCards({ items, accent, note }) {
   )
 }
 
-function BarList({ items, accent, note }) {
+function BarChart({ items, accent, note, compact = false }) {
   const max = Math.max(...items.map((item) => item.value), 1)
   const prefersReducedMotion = useReducedMotion()
+  const barHeight = compact ? 'h-24 sm:h-28' : 'h-28 sm:h-32'
 
   return (
-    <div className="min-w-0 space-y-4">
-      <div className="space-y-3">
-        {items.map((item, i) => (
-          <div key={item.label} className="min-w-0">
-            <div className="mb-1.5 flex items-baseline justify-between gap-3">
-              <p className="text-sm text-ink-secondary">{item.label}</p>
-              <CountUp
-                value={String(item.value)}
-                className="shrink-0 text-sm tabular-nums text-ink"
-              />
-            </div>
-            <div className="h-1.5 overflow-hidden bg-surface">
-              <motion.div
-                className="h-full origin-left"
-                style={{
-                  width: `${Math.max(4, (item.value / max) * 100)}%`,
-                  backgroundColor: accent,
-                }}
-                {...(prefersReducedMotion
-                  ? {}
-                  : barGrow(Math.min(i * STAGGER.tight, 0.28)))}
-              />
-            </div>
-          </div>
-        ))}
+    <div className="min-w-0">
+      {note && (
+        <p className={`text-meta ${compact ? 'mb-2' : 'mb-3'}`} style={{ color: accent }}>
+          {note}
+        </p>
+      )}
+      <div className="overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
+        <div
+          className="flex items-end gap-1.5 sm:gap-2"
+          style={{ minWidth: `${Math.max(items.length * 3.25, 18)}rem` }}
+        >
+          {items.map((item, i) => {
+            const label = item.shortLabel || item.label
+            return (
+              <div
+                key={item.label}
+                className="flex min-w-0 flex-1 flex-col items-center gap-1.5"
+                title={item.label}
+              >
+                <CountUp
+                  value={String(item.value)}
+                  className="text-[11px] font-medium tabular-nums text-ink sm:text-xs"
+                />
+                <div className={`relative w-full max-w-[2.75rem] ${barHeight} bg-surface`}>
+                  <motion.div
+                    className="absolute inset-x-0 bottom-0 origin-bottom"
+                    style={{
+                      height: `${Math.max(10, (item.value / max) * 100)}%`,
+                      backgroundColor: accent,
+                    }}
+                    {...(prefersReducedMotion
+                      ? {}
+                      : barGrowY(Math.min(i * STAGGER.tight, 0.28)))}
+                  />
+                </div>
+                <p className="w-full text-center text-[9px] leading-tight text-ink-muted sm:text-[10px]">
+                  {label}
+                </p>
+              </div>
+            )
+          })}
+        </div>
       </div>
-      {note && <p className="text-meta">{note}</p>}
     </div>
   )
+}
+
+function BarChartGrid({ charts, accent }) {
+  if (!charts?.length) return null
+
+  return (
+    <div className="grid min-w-0 gap-8 lg:grid-cols-3 lg:gap-6">
+      {charts.map((chart) => (
+        <BarChart
+          key={chart.note}
+          items={chart.items}
+          note={chart.note}
+          accent={accent}
+          compact
+        />
+      ))}
+    </div>
+  )
+}
+
+function BarList({ items, accent, note }) {
+  return <BarChart items={items} accent={accent} note={note} />
 }
 
 function DecisionMatrix({ columns, rows, accent }) {
@@ -1249,6 +1312,7 @@ export default function CaseStudyModules({ modules, accent, mood }) {
             <CompetitorCards
               items={module.items}
               image={module.image}
+              images={module.images}
               mood={mood}
               accent={accentColor}
             />
@@ -1265,6 +1329,9 @@ export default function CaseStudyModules({ modules, accent, mood }) {
           )}
           {module.type === 'bar-list' && (
             <BarList items={module.items} accent={accentColor} note={module.note} />
+          )}
+          {module.type === 'bar-chart-grid' && (
+            <BarChartGrid charts={module.charts} accent={accentColor} />
           )}
           {module.type === 'decision-matrix' && (
             <DecisionMatrix
