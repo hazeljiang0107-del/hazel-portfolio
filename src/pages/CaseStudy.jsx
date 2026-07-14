@@ -10,6 +10,8 @@ import ExternalLink from '../components/ExternalLink'
 import BackToTop from '../components/BackToTop'
 import ProjectSnapshot from '../components/case-study/ProjectSnapshot'
 import StillHereCover from '../components/StillHereCover'
+import EchoesCover from '../components/EchoesCover'
+import EchoesFadingBackdrop from '../components/EchoesFadingBackdrop'
 import { getProjectBySlug, getAdjacentProjects } from '../data/projects'
 import { EASE_OUT, fadeInUp, STAGGER } from '../motion/caseStudyMotion'
 
@@ -17,6 +19,7 @@ const MOOD_CLASS = {
   'zingerman-deli': 'case-study--commerce',
   'stellantis-ivi': 'case-study--automotive',
   'still-here': 'case-study--healthcare',
+  'echoes-you-can-touch': 'case-study--echoes',
 }
 
 export default function CaseStudy() {
@@ -43,6 +46,7 @@ export default function CaseStudy() {
   const isAutomotive = project.slug === 'stellantis-ivi'
   const isCommerce = project.slug === 'zingerman-deli'
   const isHealthcare = project.slug === 'still-here'
+  const isEchoes = project.slug === 'echoes-you-can-touch'
   const isPresentationCover =
     project.slug === 'stellantis-ivi' || project.slug === 'surveys-of-consumers'
   const motionOn =
@@ -50,11 +54,13 @@ export default function CaseStudy() {
     (project.slug === 'surveys-of-consumers' ||
       project.slug === 'stellantis-ivi' ||
       project.slug === 'zingerman-deli' ||
-      project.slug === 'still-here')
+      project.slug === 'still-here' ||
+      project.slug === 'echoes-you-can-touch')
 
   return (
-    <div className={moodClass} style={{ '--project-accent': accent }}>
+    <div className={`relative ${moodClass}`} style={{ '--project-accent': accent }}>
       <PageMeta title={`${project.title} — Hazel Jiang`} description={project.summary} />
+      {isEchoes && <EchoesFadingBackdrop />}
 
       <div
         className="fixed left-0 top-14 z-40 h-px transition-all duration-150"
@@ -63,8 +69,18 @@ export default function CaseStudy() {
       />
 
       <section
-        className={`border-b border-line ${
-          isAutomotive ? 'bg-[#0a0a0a]' : isCommerce ? 'bg-[#12110f]' : isHealthcare ? 'bg-[#0c1018]' : ''
+        className={`relative z-[1] ${
+          isEchoes ? '' : 'border-b border-line'
+        } ${
+          isAutomotive
+            ? 'bg-[#0a0a0a]'
+            : isCommerce
+              ? 'bg-[#12110f]'
+              : isHealthcare
+                ? 'bg-[#0c1018]'
+                : isEchoes
+                  ? 'echoes-hero'
+                  : ''
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 pb-14 pt-28 md:pt-32">
@@ -143,14 +159,22 @@ export default function CaseStudy() {
                       ? 'bg-[#f5f0e8] ring-1 ring-black/5'
                       : isHealthcare
                         ? 'bg-[#05071a] ring-1 ring-white/10'
-                      : 'bg-surface ring-1 ring-line'
+                        : isEchoes
+                          ? 'aspect-[16/10] bg-black ring-1 ring-white/10'
+                          : 'bg-surface ring-1 ring-line'
               } ${isHealthcare ? 'aspect-[4/3] md:aspect-[16/11]' : ''}`}
               initial={motionOn ? { opacity: 0, y: 16, scale: 0.985 } : false}
               animate={motionOn ? { opacity: 1, y: 0, scale: 1 } : undefined}
-              transition={{ duration: 0.55, delay: 0.12, ease: EASE_OUT }}
+              transition={{
+                duration: isEchoes ? 1.1 : 0.55,
+                delay: isEchoes ? 0.2 : 0.12,
+                ease: EASE_OUT,
+              }}
             >
               {isHealthcare ? (
                 <StillHereCover />
+              ) : isEchoes ? (
+                <EchoesCover />
               ) : (
               <img
                 src={project.heroImage}
@@ -165,7 +189,11 @@ export default function CaseStudy() {
             </motion.div>
           </div>
 
-          <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-8 sm:grid-cols-4">
+          <dl
+            className={`mt-12 grid grid-cols-2 gap-x-8 gap-y-5 pt-8 sm:grid-cols-4 ${
+              isEchoes ? '' : 'border-t border-line'
+            }`}
+          >
             {[
               { label: 'Role', value: project.role },
               { label: 'Timeline', value: project.timeline },
@@ -195,7 +223,11 @@ export default function CaseStudy() {
       </section>
 
       {project.snapshot && (
-        <section className="border-b border-line px-6 py-10">
+        <section
+          className={`relative z-[1] px-6 py-10 ${
+            isEchoes ? 'echoes-panel' : 'border-b border-line'
+          }`}
+        >
           <motion.div
             className="mx-auto max-w-7xl"
             {...(motionOn
@@ -207,13 +239,21 @@ export default function CaseStudy() {
                 }
               : {})}
           >
-            <ProjectSnapshot snapshot={project.snapshot} accent={accent} />
+            <ProjectSnapshot
+              snapshot={project.snapshot}
+              accent={accent}
+              borderless={isEchoes}
+            />
           </motion.div>
         </section>
       )}
 
       {project.overview && (
-        <section className="border-b border-line px-6 py-10">
+        <section
+          className={`relative z-[1] px-6 py-10 ${
+            isEchoes ? 'echoes-panel' : 'border-b border-line'
+          }`}
+        >
           <motion.div
             className="mx-auto max-w-7xl"
             {...(motionOn
@@ -227,11 +267,17 @@ export default function CaseStudy() {
           >
             <p className="text-chapter mb-4">Overview</p>
             <p className="prose-editorial max-w-2xl">{project.overview}</p>
+            {project.contribution && (
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink">
+                <span className="text-label mr-2">My contribution</span>
+                {project.contribution}
+              </p>
+            )}
           </motion.div>
         </section>
       )}
 
-      <section className="overflow-x-clip px-6 py-14 md:py-16">
+      <section className={`relative z-[1] overflow-x-clip px-6 py-14 md:py-16 ${isEchoes ? 'echoes-panel' : ''}`}>
         <div
           className={`mx-auto grid max-w-7xl min-w-0 gap-12 ${
             isCommerce
@@ -270,7 +316,7 @@ export default function CaseStudy() {
         </div>
       </section>
 
-      <section className="border-t border-line px-6 py-12">
+      <section className={`relative z-[1] border-t border-line px-6 py-12 ${isEchoes ? 'echoes-panel' : ''}`}>
         <div className="mx-auto grid max-w-7xl gap-px bg-line sm:grid-cols-2">
           {prev ? (
             <Link

@@ -7,6 +7,7 @@ export const CATEGORIES = [
   'All',
   'UX Research',
   'Product Design',
+  'Game Design',
   'Healthcare',
   'System Design',
   'Information Architecture',
@@ -18,7 +19,7 @@ export const RESUME_URL = '/resume.pdf'
 export const SITE = {
   name: 'Hazel Jiang',
   title: 'UX / Product Designer',
-  tagline: 'UX & product design — research, interaction, and systems.',
+  tagline: 'I design products that feel clear under pressure — from research through interaction and systems.',
   subline: 'University of Michigan · Open to internships · Ann Arbor',
   status: 'Open to internships',
   email: 'hazeljiang0107@gmail.com',
@@ -45,8 +46,8 @@ export const projects = [
     slug: 'surveys-of-consumers',
     title: 'Surveys of Consumers Redesign',
     subtitle:
-      'Bridging the data divide — redesigning how journalists, researchers, and policymakers reach America\'s most-watched consumer confidence index.',
-    tagline: 'More findable, more modern, and more reflective of the study\'s global significance.',
+      'Making America’s most-watched consumer confidence index findable in seconds — not five clicks.',
+    tagline: 'Search-first redesign for journalists, researchers, and policymakers.',
     featured: true,
     featuredSize: 'large',
     order: 1,
@@ -64,23 +65,24 @@ export const projects = [
     prototypeUrl:
       'https://www.figma.com/proto/KnpsSE9JXoaGMCFAvURWrp/Survey-of-Consumers-Redesign?node-id=485-4708',
     summary:
-      'Redesigned a decades-old dual-site economic data platform so journalists, researchers, and policymakers can find the ICS in seconds — search-first IA, Main/Data orientation, and a V1→V2 path constrained by live-data infrastructure.',
+      'Redesigned U-M’s Surveys of Consumers sites so economic data is reachable through search and reports — not buried navigation.',
     overview:
-      'The Surveys of Consumers (SoC) is one of the University of Michigan\'s most cited economic indicators. Our team redesigned the website system after finding that users struggled to locate datasets, lost context moving between the main and data sites, and distrusted the interface despite authoritative content. I contributed contextual inquiry, interview synthesis, information architecture, and high-fidelity prototyping — designing within the constraint that both sites must remain separate.',
+      'Surveys of Consumers moves markets and policy debate — but journalists and researchers still lost the Index of Consumer Sentiment across two aging sites. Our team redesigned the experience around a shared header, Main | Data orientation, and a search-first spine that respects the constraint both sites must stay separate.',
+    contribution:
+      'Led interview synthesis and information architecture; co-owned search results, reports browse, and the V1→V2 handoff path through high-fidelity prototyping.',
     snapshot: {
       project: 'Surveys of Consumers Website Redesign',
       type: 'UX Capstone · Dual-site economic data platform',
       role: 'UX Designer',
-      timeline: 'Aug 2025 – Apr 2026 · Team Capstone',
-      tools: 'Figma · Miro · Zoom · SPSS',
-      methods:
-        'Live-site survey · Affinity mapping · Competitive analysis · Journey mapping · Information architecture · Usability testing',
-      deliverable: 'Developer-ready Figma prototype + static HTML handoff for ISR (May)',
+      timeline: 'Aug 2025 – Apr 2026 · Capstone',
+      team: 'Nadia · Shalin · Hazel · Gloria',
+      tools: 'Figma · Miro · Zoom',
+      impact: 'Developer-ready Figma + static HTML handoff for ISR (May)',
     },
     sections: [
       {
         id: 'context',
-        title: 'Context',
+        title: 'Challenge',
         content: [
           'Since 1946, the University of Michigan Surveys of Consumers has published monthly economic data that moves markets, shapes policy, and is cited in newsrooms worldwide. We wanted to reimagine how this data reaches the public: more findable, more modern, and more reflective of the study\'s global significance.',
         ],
@@ -210,7 +212,7 @@ export const projects = [
       },
       {
         id: 'tension',
-        title: 'Core tension',
+        title: 'The problem',
         content: [
           'The data is public, broadly significant, and freely available — but only useful if people can find it. Non-regular users often struggled to locate specific data, navigate between two sites, or interpret what they found.',
         ],
@@ -241,7 +243,7 @@ export const projects = [
       },
       {
         id: 'research-evidence',
-        title: 'Research evidence',
+        title: 'Research',
         content: [
           'We stacked methods so each one answered a different question — support demand, live-site friction, qualitative themes, and task validation — then synthesized them into design requirements.',
         ],
@@ -877,96 +879,310 @@ export const projects = [
     id: 'echoes-you-can-touch',
     slug: 'echoes-you-can-touch',
     title: 'Echoes You Can Touch',
-    subtitle: 'A VR experience with a wearable device that connects users with virtual transitional objects.',
-    tagline: 'VR and haptic wearables that ground memory in physical sensation.',
+    subtitle:
+      'A first-person fantasy carnival where memory portals turn nostalgia into playable space — walk it, read the world, then touch what remembers you.',
+    tagline: 'Hub-and-portal level design · atmospheric worldbuilding · XR game feel.',
     featured: true,
     featuredSize: 'standard',
     order: 5,
-    type: 'Individual Project',
-    role: 'Designer & Developer',
-    timeline: '2024',
-    tools: ['Unity', 'Figma', 'Arduino', 'Rhino'],
-    methods: ['Interviews', 'Literature Review', 'Physical Prototyping', 'User Testing'],
-    categories: ['Product Design', 'System Design', 'UX Research'],
+    type: 'Game Design · VR Experience',
+    role: 'Game Designer & Unity Developer',
+    timeline: '2024–2025',
+    tools: ['Unity', 'XR Interaction Toolkit', 'C#', 'Rhino', 'Arduino'],
+    methods: ['Worldbuilding', 'Level Design', 'Playtesting', 'Haptic Prototyping'],
+    categories: ['Game Design', 'Product Design', 'System Design'],
     accent: '#ff3399',
     thumbnail: '/assets/echoes-hero.jpg',
     heroImage: '/assets/echoes-hero.jpg',
     summary:
-      'An immersive VR world paired with a haptic wearable that lets the body recall emotions language cannot fully name — built around the psychology of adult transitional objects.',
+      'Designed and built Fantasy World in Unity — a carnival hub that routes players through glowing portals into bedroom, playground, cinema, and reminiscence-tent levels, with palm haptics as game-feel.',
     overview:
-      'This project explores the quiet space between memory and sensation. Using research on emotional attachment across life stages, I designed a carnival-themed VR environment with four memory portals and a palm-worn inflatable air sac that responds to virtual touch — grounding abstract nostalgia in physical feeling.',
+      'Echoes You Can Touch is an exploratory VR fantasy game: the carnival is the hub, portals are the progression, and transitional objects are the verbs. Atmosphere and level composition do the storytelling — fog, string lights, surreal tent crowds, and a childhood bedroom that feels lived-in — so players understand the world before dialogue ever speaks.',
+    contribution:
+      'Solo game design and Unity build: hub layout, portal loop, environmental storytelling, XR interaction stack, and companion palm-haptic prototyping for tactile feedback on key objects.',
+    snapshot: {
+      project: 'Echoes You Can Touch — Fantasy World VR',
+      type: 'Game design · Immersive VR prototype',
+      role: 'Game Designer & Unity Developer',
+      timeline: '2024–2025',
+      tools: 'Unity · XR Interaction Toolkit · Ghost VR Hands · Arduino',
+      impact: 'Playable hub-and-portal fantasy world with in-engine walkthrough + haptic game-feel prototype',
+    },
     sections: [
       {
-        id: 'problem',
-        title: 'Problem / Challenge',
+        id: 'play',
+        title: 'Playthrough',
         content: [
-          'Adults carry emotional weight through life transitions — moves, loneliness, identity shifts — but rarely have intentional tools to self-soothe beyond familiar objects from childhood.',
-          'How might we translate the comfort of transitional objects into an interactive, multisensory experience that helps people reconnect with feelings of safety without relying on language alone?',
+          'In-engine first-person walkthrough cut from the Unity hub: glowing portals → reminiscence tent → carnival path → bedroom portal. Designed so recruiters feel the world before reading the systems.',
+        ],
+        modules: [
+          {
+            type: 'video',
+            frame: 'game',
+            src: '/assets/echoes/demo/echoes-walkthrough.mp4',
+            poster: '/assets/echoes/demo/hero-poster.jpg',
+            playbackRate: 0.7,
+            alt: 'Echoes You Can Touch Unity gameplay walkthrough across portals, tent, carnival, and bedroom',
+            caption:
+              'Gameplay montage — portal hub → surreal tent audience → carnival midground → childhood bedroom (Unity, first person).',
+          },
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'What you’re seeing',
+                description:
+                  'A hub that teaches direction with light and composition, then destinations that shift emotional temperature without UI chrome.',
+              },
+              {
+                title: 'Design proof',
+                description:
+                  'Same art language, four moods: carnival mystery, tent uncanny, path exploration, intimate bedroom — space as narrative.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'concept',
+        title: 'Game concept',
+        content: [
+          'Fantasy World reframes reminiscence as playable space. Instead of a linear cutscene about childhood, players explore a carnival that behaves like a dream map — familiar pieces remixed into somewhere slightly impossible.',
+        ],
+        modules: [
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'Genre',
+                description:
+                  'Exploratory VR fantasy — walk, look, touch, and be moved by space more than by combat or score.',
+              },
+              {
+                title: 'Fantasy premise',
+                description:
+                  'A night carnival that shouldn’t exist the way it does: candy-scale props, glowing portals, and rooms that feel like memories with the physics left on.',
+              },
+              {
+                title: 'Player fantasy',
+                description:
+                  'Return to emotionally safe contexts without dialogue walls — safety, play, shared story, and sensory nostalgia as interactive spaces.',
+              },
+              {
+                title: 'Core verb',
+                description:
+                  'Touch. Objects are the verbs — teddy, ball, popcorn, desk — and the body answers through optional palm pressure.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'showcase',
+        title: 'World showcase',
+        content: [
+          'Built in Unity as Project #3 Fantasy World — carnival hub first, then portal destinations composed for distinct beats: intimate bedroom, open carnival path, and a surreal reminiscence tent where toys become the audience.',
+        ],
+        modules: [
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-03.jpg',
+            alt: 'Carnival map with bedroom, playground, cinema, and tent zones',
+            caption:
+              'Level design board — carnival hub mapping Tent, Cinema, Playground, Ride, and Bedroom.',
+          },
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-07.jpg',
+            alt: 'Unity first-person views of bedroom and playground portals',
+            caption:
+              'In-engine beats — childhood bedroom and dusk playground from Fantasy World.',
+          },
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-08.jpg',
+            alt: 'Unity cinema and reminiscence tent portal screenshots',
+            caption:
+              'Cinema + reminiscence tent — shared story space and the surreal final stop.',
+          },
+        ],
+      },
+      {
+        id: 'zones',
+        title: 'Levels & portals',
+        content: [
+          'Four portal destinations, each keyed to a life-stage emotion. In Unity these map to composed scenes and asset packs: Little Girl Room, playground / school grounds, cinema set, and circus-tent reminiscence space.',
+        ],
+        modules: [
+          {
+            type: 'feature-cards',
+            items: [
+              {
+                title: 'Bedroom portal',
+                description:
+                  'Quiet, pink-lit personal ground — plush toys, soft fabrics, dollhouse. Safety and earliest anchors. Built with Little Girl Room assets in Unity.',
+              },
+              {
+                title: 'Playground portal',
+                description:
+                  'Open court energy — basketball stand, lunch bag, soda can. Motion, freedom, and early social life.',
+              },
+              {
+                title: 'Cinema portal',
+                description:
+                  'Shared storytelling — seats, popcorn, hotdog, screen glow. Rituals of watching together (cinema pack scenes).',
+              },
+              {
+                title: 'Reminiscence tent',
+                description:
+                  'Surreal mix of carnival and classroom — desk, spotlight, jack-o’-lantern, toy monkey. Fragmented memories in one tent.',
+              },
+            ],
+          },
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-06.jpg',
+            alt: 'Storyboard of carnival entrance and four memory portals',
+            caption:
+              'Playable storyboard — carnival birth → four glowing portals → reminiscence tent as last stop.',
+          },
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'Unity world stack',
+                description:
+                  'Polygon Horror Carnival · Classroom · cinema scenes · Little Girl Room · Fantasy Portal FX · Dreamscapes biomes · custom circus tents.',
+              },
+              {
+                title: 'Hub metaphor',
+                description:
+                  'Carnival blends childhood, adolescence, adulthood, and fantasy so the map itself feels like a memory collage.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'loop',
+        title: 'Player journey',
+        content: [
+          'The loop is portal-based: enter carnival → choose a glowing portal → explore and touch objects → soft haptic reply → return to hub → exit calmer than you arrived.',
+        ],
+        modules: [
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-04.jpg',
+            alt: 'Player journey flowchart and transitional object design board',
+            caption:
+              'Interaction framework — Chapter 1 Born at carnival entrance, four scenes, air-sac inflate on touch, exit into calm.',
+          },
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'Progression',
+                description:
+                  'Emotional, not XP: bedroom (safety) → playground (play) → cinema (shared story) → tent (integration).',
+              },
+              {
+                title: 'Fail state',
+                description:
+                  'None. Players can’t “lose” a memory — only leave a portal when ready.',
+              },
+              {
+                title: 'Win condition',
+                description:
+                  'Soft success: tension eases; the body registers familiarity through pressure patterns.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'systems',
+        title: 'Interaction systems',
+        content: [
+          'XR Interaction Toolkit powers hands-on VR. Ghost VR Hands / FP Arms give presence. Transitional objects are the interaction targets; the palm air sac is the haptic juice when something meaningful is held.',
+        ],
+        modules: [
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'XR stack',
+                description:
+                  'Unity XR Interaction Toolkit 3.3 · XR Management · Ghost VR Hands · NatureManufacture VR Hands FP Arms.',
+              },
+              {
+                title: 'Desktop fallback',
+                description:
+                  'Mini First Person Controller for non-headset walkthroughs while iterating layouts.',
+              },
+              {
+                title: 'Haptic game feel',
+                description:
+                  'Arduino-driven palm air sac: soft for balloons, warm-calm for pillows, firm for cans — distinct patterns per object class.',
+              },
+              {
+                title: 'Scenes in project',
+                description:
+                  'New VR Scene #2 hub · Classroom · cinema · LittleGirlRoomDemo · School scenes · carnival demos · Fantasy Portal FX.',
+              },
+            ],
+          },
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-05.jpg',
+            alt: 'Air sac haptic wearable build and playtest board',
+            caption:
+              'Companion haptic prototype — palm fit iterations and object-tied pressure patterns for VR touch.',
+          },
         ],
       },
       {
         id: 'research',
-        title: 'Research / Context',
+        title: 'Design research',
         content: [
-          'I grounded the project in attachment theory: transitional objects extend a caregiver\'s presence across infant, adolescent, and adult life stages, building safety through texture, ritual, and symbolic meaning.',
-          'I interviewed three participants about their own comfort objects — a stuffed lion (12 years), a textured fringe holder (8 years), and an old t-shirt kept since middle school. Recurring themes: security, portability, sensory triggers (texture, smell, weight), and reminiscence of familiar atmospheres.',
+          'Object choice came from interviews about adult transitional objects — stuffed lions, textured fabric, old shirts — mapped into four sensation layers that drive level prop lists.',
         ],
-        bullets: [
-          'Physical level — texture, weight, warmth',
-          'Contextual level — shared settings and everyday rituals',
-          'Process level — gifting meaning, ritual of use, continuity over time',
-          'Conceptual level — identity, calm, and emotional safety',
-        ],
-      },
-      {
-        id: 'insights',
-        title: 'Key Insights',
-        content: [
-          'Reminiscence activates stored feelings of safety before the mind consciously interprets meaning.',
-          'Attachment grows through controllability and routine — objects become predictable tools for self-soothing.',
-          'Sensory triggers (texture, warmth, sound) can trigger the body\'s calming response faster than cognitive recall.',
-        ],
-      },
-      {
-        id: 'goals',
-        title: 'Design Goals',
-        content: [
-          'Reconstruct emotionally safe, familiar contexts in VR where users can revisit comforting sensory cues.',
-          'Pair virtual environments with tangible haptic feedback so memory feels grounded, not abstract.',
-          'Design a narrative journey that moves from childhood safety through adolescent energy to integrated calm.',
-        ],
-      },
-      {
-        id: 'process',
-        title: 'Process / Iterations',
-        content: [
-          'Mapped four environment portals from user research: Bedroom (safety), Playground (joy & freedom), Cinema (storytelling & identity), and Reminiscence Tent (sensory nostalgia). Sketched and modeled a carnival hub connecting all four.',
-          'Built an interaction framework: carnival entrance → four portal scenes → integrated reminiscence tent → exit. Each scene contains transitional objects chosen for tactile and emotional associations.',
-          'Prototyped a palm-worn air sac with Arduino-controlled pumps. Iterated through line sketches, palm fit tests, shell prototypes, and inflation tests until pressure patterns felt distinct for balloons, pillows, and cans.',
-        ],
-      },
-      {
-        id: 'solution',
-        title: 'Final Design',
-        content: [
-          'A low-poly carnival VR world with four explorable memory portals, each filled with objects tied to a life stage — teddy bears and pajamas in the bedroom, basketball stands and lunch bags on the playground, cinema chairs and popcorn, and a surreal tent blending classroom, carnival, and puppet imagery.',
-          'The wearable air sac inflates with different pressure patterns when users touch virtual objects: soft and playful for balloons, warm and calming for pillows, firm and controllable for cans. User testing confirmed the haptic layer made scenes feel "more grounded."',
+        modules: [
+          {
+            type: 'media',
+            src: '/assets/echoes/echoes-02.jpg',
+            alt: 'Interview insights and mindmap for Fantasy World',
+            caption:
+              'From interviews and mindmap → portal props and atmospheric targets for each level.',
+          },
         ],
       },
       {
         id: 'outcome',
-        title: 'Outcome / Impact',
+        title: 'Playtest & impact',
         content: [
-          'Delivered a working VR + haptic prototype demonstrating how multisensory design can support emotional regulation.',
-          'User feedback: "When the air sac inflated, it gave me gentle pressure that reminded me of holding something warm and familiar. It actually made the whole scene feel more grounded."',
+          'Players described the haptic layer as making scenes feel “more grounded.” Touching a balloon vs. pillow vs. can read as different emotional temperatures — soft, calming, controllable.',
         ],
-      },
-      {
-        id: 'reflection',
-        title: 'Reflection',
-        content: [
-          'This project taught me to design for felt experience, not just visual narrative. The most meaningful moments came when research insights directly shaped both the virtual objects and the physical feedback patterns.',
-          'If I continued, I would explore personalized object selection and longitudinal studies on whether repeated use strengthens emotional grounding over time.',
+        modules: [
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'What shipped',
+                description:
+                  'Playable Unity VR fantasy hub with composed portal destinations and a working haptic companion prototype.',
+              },
+              {
+                title: 'Design takeaway',
+                description:
+                  'In emotional games, world layout and prop language do most of the storytelling — dialogue can stay minimal.',
+              },
+              {
+                title: 'Next build',
+                description:
+                  'Personalizable object tables, stronger portal transitions, and denser XRI grab affordances across tents.',
+              },
+            ],
+          },
         ],
       },
     ],
@@ -976,9 +1192,8 @@ export const projects = [
     slug: 'still-here',
     title: 'Still Here',
     subtitle:
-      'An adaptive wearable–app system supporting Young-Onset Dementia patients during moments of breakdown.',
-    tagline:
-      'A smart glove and app that detect early stress and offer gentle, dignity-preserving grounding — not memory replacement.',
+      'A wearable + app that detects stress early — and responds with dignity-preserving grounding for Young-Onset Dementia.',
+    tagline: 'Gentle haptic cues when orientation slips — support without taking autonomy.',
     featured: true,
     featuredSize: 'medium',
     order: 4,
@@ -992,23 +1207,24 @@ export const projects = [
     thumbnail: '/assets/still-here-hero.jpg',
     heroImage: '/assets/still-here-hero.jpg',
     summary:
-      'Continuous sensing wearable + companion app for people with Young-Onset Dementia — subtle haptic and light cues when stress rises, with grounding tasks, navigation support, and caregiver connection.',
+      'Designed a smart glove and companion app that senses rising stress and offers quiet grounding — built from PACE fieldwork with people living with Young-Onset Dementia.',
     overview:
-      'Still Here is an adaptive wearable–app system for people with Young-Onset Dementia. It quietly detects moments of disorientation, stress, or hesitation and responds with gentle, non-intrusive cues — helping users regain confidence without interrupting autonomy. Rather than replacing memory or directing behavior, the system acts as a supportive presence: continuous sensing, immediate grounding, and ecosystem feedback delivered through a smart glove and companion app.',
+      'Care tools for dementia often assume facility life and advanced age. Young-Onset Dementia looks different: people still work, raise families, and want support that doesn’t announce itself. Still Here pairs continuous sensing with subtle haptic and light cues — plus app flows for grounding, navigation, and caregiver connection — so help arrives before a full breakdown.',
+    contribution:
+      'End-to-end: field synthesis, problem framing, hi-fi app flows, and a working Arduino glove prototype (I2C Hub + mood light ring).',
     snapshot: {
       project: 'Still Here — Wearable + App for Young-Onset Dementia',
       type: 'Healthcare product · Wearable systems',
       role: 'UX / HCI Designer (individual)',
       timeline: '2024 · University of Michigan',
       tools: 'Figma · Arduino · Python',
-      methods: 'PACE fieldwork · Interviews · Problem tree · Sensor prototyping',
-      deliverable: 'Hi-fi app flows · I2C Hub glove prototype · Arduino firmware',
-      note: 'Case study narrative from Figma portfolio boards — field photos intentionally omitted; observations and quotes preserved as text.',
+      impact: 'Hi-fi app flows + working glove prototype with firmware',
+      note: 'Field photos omitted for privacy; observations and quotes preserved as text.',
     },
     sections: [
       {
         id: 'context',
-        title: 'Context',
+        title: 'Challenge',
         content: [
           'Young-Onset Dementia affects people under 65 who are often misdiagnosed, still working, and underserved by tools designed for elderly patients in facility settings.',
         ],
@@ -1042,9 +1258,9 @@ export const projects = [
       },
       {
         id: 'product',
-        title: 'Product showcase',
+        title: 'What I designed',
         content: [
-          'In the moments you feel lost, let technology help you come home. The app extends the glove’s quiet cues into social support, navigation, and daily structure.',
+          'When orientation slips, help shows up quietly — glove cues first, then optional app support for grounding, navigation, and caregiver connection.',
         ],
         modules: [
           {
@@ -1258,18 +1474,11 @@ export const projects = [
               },
             ],
           },
-          {
-            type: 'media',
-            src: '/assets/still-here/figma/glove-worn.png',
-            alt: 'Still Here smart glove prototype worn on the hand',
-            caption:
-              'Wearable prototype — fingertip gesture sensors, palm-fit I2C Hub, and mood light ring for non-verbal grounding.',
-          },
         ],
       },
       {
         id: 'origin',
-        title: 'How I started',
+        title: 'How it started',
         content: [
           'My journey with dementia care began through volunteering at PACE, a day center for older adults living with cognitive decline. Two years of assisting residents during activities showed me how even small changes in memory or orientation could completely reshape daily routines.',
         ],
@@ -1449,7 +1658,7 @@ export const projects = [
       },
       {
         id: 'design-response',
-        title: 'Design response',
+        title: 'Design decisions',
         content: [
           'Critical breakdowns happen in three layers: surface symptoms, internal physiological triggers, and deep system gaps. Current treatments intervene after crisis — Still Here reframes care as continuous sensing + immediate grounding + ecosystem feedback.',
         ],
@@ -1533,36 +1742,8 @@ export const projects = [
         ],
       },
       {
-        id: 'prototyping',
-        title: 'Prototyping & build',
-        content: [
-          'Product development moved from technical requirements — sense physiological shifts, stabilize mood, detect micro-behaviors — through Arduino firmware iteration to a functioning glove assembly.',
-        ],
-        modules: [
-          {
-            type: 'feature-cards',
-            items: [
-              {
-                title: 'Technical requirements',
-                description:
-                  'Vibration when instability is detected; light radiation to ease mood; micro-behavior sensing via fingertip gesture modules and palm-mounted hub.',
-                image: {
-                  src: '/assets/still-here/figma/glove-technical.png',
-                  alt: 'Annotated technical diagram of the I2C Hub glove',
-                },
-              },
-              {
-                title: 'Arduino + sensor integration',
-                description:
-                  'Prototyped firmware for sensor integration, RGB feedback, and vibration patterns. Iterated glove assembly: sensor positioning, wire routing, and palm-fit accuracy.',
-              },
-            ],
-          },
-        ],
-      },
-      {
         id: 'outcome',
-        title: 'Outcome',
+        title: 'Impact',
         content: [
           'Built a functioning prototype capable of sensing, interpreting, and responding to early instability signals — with qualitative feedback on the subtlety of light and vibration cues.',
         ],
@@ -1588,109 +1769,6 @@ export const projects = [
           },
         ],
       },
-      {
-        id: 'reflection',
-        title: 'Reflection',
-        content: [
-          'Designing for dementia taught me that the best assistive technology disappears into routine — it listens, responds, and stays without making the user feel monitored.',
-          'Next steps would include clinical validation of sensor thresholds and co-design sessions with YOD patients to refine cue subtlety.',
-        ],
-      }
-    ],
-  },
-  {
-    id: 'fractal-oasis',
-    slug: 'fractal-oasis',
-    title: 'Fractal Oasis',
-    subtitle: 'A service design system addressing LA\'s urban heat island effect through modular green infrastructure.',
-    tagline: 'Modular green infrastructure and a Green Credit app tackling LA urban heat.',
-    featured: true,
-    featuredSize: 'standard',
-    order: 6,
-    type: 'Individual Project',
-    role: 'Service & Spatial Designer',
-    timeline: '2024',
-    tools: ['Figma', 'Rhino', 'Arduino', 'Illustrator'],
-    methods: ['Stakeholder Analysis', 'Service Blueprinting', 'Spatial Design', 'Prototyping'],
-    categories: ['System Design', 'Product Design', 'UX Research'],
-    accent: '#3d8b6e',
-    thumbnail: '/assets/fractal-oasis-hero.jpg',
-    heroImage: '/assets/fractal-oasis-hero.jpg',
-    summary:
-      'A three-scale green infrastructure system — pocket kits, vertical gardens, and city parks — connected by a Green Credit app that turns individual care into neighborhood cooling.',
-    overview:
-      'Fractal Oasis reframes urban cooling as a shared system, not a single intervention. By connecting modular green structures, community participation, and data-driven services, residents earn Green Credits for maintaining plants — unlocking larger community upgrades as collective effort grows.',
-    sections: [
-      {
-        id: 'problem',
-        title: 'Problem / Challenge',
-        content: [
-          'Los Angeles faces extreme urban heat — temperatures rising from ~90°F to 113°F — driven by sprawling asphalt, low tree canopy in disadvantaged neighborhoods, and car-centric development.',
-          'Current greening efforts suffer from unequal park access, weak community ownership, and funding dependency on stagnant city budgets.',
-        ],
-      },
-      {
-        id: 'research',
-        title: 'Research / Context',
-        content: [
-          'Mapped LA\'s heat island history from 1920s zoning through 1990s auto infrastructure to 21st-century climate impacts.',
-          'Stakeholder analysis revealed fragmented, top-down decision-making: corporations shift environmental costs, residents petition without agency, and Parks & Recreation lacks funding to maintain approved projects.',
-          'Data: high-need neighborhoods have as little as 0.7 acres of park per 1,000 residents vs. 52 acres in low-need areas.',
-        ],
-      },
-      {
-        id: 'insights',
-        title: 'Key Insights',
-        content: [
-          'Heat-vulnerable neighborhoods lack ownership — participation rarely translates to visible impact.',
-          'Funding cycles are slow and politically constrained; centralized planning limits community agency.',
-          'Motivation declines without feedback loops — residents need to see how individual actions scale.',
-        ],
-      },
-      {
-        id: 'goals',
-        title: 'Design Goals',
-        content: [
-          'Create bottom-up, participatory green infrastructure that residents can adopt regardless of housing status.',
-          'Build a modular system scalable from individual pocket kits to vertical gardens to city parks.',
-          'Design a Green Credit economy that unlocks public investment when community thresholds are met.',
-        ],
-      },
-      {
-        id: 'process',
-        title: 'Process / Iterations',
-        content: [
-          'Mapped problems to solutions: community ownership → community-based green infrastructure; unequal access → modular pocket forests; funding dependency → city park scaling via Green Credits.',
-          'Designed Pocket Kit structure with universal connectors, sprinkler irrigation, and QR-code plant claiming.',
-          'Built vertical garden prototypes with hexagonal pots, gravity-fed irrigation, recirculating pump, and Arduino moisture automation.',
-          'Modeled City Park with tiered zones: community interaction, leisure, vertical garden, and mini gardens — plus physical scale model with soil-moisture-triggered watering.',
-        ],
-      },
-      {
-        id: 'solution',
-        title: 'Final Design',
-        content: [
-          'Three scales: Pocket Kit (individual QR-claim plants), Vertical Garden (community rainwater collection), City Park (government-built modular park unlocked by Green Credit milestones).',
-          'Mobile app: claim plants, complete daily care tasks, scan QR codes to earn credits, level up community titles, and view county achievement rankings.',
-          'Ecosystem map connects residents, community, Green Credit Bank, government, and corporate sponsors through co-care and actionable thresholds.',
-        ],
-      },
-      {
-        id: 'outcome',
-        title: 'Outcome / Impact',
-        content: [
-          'Delivered full service blueprint from physical structures to digital participation system to stakeholder incentives.',
-          'Physical prototypes validated closed-loop irrigation and modular assembly for dense, low-canopy neighborhoods.',
-        ],
-      },
-      {
-        id: 'reflection',
-        title: 'Reflection',
-        content: [
-          'This project stretched my design thinking across spatial, service, and digital layers. The hardest challenge was making systemic change feel actionable at the individual level.',
-          'Future work would pilot Green Credits with a neighborhood council and measure canopy growth against heat reduction data.',
-        ],
-      },
     ],
   },
   {
@@ -1698,11 +1776,11 @@ export const projects = [
     slug: 'zingerman-deli',
     title: "Zingerman's Deli Redesign",
     subtitle:
-      'One branded pickup path — from fragmented third-party ordering to a responsive flow that keeps trust on-site.',
-    tagline: 'Heuristic review, competitor check, and usability testing for a clearer deli order.',
+      'One on-brand pickup path — so ordering never leaves Zingerman’s for a third-party checkout.',
+    tagline: 'Responsive e-commerce that keeps trust on-site.',
     featured: false,
     featuredSize: 'standard',
-    order: 2,
+    order: 3,
     type: 'E-commerce Redesign · Responsive Web',
     role: 'UX Designer',
     timeline: 'Fall 2025 · SI 407',
@@ -1722,24 +1800,23 @@ export const projects = [
       'https://www.figma.com/design/is7SGby9XOxbDBQ2Mlqcin/407_ResponsiveProject_pinjiang?node-id=1-4',
     uxfolioUrl: 'https://uxfol.io/home/portfolios/3cb13abd/p/9e4d6f23',
     summary:
-      'Redesigned Zingerman’s pickup ordering into one on-brand responsive flow — addressing fragmented third-party checkouts, menu findability, and cart feedback.',
+      'Redesigned Zingerman’s pickup ordering into one responsive flow — clearer menu findability, cart feedback, and checkout that stays on-brand.',
     overview:
-      'For SI 407 (Fall 2025), I redesigned Zingerman’s Deli online pickup. Heuristic review and competitor analysis showed ordering split across Snackpass, zcob.me, and Mail Order — efficient for operations, costly for trust. Moderated usability testing (n=3) then pressure-tested menu findability, cart feedback, and brand personality against a streamlined prototype.',
+      'Zingerman’s had the brand — and a fragmented digital checkout. Ordering jumped across Snackpass, zcob.me, and Mail Order. I redesigned a full responsive pickup path (desktop + mobile) and pressure-tested it with moderated usability sessions focused on limited-item findability, cart confidence, and brand personality.',
+    contribution:
+      'Solo end-to-end: heuristics, competitive review, usability testing (n=3), affinity synthesis, and hi-fi prototype across six screens.',
     snapshot: {
       project: "Zingerman's Deli E-commerce Redesign",
       type: 'E-commerce redesign · Responsive web',
-      role: 'UX Designer (individual project)',
-      timeline: 'Fall 2025 · SI 407 · University of Michigan',
+      role: 'UX Designer (individual)',
+      timeline: 'Fall 2025 · SI 407',
       tools: 'Figma',
-      methods:
-        'Heuristic evaluation · Competitive analysis · Usability testing (n=3) · Affinity mapping',
-      deliverable: 'Responsive hi-fi prototype — desktop (1512px) + mobile (440px)',
-      note: 'Earlier UXfolio write-up exists; this case study is rebuilt from Figma + SI 407 research artifacts.',
+      impact: 'Hi-fi desktop + mobile prototype covering the full pickup path',
     },
     sections: [
       {
         id: 'context',
-        title: 'Context',
+        title: 'Challenge',
         content: [
           'Zingerman’s is an Ann Arbor institution with a strong artisanal brand — and a digital ordering surface that had grown through partnerships rather than a single owned path.',
         ],
@@ -1772,8 +1849,151 @@ export const projects = [
         ],
       },
       {
+        id: 'prototype',
+        title: 'Prototype showcase',
+        content: [
+          'Hi-fi responsive pickup flow from the final Figma file — full walkthrough on desktop + mobile, then screen-by-screen pairs.',
+        ],
+        modules: [
+          {
+            type: 'commerce-showcase',
+            desktopUrl: 'zingermansdeli.com',
+            walkthrough: {
+              title: 'Full demo',
+              description:
+                'One continuous on-site path across desktop and mobile: homepage → menu → detail → cart → checkout → confirmation.',
+              interval: 3400,
+              frames: [
+                {
+                  src: '/assets/zingerman/homepage-desktop.png',
+                  mobileSrc: '/assets/zingerman/homepage-mobile.png',
+                  label: 'Homepage',
+                  alt: 'Zingerman homepage with branded hero and order path',
+                  mobileAlt: 'Mobile homepage',
+                },
+                {
+                  src: '/assets/zingerman/product-listing-desktop.png',
+                  mobileSrc: '/assets/zingerman/product-listing-mobile.png',
+                  label: 'Menu',
+                  alt: 'Sandwich menu listing with filters and Limited Time tags',
+                  mobileAlt: 'Mobile product listing',
+                },
+                {
+                  src: '/assets/zingerman/product-detail-desktop.png',
+                  mobileSrc: '/assets/zingerman/product-detail-mobile.png',
+                  label: 'Detail',
+                  alt: 'Product detail with customize and add actions',
+                  mobileAlt: 'Mobile product detail',
+                },
+                {
+                  src: '/assets/zingerman/cart-desktop.png',
+                  mobileSrc: '/assets/zingerman/cart-mobile.png',
+                  label: 'Cart',
+                  alt: 'Cart review with clear line items and totals',
+                  mobileAlt: 'Mobile cart',
+                },
+                {
+                  src: '/assets/zingerman/checkout-desktop.png',
+                  mobileSrc: '/assets/zingerman/checkout-mobile.png',
+                  label: 'Checkout',
+                  alt: 'Checkout with pickup and payment on Zingerman domain',
+                  mobileAlt: 'Mobile checkout',
+                },
+                {
+                  src: '/assets/zingerman/confirmation-desktop.png',
+                  mobileSrc: '/assets/zingerman/confirmation-mobile.png',
+                  label: 'Confirmation',
+                  alt: 'Order confirmation with pickup summary',
+                  mobileAlt: 'Mobile confirmation',
+                },
+              ],
+            },
+            screens: [
+              {
+                id: 'homepage',
+                title: 'Homepage',
+                description: 'Branded hero with a clear order path and less scroll noise before the menu.',
+                desktop: {
+                  src: '/assets/zingerman/homepage-desktop.png',
+                  alt: 'Desktop homepage',
+                },
+                mobile: {
+                  src: '/assets/zingerman/homepage-mobile.png',
+                  alt: 'Mobile homepage',
+                },
+              },
+              {
+                id: 'listing',
+                title: 'Menu listing',
+                description: 'Filter pills and product cards with Limited Time cues.',
+                desktop: {
+                  src: '/assets/zingerman/product-listing-desktop.png',
+                  alt: 'Desktop product listing',
+                },
+                mobile: {
+                  src: '/assets/zingerman/product-listing-mobile.png',
+                  alt: 'Mobile product listing',
+                },
+              },
+              {
+                id: 'detail',
+                title: 'Product detail',
+                description: 'Readable spacing, pricing, and primary add / customize actions.',
+                desktop: {
+                  src: '/assets/zingerman/product-detail-desktop.png',
+                  alt: 'Desktop product detail',
+                },
+                mobile: {
+                  src: '/assets/zingerman/product-detail-mobile.png',
+                  alt: 'Mobile product detail',
+                },
+              },
+              {
+                id: 'cart',
+                title: 'Cart',
+                description: 'Persistent cart feedback so items feel confirmed before checkout.',
+                desktop: {
+                  src: '/assets/zingerman/cart-desktop.png',
+                  alt: 'Desktop cart',
+                },
+                mobile: {
+                  src: '/assets/zingerman/cart-mobile.png',
+                  alt: 'Mobile cart',
+                },
+              },
+              {
+                id: 'checkout',
+                title: 'Checkout',
+                description: 'Pickup and payment stay on Zingerman’s domain through the end of the journey.',
+                desktop: {
+                  src: '/assets/zingerman/checkout-desktop.png',
+                  alt: 'Desktop checkout',
+                },
+                mobile: {
+                  src: '/assets/zingerman/checkout-mobile.png',
+                  alt: 'Mobile checkout',
+                },
+              },
+              {
+                id: 'confirmation',
+                title: 'Confirmation',
+                description: 'Recognition of items, pricing, and next steps without leaving the brand.',
+                desktop: {
+                  src: '/assets/zingerman/confirmation-desktop.png',
+                  alt: 'Desktop confirmation',
+                },
+                mobile: {
+                  src: '/assets/zingerman/confirmation-mobile.png',
+                  alt: 'Mobile confirmation',
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
         id: 'tension',
-        title: 'Core tension',
+        title: 'The problem',
         content: [
           'The live site showcases brand and product lines well — but ordering hands users off to other domains mid-journey.',
         ],
@@ -1957,7 +2177,7 @@ export const projects = [
       },
       {
         id: 'design-response',
-        title: 'Design response',
+        title: 'Design decisions',
         content: [
           'Each research pressure mapped to a specific UI revision in the final Figma prototype.',
         ],
@@ -2006,165 +2226,8 @@ export const projects = [
         ],
       },
       {
-        id: 'before-after',
-        title: 'Wireframe → final',
-        content: [
-          'Structure first, then brand — lo-fi frames locked the IA before visual systems carried Zingerman’s personality.',
-        ],
-        modules: [
-          {
-            type: 'before-after',
-            before: {
-              src: '/assets/zingerman/wireframe-home.png',
-              alt: 'Low-fidelity homepage wireframe',
-            },
-            after: {
-              src: '/assets/zingerman/homepage-desktop.png',
-              alt: 'Final high-fidelity homepage',
-            },
-            caption: 'Homepage — from structural wireframe to branded hero and featured modules.',
-          },
-          {
-            type: 'before-after',
-            before: {
-              src: '/assets/zingerman/wireframe-listing.png',
-              alt: 'Low-fidelity product listing wireframe',
-            },
-            after: {
-              src: '/assets/zingerman/product-listing-desktop.png',
-              alt: 'Final product listing with filters and visual cards',
-            },
-            caption: 'Menu listing — filters, imagery, and Limited Time tags on the same IA.',
-          },
-        ],
-      },
-      {
-        id: 'final-flow',
-        title: 'Final flow',
-        content: [
-          'One continuous pickup path — homepage through confirmation — without third-party redirects.',
-        ],
-        modules: [
-          {
-            type: 'flow-showcase',
-            steps: [
-              {
-                label: 'Homepage',
-                src: '/assets/zingerman/homepage-desktop.png',
-                alt: 'Homepage entry point',
-              },
-              {
-                label: 'Product listing',
-                src: '/assets/zingerman/product-listing-desktop.png',
-                alt: 'Sandwich menu listing with filters',
-              },
-              {
-                label: 'Product detail',
-                src: '/assets/zingerman/product-detail-desktop.png',
-                alt: 'Product detail with add and customize actions',
-              },
-              {
-                label: 'Cart',
-                src: '/assets/zingerman/cart-desktop.png',
-                alt: 'Shopping cart review',
-              },
-              {
-                label: 'Checkout',
-                src: '/assets/zingerman/checkout-desktop.png',
-                alt: 'Checkout with pickup and payment',
-              },
-              {
-                label: 'Confirmation',
-                src: '/assets/zingerman/confirmation-desktop.png',
-                alt: 'Order confirmation summary',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'responsive',
-        title: 'Responsive design',
-        content: [
-          'The same flow reflows at 440px — navigation, filters, and CTAs keep priority without a separate tablet system.',
-        ],
-        modules: [
-          {
-            type: 'responsive-showcase',
-            screens: [
-              {
-                name: 'Homepage',
-                desktop: {
-                  src: '/assets/zingerman/homepage-desktop.png',
-                  alt: 'Desktop homepage',
-                },
-                mobile: {
-                  src: '/assets/zingerman/homepage-mobile.png',
-                  alt: 'Mobile homepage',
-                },
-              },
-              {
-                name: 'Product listing',
-                desktop: {
-                  src: '/assets/zingerman/product-listing-desktop.png',
-                  alt: 'Desktop product listing',
-                },
-                mobile: {
-                  src: '/assets/zingerman/product-listing-mobile.png',
-                  alt: 'Mobile product listing',
-                },
-              },
-              {
-                name: 'Product detail',
-                desktop: {
-                  src: '/assets/zingerman/product-detail-desktop.png',
-                  alt: 'Desktop product detail',
-                },
-                mobile: {
-                  src: '/assets/zingerman/product-detail-mobile.png',
-                  alt: 'Mobile product detail',
-                },
-              },
-              {
-                name: 'Cart',
-                desktop: {
-                  src: '/assets/zingerman/cart-desktop.png',
-                  alt: 'Desktop cart',
-                },
-                mobile: {
-                  src: '/assets/zingerman/cart-mobile.png',
-                  alt: 'Mobile cart',
-                },
-              },
-              {
-                name: 'Checkout',
-                desktop: {
-                  src: '/assets/zingerman/checkout-desktop.png',
-                  alt: 'Desktop checkout',
-                },
-                mobile: {
-                  src: '/assets/zingerman/checkout-mobile.png',
-                  alt: 'Mobile checkout',
-                },
-              },
-              {
-                name: 'Confirmation',
-                desktop: {
-                  src: '/assets/zingerman/confirmation-desktop.png',
-                  alt: 'Desktop confirmation',
-                },
-                mobile: {
-                  src: '/assets/zingerman/confirmation-mobile.png',
-                  alt: 'Mobile confirmation',
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
         id: 'outcome',
-        title: 'Outcome',
+        title: 'Impact',
         content: [
           'The final prototype is a complete responsive pickup system ready for critique — with accessibility passes documented in revision history.',
         ],
@@ -2175,7 +2238,7 @@ export const projects = [
               {
                 title: 'Deliverable',
                 description:
-                  'Hi-fi Figma prototype covering six screens at desktop and mobile, plus lo-fi wireframes for homepage and listing.',
+                  'Hi-fi Figma prototype covering six screens at desktop and mobile across the full pickup path.',
               },
               {
                 title: 'What improved',
@@ -2200,9 +2263,9 @@ export const projects = [
         id: 'reflection',
         title: 'Reflection',
         content: [
-          'The hardest lesson was not “make checkout shorter” — it was holding brand and trust in the same redesign. Heuristics showed why partner handoffs feel efficient for the business and expensive for the customer; usability showed that fixing findability without personality still fails the brand test.',
-          'I also learned to treat seasonal-item failures carefully: the G.O.A.T. miss looked like a catastrophic usability bug until we accounted for availability — then the real issues (search, naming, specials IA) became clearer.',
-          'Next time I would prototype cart micro-feedback earlier and A/B brand density against task time, so personality and completion do not trade off late in the process.',
+          'Brand and trust have to move together — a faster checkout that feels generic still fails Zingerman’s.',
+          'Seasonal items can look like catastrophic usability bugs until you check inventory — then the real IA problems surface.',
+          'Next time I’d prototype cart micro-feedback and brand density earlier, before they trade off late.',
         ],
       },
     ],
@@ -2212,11 +2275,11 @@ export const projects = [
     slug: 'stellantis-ivi',
     title: '2030 Alfa Romeo IVI System',
     subtitle:
-      'From information display to perceptual augmentation — an AI-HUD experience for Stellantis / Alfa Romeo.',
-    tagline: 'Extending the driver’s senses without adding to mental workload.',
+      'An AI-HUD that extends the driver’s senses — without adding to mental workload.',
+    tagline: 'From information display to perceptual augmentation.',
     featured: false,
     featuredSize: 'standard',
-    order: 3,
+    order: 2,
     type: 'Stellantis UXD · Team Project',
     role: 'UX Designer',
     timeline: 'Fall 2025 · SI 394',
@@ -2232,24 +2295,24 @@ export const projects = [
     prototypeUrl:
       'https://www.figma.com/design/Fmm8nUBlJPAFCX4CYwehdF/SI-394--Final-project-work--Copy-?node-id=506-29592',
     summary:
-      'Designed a 2030 Alfa Romeo multi-display IVI with AI-HUD perceptual augmentation — coordinating center display, driver cluster, and HUD to reduce distraction while keeping the driver in control.',
+      'Designed a 2030 Alfa Romeo multi-display IVI with AI-HUD perceptual alerts — coordinated across center display, driver cluster, and HUD.',
     overview:
-      'For Stellantis UXD (SI 394), Gloria Yu and I designed a 2030 multi-modal IVI for Alfa Romeo under Prompt 1: AI-Enhanced IVI for Safety and Convenience. The concept shifts HUD from a data readout into a second perceptual layer — sensing risk, scoring danger, and surfacing leveled alerts across HUD, driver display, and center screen without taking over the drive.',
+      'Stellantis asked for an AI-enhanced IVI for safety and convenience. Gloria and I scoped it to Alfa Romeo and reframed the HUD: not another data readout, but a second perceptual layer. Risk is sensed, scored, and surfaced as leveled alerts across three displays — keeping the driver in control.',
+    contribution:
+      'Co-designed system logic, scenario flows, and hi-fi surfaces; owned perceptual-alert framing and brand visual language for the dark cockpit UI.',
     snapshot: {
       project: 'The 2030 Stellantis AI-HUD Experience',
-      type: 'Automotive UX · Multi-display IVI + AR HUD concept',
+      type: 'Automotive UX · Multi-display IVI + AR HUD',
       role: 'UX Designer',
-      timeline: 'Fall 2025 · SI 394 · Presented 2 Dec 2025',
-      tools: 'Figma',
-      methods:
-        'Secondary research · Competitive analysis · Scenario design · System logic · Hi-fi prototyping',
-      deliverable: 'Interactive Figma prototype + style guide + presentation deck',
+      timeline: 'Fall 2025 · SI 394',
       team: 'Gloria Yu · Hazel Jiang',
+      tools: 'Figma',
+      impact: 'Interactive prototype + style guide + presentation deck',
     },
     sections: [
       {
         id: 'context',
-        title: 'Context',
+        title: 'Challenge',
         content: [
           'Project Prompt 1 asked for an AI-enhanced IVI system for safety and convenience. We scoped it to Alfa Romeo’s performance-luxury identity and centered the story on HUD: from information display to perceptual augmentation.',
         ],
@@ -2281,8 +2344,141 @@ export const projects = [
         ],
       },
       {
+        id: 'prototype',
+        title: 'Prototype showcase',
+        content: [
+          'Key Figma states recreated as controlled web animations — premium motion that shows relationships across displays, not decoration.',
+        ],
+        modules: [
+          {
+            type: 'ivi-showcase',
+            accent: '#981E32',
+            walkthrough: {
+              title: 'Full demo',
+              description:
+                'One continuous walkthrough across home, navigation with predictive alert, map overlay, media, source switching, and driver gauges.',
+              interval: 3400,
+              frames: [
+                {
+                  src: '/assets/stellantis/center-home.png',
+                  label: 'Home',
+                  alt: 'Center display resting home',
+                },
+                {
+                  src: '/assets/stellantis/navigation-route.png',
+                  label: 'Navigation',
+                  alt: 'Active navigation route guidance',
+                  pulse: true,
+                  alertLabel: 'Route alert · 750m',
+                },
+                {
+                  src: '/assets/stellantis/navigation-map-overlay.png',
+                  label: 'Map overlay',
+                  alt: 'Navigation with expanded map overlay',
+                },
+                {
+                  src: '/assets/stellantis/media.png',
+                  label: 'Media',
+                  alt: 'Media entertainment module',
+                },
+                {
+                  src: '/assets/stellantis/media-source-switch.png',
+                  label: 'Source switch',
+                  alt: 'Expanded media source selector',
+                },
+                {
+                  src: '/assets/stellantis/driver-display.png',
+                  label: 'Driver · minimal',
+                  alt: 'Driver display minimal state',
+                  aspect: '1366 / 512',
+                },
+                {
+                  src: '/assets/stellantis/driver-display-gauges.png',
+                  label: 'Driver · gauges',
+                  alt: 'Driver display with expanded gauges',
+                  aspect: '1366 / 512',
+                },
+                {
+                  src: '/assets/stellantis/hud-on-road.png',
+                  label: 'HUD',
+                  alt: 'HUD on-road perceptual overlay',
+                  aspect: '1366 / 512',
+                },
+              ],
+            },
+            screens: [
+              {
+                id: 'home',
+                title: 'Home',
+                description:
+                  'Resting center display with Gemini AI entry — voice-ready, optional assistance.',
+                src: '/assets/stellantis/center-home.png',
+                alt: 'Center display resting home screen',
+              },
+              {
+                id: 'navigation',
+                title: 'Navigation',
+                description:
+                  'Active route guidance with an early predictive alert pulsed on the road path.',
+                src: '/assets/stellantis/navigation-route.png',
+                alt: 'Navigation with predictive route alert',
+                pulse: true,
+                alertLabel: 'Route alert · 750m',
+              },
+              {
+                id: 'map-overlay',
+                title: 'Map overlay',
+                description: 'Route preview expands into full map context for overview.',
+                src: '/assets/stellantis/navigation-map-overlay.png',
+                alt: 'Navigation with map overlay',
+              },
+              {
+                id: 'media',
+                title: 'Media',
+                description: 'Entertainment module with persistent now-playing context.',
+                src: '/assets/stellantis/media.png',
+                alt: 'Media entertainment module',
+              },
+              {
+                id: 'source-switch',
+                title: 'Source switch',
+                description: 'Expanded source selector — radio, streaming, device.',
+                src: '/assets/stellantis/media-source-switch.png',
+                alt: 'Media source switching module',
+              },
+              {
+                id: 'driver-gauges',
+                title: 'Driver gauges',
+                description: 'Glance layer with expandable trip and gauge widgets.',
+                src: '/assets/stellantis/driver-display-gauges.png',
+                alt: 'Driver display with performance gauges',
+                aspect: '1366 / 512',
+              },
+              {
+                id: 'hud',
+                title: 'HUD',
+                description: 'Road-aligned perceptual layer — not a second dashboard.',
+                src: '/assets/stellantis/hud-on-road.png',
+                alt: 'HUD on-road perceptual overlay',
+                aspect: '1366 / 512',
+              },
+              {
+                id: 'display-coordination',
+                title: 'Driver + center',
+                description: 'Driver gauges stay compact while center carries map context.',
+                type: 'split',
+                driver: '/assets/stellantis/driver-display-gauges.png',
+                driverAlt: 'Driver display gauges',
+                center: '/assets/stellantis/navigation-map-overlay.png',
+                centerAlt: 'Center display navigation map',
+              },
+            ],
+          },
+        ],
+      },
+      {
         id: 'tension',
-        title: 'Core tension',
+        title: 'The problem',
         content: [
           'Driving already taxes attention. Adding AI and multi-screen density without a clear perceptual model only increases load.',
         ],
@@ -2753,98 +2949,6 @@ export const projects = [
             alt: 'Mid-process wireframes and layout exploration',
             caption: 'Evidence — Mid-process wireframes from the Slides section.',
           },
-          {
-            type: 'media',
-            src: '/assets/stellantis/source-selector.png',
-            alt: 'Source selector component states',
-            caption: 'Evidence — Source selector component from the style guide.',
-          },
-        ],
-      },
-      {
-        id: 'prototype',
-        title: 'Prototype showcase',
-        content: [
-          'Key Figma states recreated as controlled web animations — premium motion that shows relationships across displays, not decoration.',
-        ],
-        modules: [
-          {
-            type: 'ivi-showcase',
-            accent: '#981E32',
-            demos: [
-              {
-                id: 'home-navigation',
-                title: 'Home → navigation',
-                description: 'Center display transitions from resting home into active route guidance.',
-                frames: [
-                  '/assets/stellantis/center-home.png',
-                  '/assets/stellantis/navigation-route.png',
-                ],
-                interval: 3200,
-                alt: 'Center display home to navigation transition',
-              },
-              {
-                id: 'hazard-alert',
-                title: 'Predictive route alert',
-                description: 'Subtle pulse highlights an early route alert on navigation.',
-                frame: '/assets/stellantis/navigation-route.png',
-                pulse: true,
-                alertLabel: 'Route alert · 750m',
-                alt: 'Navigation with predictive alert pulse',
-              },
-              {
-                id: 'source-switch',
-                title: 'Source switching',
-                description: 'Media module crossfades into an expanded source selector.',
-                frames: [
-                  '/assets/stellantis/media.png',
-                  '/assets/stellantis/media-source-switch.png',
-                ],
-                interval: 2800,
-                alt: 'Media source switching transition',
-              },
-              {
-                id: 'map-overlay',
-                title: 'Map overlay',
-                description: 'Navigation expands from route preview into full map context.',
-                frames: [
-                  '/assets/stellantis/navigation-route.png',
-                  '/assets/stellantis/navigation-map-overlay.png',
-                ],
-                interval: 3200,
-                alt: 'Map overlay expand transition',
-              },
-              {
-                id: 'gauge-widgets',
-                title: 'Gauge widgets',
-                description: 'Driver display animates from minimal into expanded gauges.',
-                frames: [
-                  '/assets/stellantis/driver-display.png',
-                  '/assets/stellantis/driver-display-gauges.png',
-                ],
-                interval: 3000,
-                alt: 'Driver display gauge animation',
-              },
-              {
-                id: 'voice-ai',
-                title: 'Voice / AI state',
-                description: 'Gemini AI entry pulses on home — voice-ready, optional assistance.',
-                frame: '/assets/stellantis/center-home.png',
-                voicePulse: true,
-                alt: 'AI assistant active state on home screen',
-              },
-              {
-                id: 'display-coordination',
-                title: 'Driver + center coordination',
-                description: 'Driver gauges stay compact while center carries map context.',
-                type: 'split',
-                driver: '/assets/stellantis/driver-display-gauges.png',
-                driverAlt: 'Driver display gauges',
-                center: '/assets/stellantis/navigation-map-overlay.png',
-                centerAlt: 'Center display navigation map',
-              },
-            ],
-          },
         ],
       },
       {
@@ -2891,7 +2995,7 @@ export const projects = [
       },
       {
         id: 'outcome',
-        title: 'Outcome',
+        title: 'Impact',
         content: [
           'We delivered a developer-ready Figma prototype and presentation that reframes HUD as perceptual augmentation — coordinated across three surfaces, grounded in secondary research, and styled for Alfa Romeo.',
         ],
@@ -2927,9 +3031,9 @@ export const projects = [
         id: 'reflection',
         title: 'Reflection',
         content: [
-          'Automotive UX forced every module to answer when and where it lives — driver display, center screen, or HUD — before how it looks.',
-          'Translating Alfa Romeo meant hierarchy and motion had to feel precise; color alone was not enough.',
-          'Multi-modal interaction only works when each input has a defined role — touch for exploration, voice for hands-free, haptics for urgency, AI for prediction.',
+          'In automotive UX, decide where a feature lives — driver display, center screen, or HUD — before how it looks.',
+          'Brand is hierarchy and motion, not just a red accent.',
+          'Multi-modal only works when each input has a job: touch to explore, voice for hands-free, haptics for urgency, AI for prediction.',
         ],
       },
     ],

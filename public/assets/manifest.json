@@ -2,7 +2,6 @@
   "cover": "/assets/cover.jpg",
   "echoes-hero": "/assets/echoes-hero.jpg",
   "still-here-hero": "/assets/still-here-hero.jpg",
-  "fractal-oasis-hero": "/assets/fractal-oasis-hero.jpg",
   "echoes": [
     "/assets/echoes/echoes-01.jpg",
     "/assets/echoes/echoes-02.jpg",
@@ -23,17 +22,5 @@
     "/assets/still-here/still-here-07.jpg",
     "/assets/still-here/still-here-08.jpg",
     "/assets/still-here/still-here-09.jpg"
-  ],
-  "fractal-oasis": [
-    "/assets/fractal-oasis/fractal-oasis-01.jpg",
-    "/assets/fractal-oasis/fractal-oasis-02.jpg",
-    "/assets/fractal-oasis/fractal-oasis-03.jpg",
-    "/assets/fractal-oasis/fractal-oasis-04.jpg",
-    "/assets/fractal-oasis/fractal-oasis-05.jpg",
-    "/assets/fractal-oasis/fractal-oasis-06.jpg",
-    "/assets/fractal-oasis/fractal-oasis-07.jpg",
-    "/assets/fractal-oasis/fractal-oasis-08.jpg",
-    "/assets/fractal-oasis/fractal-oasis-09.jpg",
-    "/assets/fractal-oasis/fractal-oasis-10.jpg"
   ]
 }

@@ -249,6 +249,374 @@ body {
   --cs-accent: #3b6fd4;
 }
 
+.case-study--echoes {
+  --cs-bg: #0a0610;
+  --cs-surface: #140c1a;
+  --cs-accent: #ff3399;
+  color: #f5eef6;
+}
+
+.case-study--echoes .text-ink {
+  color: #f7f0f8;
+}
+
+.case-study--echoes .text-ink-secondary {
+  color: rgba(245, 232, 248, 0.72);
+}
+
+.case-study--echoes .text-ink-muted,
+.case-study--echoes .text-meta,
+.case-study--echoes .text-label,
+.case-study--echoes .text-chapter {
+  color: rgba(245, 232, 248, 0.55);
+}
+
+.case-study--echoes .border-line,
+.case-study--echoes .bg-line {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.case-study--echoes .prose-editorial {
+  color: rgba(245, 232, 248, 0.78);
+}
+
+.echoes-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 6, 16, 0.55) 0%,
+    rgba(10, 6, 16, 0.78) 40%,
+    rgba(10, 6, 16, 0.88) 100%
+  );
+  backdrop-filter: blur(10px);
+}
+
+.echoes-hero {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 6, 16, 0.28) 0%,
+    rgba(10, 6, 16, 0.62) 70%,
+    rgba(10, 6, 16, 0.82) 100%
+  );
+  backdrop-filter: blur(6px);
+}
+
+.case-study--echoes .bg-base {
+  background-color: rgba(18, 10, 28, 0.78);
+}
+
+.echoes-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #0a0610;
+}
+
+.echoes-backdrop__clip,
+.echoes-backdrop__static {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  filter: saturate(1.08) contrast(1.06);
+  transition: opacity 2.8s ease;
+  will-change: transform, opacity;
+}
+
+.echoes-backdrop__clip.is-active {
+  opacity: 0.48;
+}
+
+.echoes-backdrop__clip--drift-in.is-active {
+  animation: echoes-kenburns-in 14s ease-in-out both;
+}
+
+.echoes-backdrop__clip--drift-out.is-active {
+  animation: echoes-kenburns-out 14s ease-in-out both;
+}
+
+.echoes-backdrop__clip--drift-left.is-active {
+  animation: echoes-kenburns-left 14s ease-in-out both;
+}
+
+.echoes-backdrop__clip--drift-right.is-active {
+  animation: echoes-kenburns-right 14s ease-in-out both;
+}
+
+.echoes-backdrop__static {
+  opacity: 0.42;
+  background-size: cover;
+  background-position: center;
+}
+
+.echoes-backdrop__glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.echoes-backdrop__glow--a {
+  top: 12%;
+  left: 8%;
+  width: 38vw;
+  height: 38vw;
+  max-width: 420px;
+  max-height: 420px;
+  background: rgba(255, 51, 153, 0.28);
+  animation: echoes-glow-drift 16s ease-in-out infinite alternate;
+}
+
+.echoes-backdrop__glow--b {
+  right: 4%;
+  bottom: 18%;
+  width: 44vw;
+  height: 44vw;
+  max-width: 480px;
+  max-height: 480px;
+  background: rgba(120, 70, 220, 0.22);
+  animation: echoes-glow-drift 20s ease-in-out infinite alternate-reverse;
+}
+
+.echoes-backdrop__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(255, 51, 153, 0.2), transparent 48%),
+    linear-gradient(180deg, rgba(10, 6, 16, 0.35) 0%, rgba(10, 6, 16, 0.72) 42%, rgba(10, 6, 16, 0.92) 100%);
+  animation: echoes-veil-breathe 10s ease-in-out infinite alternate;
+}
+
+.echoes-cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  overflow: hidden;
+  background: #050308;
+}
+
+.echoes-cover__stage {
+  width: 100%;
+  height: 100%;
+}
+
+.echoes-cover__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.echoes-cover__media--drift {
+  animation: echoes-hero-drift 28s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+.echoes-cover__sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.07) 48%,
+    transparent 62%
+  );
+  background-size: 220% 100%;
+  animation: echoes-sheen 9s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.echoes-cover__gradient {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent, rgba(5, 3, 8, 0.72));
+  pointer-events: none;
+}
+
+.echoes-cover__label {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(8, 4, 12, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 245, 250, 0.9);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.echoes-cover__live {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #ff3399;
+  box-shadow: 0 0 0 0 rgba(255, 51, 153, 0.55);
+  animation: echoes-pulse 1.8s ease-out infinite;
+}
+
+@keyframes echoes-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 153, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 51, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 153, 0);
+  }
+}
+
+@keyframes echoes-kenburns-in {
+  from {
+    transform: scale(1.04) translate3d(0, 1.5%, 0);
+  }
+  to {
+    transform: scale(1.18) translate3d(0, -2%, 0);
+  }
+}
+
+@keyframes echoes-kenburns-out {
+  from {
+    transform: scale(1.16) translate3d(0, -1.5%, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(0, 2%, 0);
+  }
+}
+
+@keyframes echoes-kenburns-left {
+  from {
+    transform: scale(1.1) translate3d(2.5%, 0, 0);
+  }
+  to {
+    transform: scale(1.18) translate3d(-2.5%, -1%, 0);
+  }
+}
+
+@keyframes echoes-kenburns-right {
+  from {
+    transform: scale(1.1) translate3d(-2.5%, 0, 0);
+  }
+  to {
+    transform: scale(1.18) translate3d(2.5%, 1%, 0);
+  }
+}
+
+@keyframes echoes-glow-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.28;
+  }
+  to {
+    transform: translate3d(8%, -6%, 0) scale(1.15);
+    opacity: 0.42;
+  }
+}
+
+@keyframes echoes-veil-breathe {
+  from {
+    opacity: 0.92;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes echoes-hero-drift {
+  from {
+    transform: scale(1.04) translate3d(-1%, 0.5%, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(1.5%, -1%, 0);
+  }
+}
+
+@keyframes echoes-sheen {
+  0%,
+  30% {
+    background-position: 140% 0;
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.7;
+  }
+  60%,
+  100% {
+    background-position: -40% 0;
+    opacity: 0;
+  }
+}
+
+.echoes-game-video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #050308;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 28px 60px rgba(0, 0, 0, 0.45);
+}
+
+.echoes-game-video__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+}
+
+.echoes-game-video__media--drift {
+  animation: echoes-hero-drift 32s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+.echoes-game-video__sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 64%
+  );
+  background-size: 220% 100%;
+  animation: echoes-sheen 11s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .echoes-backdrop__clip,
+  .echoes-cover__media--drift,
+  .echoes-game-video__media--drift,
+  .echoes-cover__sheen,
+  .echoes-game-video__sheen,
+  .echoes-backdrop__glow,
+  .echoes-backdrop__veil {
+    animation: none !important;
+  }
+
+  .echoes-backdrop__clip {
+    transition: opacity 0.4s ease;
+  }
+}
+
 /* iPhone mockup frame (CSS alternative to 3D PhoneMockup reference) */
 .iphone-mockup {
   transform: rotate(var(--iphone-tilt, 0deg));
@@ -1269,14 +1637,15 @@ body {
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .work-carousel__image-stage {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 1.75rem;
   transform-style: preserve-3d;
   will-change: transform, opacity;
 }
@@ -1288,8 +1657,11 @@ body {
 
 .work-carousel__title {
   margin: 0;
-  max-width: 14ch;
+  max-width: 16ch;
   text-wrap: balance;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .work-carousel__copy {

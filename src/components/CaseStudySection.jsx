@@ -11,7 +11,9 @@ export default function CaseStudySection({ section, index, accent, mood }) {
   return (
     <section id={section.id} className="scroll-mt-24 min-w-0">
       <motion.header
-        className="mb-8 border-b border-line pb-6"
+        className={`mb-8 pb-6 ${
+          mood === 'echoes-you-can-touch' ? '' : 'border-b border-line'
+        }`}
         {...(motionOn ? reveal(0) : {})}
       >
         <p className="text-chapter mb-2">{chapter}</p>

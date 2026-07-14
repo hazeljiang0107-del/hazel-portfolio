@@ -1,21 +1,21 @@
-export default function ProjectSnapshot({ snapshot, accent }) {
+export default function ProjectSnapshot({ snapshot, accent, borderless = false }) {
   const items = [
-    { label: 'Project', value: snapshot.project },
-    { label: 'Type', value: snapshot.type },
     { label: 'Role', value: snapshot.role },
     { label: 'Timeline', value: snapshot.timeline },
     { label: 'Team', value: snapshot.team },
+    { label: 'Impact', value: snapshot.impact || snapshot.deliverable },
     { label: 'Tools', value: snapshot.tools },
-    { label: 'Methods', value: snapshot.methods },
-    { label: 'Deliverable', value: snapshot.deliverable },
-  ].filter((row) => row.value).filter((item) => item.value)
+  ].filter((row) => row.value)
 
   return (
     <div>
-      <p className="text-chapter mb-4">Snapshot</p>
+      <p className="text-chapter mb-4">At a glance</p>
       <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => (
-          <div key={item.label} className="min-w-0 border-t border-line pt-4">
+          <div
+            key={item.label}
+            className={`min-w-0 ${borderless ? '' : 'border-t border-line pt-4'}`}
+          >
             <dt className="text-label">{item.label}</dt>
             <dd className="mt-1.5 text-sm leading-relaxed text-ink">{item.value}</dd>
           </div>

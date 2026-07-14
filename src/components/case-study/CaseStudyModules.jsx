@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import IVIAnimationShowcase from './IVIAnimationShowcase'
+import CommercePrototypeShowcase from './CommercePrototypeShowcase'
 import StillHerePhoneShowcase from './StillHerePhoneShowcase'
 import IPhoneMockup from './IPhoneMockup'
 import CountUp from './CountUp'
@@ -20,6 +21,7 @@ function imageStageClass(mood, tone = 'default') {
   if (tone === 'paper') return 'rounded-2xl bg-white ring-1 ring-[#d7dee8]'
   if (mood === 'zingerman-deli') return 'rounded-2xl bg-[#f5f0e8] ring-1 ring-black/5'
   if (mood === 'stellantis-ivi') return 'rounded-2xl bg-black ring-1 ring-white/10'
+  if (mood === 'echoes-you-can-touch') return 'rounded-2xl bg-black ring-1 ring-white/10'
   return 'rounded-2xl bg-surface ring-1 ring-line'
 }
 
@@ -792,13 +794,14 @@ function BriefCards({ items }) {
 
 function FeatureCards({ items, mood }) {
   const prefersReducedMotion = useReducedMotion()
+  const borderless = mood === 'echoes-you-can-touch'
 
   return (
     <div className="space-y-8">
       {items.map((item, i) => (
         <motion.article
           key={item.title}
-          className="min-w-0 border-t border-line pt-6"
+          className={`min-w-0 ${borderless ? 'pt-2' : 'border-t border-line pt-6'}`}
           {...(prefersReducedMotion ? {} : reveal(Math.min(i * STAGGER.tight, 0.18)))}
         >
           {item.image && (
@@ -891,10 +894,11 @@ function CompetitorCards({ items, image, images, mood, accent }) {
 
 function PainPointCards({ items, accent, responseLabel = 'Opportunity' }) {
   const prefersReducedMotion = useReducedMotion()
+  const gridClass = cardGridClass(items.length)
 
   return (
     <motion.div
-      className="grid gap-px bg-line md:grid-cols-2"
+      className={`grid gap-px bg-line ${gridClass}`}
       variants={staggerContainer}
       {...(prefersReducedMotion ? {} : staggerInView)}
     >
@@ -1110,7 +1114,7 @@ function ObservationCards({ items, accent }) {
 
   return (
     <motion.div
-      className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3"
+      className="grid sm:grid-cols-2 lg:grid-cols-3"
       variants={staggerContainer}
       {...(prefersReducedMotion ? {} : staggerInView)}
     >
@@ -1296,7 +1300,34 @@ function AnnotatedGallery({ groups, mood }) {
   )
 }
 
-function SectionVideo({ src, alt, caption, url = 'data.sca.isr.umich.edu' }) {
+function SectionVideo({
+  src,
+  alt,
+  caption,
+  url = 'data.sca.isr.umich.edu',
+  frame = 'browser',
+  poster,
+  playbackRate = 1,
+}) {
+  if (frame === 'game') {
+    return (
+      <figure className="min-w-0 max-w-full">
+        <MediaReveal>
+          <div className="echoes-game-video">
+            <GameWalkthroughVideo
+              src={src}
+              poster={poster}
+              alt={alt}
+              playbackRate={playbackRate}
+            />
+            <div className="echoes-game-video__sheen" aria-hidden="true" />
+          </div>
+        </MediaReveal>
+        {caption && <figcaption className="mt-3 text-meta">{caption}</figcaption>}
+      </figure>
+    )
+  }
+
   return (
     <figure className="min-w-0 max-w-full">
       <MediaReveal>
@@ -1315,6 +1346,42 @@ function SectionVideo({ src, alt, caption, url = 'data.sca.isr.umich.edu' }) {
       </MediaReveal>
       {caption && <figcaption className="mt-3 text-meta">{caption}</figcaption>}
     </figure>
+  )
+}
+
+function GameWalkthroughVideo({ src, poster, alt, playbackRate = 0.7 }) {
+  const ref = useRef(null)
+  const prefersReducedMotion = useReducedMotion()
+  const rate = prefersReducedMotion ? 1 : playbackRate
+
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    video.playbackRate = rate
+    const applyRate = () => {
+      video.playbackRate = rate
+    }
+    video.addEventListener('loadedmetadata', applyRate)
+    video.addEventListener('play', applyRate)
+    return () => {
+      video.removeEventListener('loadedmetadata', applyRate)
+      video.removeEventListener('play', applyRate)
+    }
+  }, [rate])
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      className="echoes-game-video__media echoes-game-video__media--drift"
+      autoPlay
+      loop
+      muted
+      playsInline
+      controls
+      aria-label={alt}
+    />
   )
 }
 
@@ -1393,8 +1460,21 @@ export default function CaseStudyModules({ modules, accent, mood }) {
           {module.type === 'iphone-flow' && (
             <IPhoneFlowRow screens={module.screens} accent={accentColor} />
           )}
+          {module.type === 'commerce-showcase' && (
+            <CommercePrototypeShowcase
+              walkthrough={module.walkthrough}
+              screens={module.screens}
+              accent={module.accent || accentColor}
+              desktopUrl={module.desktopUrl}
+            />
+          )}
           {module.type === 'ivi-showcase' && (
-            <IVIAnimationShowcase demos={module.demos} accent={accentColor} />
+            <IVIAnimationShowcase
+              walkthrough={module.walkthrough}
+              screens={module.screens}
+              demos={module.demos}
+              accent={module.accent || accentColor}
+            />
           )}
           {module.type === 'annotated-gallery' && (
             <AnnotatedGallery groups={module.groups} mood={mood} />
@@ -1444,6 +1524,9 @@ export default function CaseStudyModules({ modules, accent, mood }) {
               alt={module.alt}
               caption={module.caption}
               url={module.url}
+              frame={module.frame}
+              poster={module.poster}
+              playbackRate={module.playbackRate}
             />
           )}
           {module.type === 'todo' && (

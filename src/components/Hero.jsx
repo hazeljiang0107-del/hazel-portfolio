@@ -6,8 +6,8 @@ import FallingStars from './FallingStars'
 const DISCIPLINES = [
   { label: 'Healthcare', slug: 'still-here' },
   { label: 'Automotive', slug: 'stellantis-ivi' },
-  { label: 'Complex systems', slug: 'fractal-oasis' },
-  { label: 'Behavioral research', slug: 'echoes-you-can-touch' },
+  { label: 'Commerce', slug: 'zingerman-deli' },
+  { label: 'Game design', slug: 'echoes-you-can-touch' },
 ]
 
 const HERO_VIDEO =

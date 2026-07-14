@@ -8,6 +8,7 @@ export default function IPhoneMockup({
   tilt = 0,
   float = false,
   priority = false,
+  scrollable = false,
 }) {
   const prefersReducedMotion = useReducedMotion()
   const width =
@@ -20,13 +21,19 @@ export default function IPhoneMockup({
     >
       <div className="iphone-mockup__bezel">
         <div className="iphone-mockup__island" aria-hidden="true" />
-        <div className="iphone-mockup__screen">
+        <div
+          className={`iphone-mockup__screen${scrollable ? ' iphone-mockup__screen--scrollable' : ''}`}
+          tabIndex={scrollable ? 0 : undefined}
+          aria-label={scrollable ? `${alt || 'Screen'} — scroll to view full page` : undefined}
+        >
           {src ? (
             <img
+              key={src}
               src={src}
               alt={alt}
-              className="iphone-mockup__image"
+              className={`iphone-mockup__image${scrollable ? ' iphone-mockup__image--scrollable' : ''}`}
               loading={priority ? 'eager' : 'lazy'}
+              draggable={false}
             />
           ) : (
             <div className="iphone-mockup__placeholder" />
