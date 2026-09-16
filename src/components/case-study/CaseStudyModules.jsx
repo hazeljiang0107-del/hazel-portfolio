@@ -573,24 +573,30 @@ function InsightCards({ items, accent }) {
 
 function MethodCards({ items }) {
   const prefersReducedMotion = useReducedMotion()
+  const oddCount = items.length % 2 === 1
 
   return (
     <motion.div
-      className="grid gap-px bg-line sm:grid-cols-2"
+      className="grid sm:grid-cols-2"
       variants={staggerContainer}
       {...(prefersReducedMotion ? {} : staggerInView)}
     >
-      {items.map((item) => (
-        <motion.div
-          key={item.title}
-          className="min-w-0 bg-base p-5"
-          variants={prefersReducedMotion ? undefined : staggerItem}
-        >
-          <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink-secondary">{item.description}</p>
-          {item.note && <p className="mt-2 text-xs text-ink-muted">{item.note}</p>}
-        </motion.div>
-      ))}
+      {items.map((item, index) => {
+        const isLastOdd = oddCount && index === items.length - 1
+        return (
+          <motion.div
+            key={item.title}
+            className={`min-w-0 border border-line bg-base p-5 -mb-px ${
+              isLastOdd ? 'sm:col-span-2' : 'sm:-mr-px'
+            }`}
+            variants={prefersReducedMotion ? undefined : staggerItem}
+          >
+            <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-secondary">{item.description}</p>
+            {item.note && <p className="mt-2 text-xs text-ink-muted">{item.note}</p>}
+          </motion.div>
+        )
+      })}
     </motion.div>
   )
 }
@@ -768,20 +774,34 @@ function cardGridClass(count) {
   return 'grid-cols-2 lg:grid-cols-3'
 }
 
+/** Fill leftover grid cells on narrow breakpoints so gap-px holes don't appear. */
+function cardLastSpanClass(count, index) {
+  if (index !== count - 1) return ''
+  if (count === 5) return 'col-span-2 md:col-span-1'
+  if (count > 5 && count % 2 === 1) return 'col-span-2 lg:col-span-1'
+  return ''
+}
+
+function hairlineCardClass(count, index) {
+  const span = cardLastSpanClass(count, index)
+  return `min-w-0 border border-line bg-base p-5 -mb-px -mr-px ${span}`.trim()
+}
+
 function BriefCards({ items }) {
   const prefersReducedMotion = useReducedMotion()
-  const gridClass = cardGridClass(items.length)
+  const count = items.length
+  const gridClass = cardGridClass(count)
 
   return (
     <motion.div
-      className={`grid gap-px bg-line ${gridClass}`}
+      className={`grid ${gridClass}`}
       variants={staggerContainer}
       {...(prefersReducedMotion ? {} : staggerInView)}
     >
-      {items.map((item) => (
+      {items.map((item, index) => (
         <motion.div
           key={item.title}
-          className="min-w-0 bg-base p-5"
+          className={hairlineCardClass(count, index)}
           variants={prefersReducedMotion ? undefined : staggerItem}
         >
           <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
@@ -894,18 +914,19 @@ function CompetitorCards({ items, image, images, mood, accent }) {
 
 function PainPointCards({ items, accent, responseLabel = 'Opportunity' }) {
   const prefersReducedMotion = useReducedMotion()
-  const gridClass = cardGridClass(items.length)
+  const count = items.length
+  const gridClass = cardGridClass(count)
 
   return (
     <motion.div
-      className={`grid gap-px bg-line ${gridClass}`}
+      className={`grid ${gridClass}`}
       variants={staggerContainer}
       {...(prefersReducedMotion ? {} : staggerInView)}
     >
-      {items.map((item) => (
+      {items.map((item, index) => (
         <motion.div
           key={item.pain}
-          className="min-w-0 bg-base p-5"
+          className={hairlineCardClass(count, index)}
           variants={prefersReducedMotion ? undefined : staggerItem}
         >
           <p className="text-label">Pain point</p>
@@ -922,19 +943,20 @@ function PainPointCards({ items, accent, responseLabel = 'Opportunity' }) {
 
 function StatCards({ items, accent, note }) {
   const prefersReducedMotion = useReducedMotion()
-  const gridClass = cardGridClass(items.length)
+  const count = items.length
+  const gridClass = cardGridClass(count)
 
   return (
     <div className="min-w-0 space-y-4">
       <motion.div
-        className={`grid gap-px bg-line ${gridClass}`}
+        className={`grid ${gridClass}`}
         variants={staggerContainer}
         {...(prefersReducedMotion ? {} : staggerInView)}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <motion.div
             key={item.label}
-            className="min-w-0 bg-base p-5"
+            className={hairlineCardClass(count, index)}
             variants={prefersReducedMotion ? undefined : staggerItem}
           >
             <CountUp

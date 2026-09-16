@@ -361,14 +361,20 @@ export default function SelectedWorkCarousel({ projects }) {
             onDragEnd={onDragEnd}
           >
             <div className="work-carousel__image-wrap">
-              <AnimatePresence mode="wait" custom={direction} initial={false}>
-                <ActiveImage
-                  key={active.slug}
-                  project={active}
-                  direction={direction}
-                  reduced={reduced}
-                />
-              </AnimatePresence>
+              <Link
+                to={`/projects/${active.slug}`}
+                className="work-carousel__image-link"
+                aria-label={`View project: ${active.title}`}
+              >
+                <AnimatePresence mode="wait" custom={direction} initial={false}>
+                  <ActiveImage
+                    key={active.slug}
+                    project={active}
+                    direction={direction}
+                    reduced={reduced}
+                  />
+                </AnimatePresence>
+              </Link>
             </div>
 
             <div className="work-carousel__title-mask" aria-hidden={false}>
