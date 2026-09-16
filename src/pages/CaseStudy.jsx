@@ -125,7 +125,10 @@ export default function CaseStudy() {
                 ))}
               </motion.div>
 
-              {(project.prototypeUrl || project.figmaUrl || project.uxfolioUrl) && (
+              {(project.prototypeUrl ||
+                project.liveUrl ||
+                project.figmaUrl ||
+                project.uxfolioUrl) && (
                 <motion.div
                   className="mt-8 flex flex-wrap items-center gap-4"
                   {...(motionOn ? fadeInUp(0.14) : {})}
@@ -133,6 +136,11 @@ export default function CaseStudy() {
                   {project.prototypeUrl && (
                     <Button href={project.prototypeUrl} variant="primary">
                       View prototype
+                    </Button>
+                  )}
+                  {project.liveUrl && (
+                    <Button href={project.liveUrl} variant="primary">
+                      View live site
                     </Button>
                   )}
                   {project.figmaUrl && (

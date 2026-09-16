@@ -1638,6 +1638,7 @@ body {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 1.75rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .work-carousel__image-link {
@@ -1653,8 +1654,6 @@ body {
 .work-carousel__image-link:focus-visible {
   outline: 2px solid var(--color-accent-warm);
   outline-offset: 3px;
-}
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .work-carousel__image-stage {

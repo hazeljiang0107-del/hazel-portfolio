@@ -12,6 +12,7 @@ export const CATEGORIES = [
   'System Design',
   'Information Architecture',
   'Visual Design',
+  'E-commerce',
 ]
 
 export const RESUME_URL = '/resume.pdf'
@@ -884,7 +885,7 @@ export const projects = [
     tagline: 'Hub-and-portal level design · atmospheric worldbuilding · XR game feel.',
     featured: true,
     featuredSize: 'standard',
-    order: 5,
+    order: 6,
     type: 'Game Design · VR Experience',
     role: 'Game Designer & Unity Developer',
     timeline: '2024–2025',
@@ -1196,7 +1197,7 @@ export const projects = [
     tagline: 'Gentle haptic cues when orientation slips — support without taking autonomy.',
     featured: true,
     featuredSize: 'medium',
-    order: 4,
+    order: 5,
     type: 'Individual Project',
     role: 'UX / HCI Designer',
     timeline: '2024',
@@ -1780,7 +1781,7 @@ export const projects = [
     tagline: 'Responsive e-commerce that keeps trust on-site.',
     featured: false,
     featuredSize: 'standard',
-    order: 3,
+    order: 4,
     type: 'E-commerce Redesign · Responsive Web',
     role: 'UX Designer',
     timeline: 'Fall 2025 · SI 407',
@@ -2279,7 +2280,7 @@ export const projects = [
     tagline: 'From information display to perceptual augmentation.',
     featured: false,
     featuredSize: 'standard',
-    order: 2,
+    order: 3,
     type: 'Stellantis UXD · Team Project',
     role: 'UX Designer',
     timeline: 'Fall 2025 · SI 394',
@@ -3034,6 +3035,320 @@ export const projects = [
           'In automotive UX, decide where a feature lives — driver display, center screen, or HUD — before how it looks.',
           'Brand is hierarchy and motion, not just a red accent.',
           'Multi-modal only works when each input has a job: touch to explore, voice for hands-free, haptics for urgency, AI for prediction.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'luminipet-shopify',
+    slug: 'luminipet-shopify',
+    title: 'LuminiPet Shopify Theme System',
+    subtitle:
+      'Turning one generic product template and a flat catalog into four differentiated shopping paths for a live custom pet-portrait storefront.',
+    tagline: 'Information architecture and PDP system design for a live e-commerce brand.',
+    featured: true,
+    featuredSize: 'standard',
+    order: 2,
+    type: 'Professional Internship · Shopify Theme Build',
+    role: 'UX/UI Design Intern',
+    timeline: 'Jul – Aug 2026 · Senaura',
+    tools: ['Cursor', 'Shopify Liquid', 'Shopify Theme Editor', 'GitHub'],
+    methods: [
+      'Competitive Teardown',
+      'Information Architecture',
+      'Design Systems',
+      'Front-End Build (Liquid)',
+    ],
+    categories: ['Product Design', 'System Design', 'Information Architecture', 'E-commerce'],
+    accent: '#cfa776',
+    thumbnail: '/assets/luminipet/homepage.png',
+    heroImage: '/assets/luminipet/homepage.png',
+    liveUrl: 'https://luminipet.com/',
+    summary:
+      'Rebuilt LuminiPet’s Shopify storefront from a flat catalog and one reused product template into a four-branch information architecture with independent PDP systems for print, hand-painted, hand-sculpted, and keepsake formats.',
+    overview:
+      'LuminiPet sells custom pet portraits across four very different production formats — gallery print, 2D hand-painted, 3D hand-sculpted relief, and keepsakes — but the site treated them as one catalog with one product template. I led the information architecture rebuild and built four independent PDP systems in Shopify Liquid, working directly against a live theme with real purchase logic already in production.',
+    contribution:
+      'Owned IA and front-end build inside Cursor connected to the Shopify theme editor: navigation and filter system, four independent PDP templates, homepage and collection sections, and the dev/production safety workflow used for the rest of the internship.',
+    snapshot: {
+      project: 'LuminiPet Shopify Theme System',
+      type: 'Professional Internship · Live E-commerce Storefront',
+      role: 'UX/UI Design Intern',
+      timeline: 'Jul – Aug 2026',
+      tools: 'Cursor · Shopify Liquid · Theme Editor · GitHub',
+      impact: 'Live storefront: luminipet.com — 4 differentiated PDP systems shipped',
+    },
+    sections: [
+      {
+        id: 'context',
+        title: 'Challenge',
+        content: [
+          'LuminiPet sells four fundamentally different products — a printed reproduction, a hand-painted canvas, a hand-sculpted 3D relief, and small keepsakes — through a legacy theme that presented them as one undifferentiated catalog. The brief came from an internal design doc, but the constraint was non-negotiable from day one: the existing color, typography, and visual language had to stay intact. This was a redesign of logic and structure, not a rebrand.',
+        ],
+        modules: [
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'Starting point',
+                description:
+                  'A live legacy Shopify theme, a flat "Bespoke Art Collection" catalog, and one generic product template reused across every format.',
+              },
+              {
+                title: 'Hard constraint',
+                description:
+                  '"The UI style has to stay the same with the original style. The color, the typography, and the whole visual language has to stay consistent." — set before any section was touched.',
+              },
+              {
+                title: 'Real production risk',
+                description:
+                  'Work was happening on a live theme with active checkout logic (variant handling, a purchase-options app, metafield-driven previews) already in use.',
+              },
+              {
+                title: 'Why now',
+                description:
+                  'Format, style, and gifting intent were all buried in one catalog — customers had no format-first path to the product that matched what they actually wanted.',
+              },
+            ],
+          },
+          {
+            type: 'todo',
+            message:
+              'Attach a before/after screenshot pair from the Shopify admin theme history once export access is confirmed — the legacy homepage vs. the shipped version.',
+          },
+        ],
+      },
+      {
+        id: 'solution',
+        title: 'What I built',
+        content: [
+          'Everything routes through one decision-first structure instead of a flat catalog, and each production format gets a PDP built for how that format is actually made and sold.',
+        ],
+        modules: [
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'Four-branch navigation',
+                description:
+                  'Shop All · Custom Portraits · Custom Pet Gifts & Keepsakes · Inspiration — replacing a flat product list with a decision-first structure.',
+              },
+              {
+                title: 'Two-level filtering',
+                description:
+                  'Portrait Type tabs (Gallery-Printed / 2D Hand-Painted / 3D Mineral Relief) as the first decision, with style and price as nested refinement — not the reverse.',
+              },
+              {
+                title: 'Four independent PDPs',
+                description:
+                  'Print, Hand-Painted, Hand-Sculpted, and Keepsakes each got their own storytelling structure, sharing only the underlying design system and purchase-critical blocks.',
+              },
+              {
+                title: 'Interactive craft proof',
+                description:
+                  'A hotspot detail explorer for brushstroke, pigment, and texture, and a center-axis expandable process timeline — built to prove handmade quality without walls of text.',
+              },
+            ],
+          },
+          {
+            type: 'todo',
+            message:
+              'Attach current screenshots of the four-branch mega menu, the Custom Portraits filter toolbar, and one PDP hotspot module from the live theme editor.',
+          },
+        ],
+      },
+      {
+        id: 'tension',
+        title: 'The problem',
+        content: [
+          'The flat catalog and single product template created problems that only showed up once real formats, real filters, and a real feedback loop from the director were in play.',
+        ],
+        modules: [
+          {
+            type: 'pain-cards',
+            responseLabel: 'Design decision',
+            items: [
+              {
+                pain: 'One product template for four production methods',
+                opportunity:
+                  'Split into four independent PDP templates so each format tells its own story instead of inheriting an unrelated one.',
+              },
+              {
+                pain: 'Format, style, and price mixed into one dropdown',
+                opportunity:
+                  'Reordered filtering so Portrait Type is the first decision, with style and price nested underneath it.',
+              },
+              {
+                pain: 'PDP storytelling was text-heavy and accordion-based',
+                opportunity:
+                  'Set a 70% visual / 30% text rule and rebuilt process sections as media-first, hotspot-driven modules.',
+              },
+              {
+                pain: 'A theme push landed on the wrong live theme',
+                opportunity:
+                  'Introduced a dedicated backend dev theme so in-progress work could never overwrite shipped frontend changes again.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'research-evidence',
+        title: 'Process',
+        content: [
+          'Competitors were used deliberately as logic references, never visual ones — a distinction I enforced explicitly and repeatedly through the build.',
+        ],
+        modules: [
+          {
+            type: 'method-cards',
+            items: [
+              {
+                title: 'Crown & Paw — IA reference',
+                description:
+                  'Studied their category structure and PDP step sequence for the custom-portrait market.',
+                note: '"Use Crown & Paw\'s logic as a reference — never their UI style. Follow our own website UI style."',
+              },
+              {
+                title: 'Design Within Reach — showroom model',
+                description:
+                  'Applied DWR\'s context → compare → configure pattern: lifestyle imagery sells desire, studio-style detail sells certainty, then the PDP becomes a stepped configuration.',
+              },
+              {
+                title: 'Pawsbyzann — motion study',
+                description:
+                  'Reverse-engineered a scroll-triggered paintbrush marquee frame by frame, then rebuilt it with LuminiPet\'s own brush assets and a corrected scroll direction.',
+              },
+              {
+                title: 'Live design-system audit',
+                description:
+                  'Re-inspected LuminiPet\'s own shipped pages mid-project to correct color drift (an unintended green) back to the brand\'s gold accent.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'principles',
+        title: 'Design principles',
+        content: [
+          'Every principle below came from a real correction mid-build, not an upfront style guide.',
+        ],
+        modules: [
+          {
+            type: 'brief-cards',
+            items: [
+              {
+                title: 'Preserve, don\'t redesign',
+                description: 'Keep the existing visual system; change structure and logic only.',
+              },
+              {
+                title: 'Competitor logic, never competitor UI',
+                description: 'Reference how other sites route decisions — never copy how they look.',
+              },
+              {
+                title: 'Protect purchase-critical code',
+                description:
+                  'Never touch variant handling, the purchase-options app, or metafield preview logic while rebuilding everything around them.',
+              },
+              {
+                title: 'Media-first storytelling',
+                description: '70% visual, 30% text — every process section leads with proof, not paragraphs.',
+              },
+              {
+                title: 'Dev and production must never collide',
+                description: 'A dedicated backend dev theme after one real overwrite incident — verify before every push.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'decisions',
+        title: 'Insight → design decisions',
+        content: [
+          'Each structural decision traced back to a specific breakdown encountered while building against a live theme.',
+        ],
+        modules: [
+          {
+            type: 'decision-matrix',
+            columns: ['What broke', 'Why it mattered', 'Design decision'],
+            rows: [
+              [
+                'One PDP template reused across print, hand-painted, hand-sculpted, and keepsakes',
+                'Each format is made differently and needed to prove that difference to the customer',
+                'Four independent PDP templates sharing only the base design system',
+              ],
+              [
+                'Format, style, and price filters mixed in one flat control',
+                'Format is the biggest price and process difference — it should be decided first',
+                'Portrait Type tabs as the primary filter, style and price nested underneath',
+              ],
+              [
+                'PDP process sections were dense accordion text',
+                'Customers needed to trust handmade craftsmanship at a glance, not read about it',
+                'Hotspot detail explorer + center-axis timeline, media-first at 70/30',
+              ],
+              [
+                'A theme push landed on the wrong live theme ID',
+                'In-progress work could silently overwrite shipped frontend changes',
+                'Created a dedicated backend dev export theme; verified target theme before every push',
+              ],
+              [
+                'Director feedback round needed zero deployment risk',
+                'Live storefront could not absorb another accidental overwrite this late',
+                'Switched to a manual handoff: download file → review diff on Canvas → paste into Shopify myself',
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Results',
+        content: [
+          'Process metrics below are pulled directly from the project\'s git history, not estimated.',
+        ],
+        modules: [
+          {
+            type: 'stat-cards',
+            note: 'Source: git commit history, LuminiPet-Shopify-Theme repository (Aug 6–14, 2026).',
+            items: [
+              {
+                value: '4',
+                label: 'Independent PDP systems shipped',
+                detail: 'Print, Hand-Painted, Hand-Sculpted, and Keepsakes — each structurally distinct.',
+              },
+              {
+                value: '21',
+                label: 'Tracked commits',
+                detail: 'From initial theme backup through final supporting-pages sync.',
+              },
+              {
+                value: '9',
+                label: 'Working days',
+                detail: 'Aug 6 – Aug 14, 2026, across IA rebuild and four PDP builds.',
+              },
+              {
+                value: '1',
+                label: 'Dev/production safeguard introduced',
+                detail: 'A dedicated backend theme, created after catching a real wrong-theme push.',
+              },
+            ],
+          },
+          {
+            type: 'todo',
+            message:
+              'Add conversion or engagement metrics once available from the LuminiPet team (e.g. PDP bounce rate before/after, or director-reported outcomes from the feedback round).',
+          },
+        ],
+      },
+      {
+        id: 'reflection',
+        title: 'Reflection',
+        content: [
+          'Working inside a live theme changes what "done" means — a shipped section that breaks checkout is worse than no section at all, so protecting purchase-critical code became a design constraint, not just an engineering one.',
+          '"Use their logic, not their UI" only works as a rule if you say it out loud every time — competitive research quietly drifts into visual copying otherwise.',
+          'The biggest process win wasn\'t a section design — it was noticing a wrong-theme push early enough to build a safeguard before it became a real production incident.',
         ],
       },
     ],
