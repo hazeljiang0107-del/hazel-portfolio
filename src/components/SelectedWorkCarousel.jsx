@@ -132,6 +132,28 @@ function CarouselCounter({ index, total, reduced }) {
   )
 }
 
+function NavArrowIcon({ direction }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className="work-carousel__nav-icon"
+      style={direction === 'prev' ? { transform: 'scaleX(-1)' } : undefined}
+    >
+      <path
+        d="M2.5 8H13.5M13.5 8L9.25 3.75M13.5 8L9.25 12.25"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 function NavButton({ direction, onClick, label }) {
   return (
     <button
@@ -140,7 +162,7 @@ function NavButton({ direction, onClick, label }) {
       onClick={onClick}
       aria-label={label}
     >
-      <span aria-hidden="true">{direction === 'prev' ? '←' : '→'}</span>
+      <NavArrowIcon direction={direction} />
     </button>
   )
 }
