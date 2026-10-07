@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import CaseStudy from './pages/CaseStudy'
+import FieldNotes from './pages/FieldNotes'
 
 export default function App() {
   return (
@@ -14,6 +15,8 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="projects/:slug" element={<CaseStudy />} />
       </Route>
+      {/* Isolated homepage concept preview — self-contained, no global nav/footer. */}
+      <Route path="field-notes" element={<FieldNotes />} />
     </Routes>
   )
 }
