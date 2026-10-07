@@ -1006,9 +1006,9 @@ body {
 
 /* —— Cinematic hero (homepage) —— */
 .hero-cinematic {
-  --hero-bg: hsl(201 100% 13%);
-  --hero-foreground: hsl(0 0% 100%);
-  --hero-muted: hsl(240 4% 66%);
+  --hero-bg: var(--color-base);
+  --hero-foreground: var(--color-ink);
+  --hero-muted: var(--color-ink-secondary);
   background-color: var(--hero-bg);
   color: var(--hero-foreground);
 }
@@ -1041,13 +1041,13 @@ body {
   line-height: 1.2;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink-secondary);
   text-decoration: none;
 }
 
 .hero-focus-chip:hover,
 .hero-focus-chip:focus-visible {
-  color: #fff;
+  color: var(--color-ink);
 }
 
 .falling-stars {
@@ -1146,8 +1146,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 55% at 50% 35%, rgba(8, 28, 42, 0.28) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(0, 24, 40, 0.18) 0%, transparent 42%, rgba(8, 16, 18, 0.2) 100%);
+    radial-gradient(ellipse 80% 55% at 50% 35%, rgba(201, 168, 108, 0.1) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(22, 20, 18, 0.18) 0%, transparent 42%, rgba(15, 14, 12, 0.2) 100%);
 }
 
 .hero-ambient__orb {
@@ -1162,7 +1162,7 @@ body {
   left: -8%;
   width: min(58vw, 520px);
   height: min(58vw, 520px);
-  background: radial-gradient(circle, rgba(56, 140, 180, 0.34) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(201, 168, 108, 0.16) 0%, transparent 68%);
 }
 
 .hero-ambient__orb--b {
@@ -1170,7 +1170,7 @@ body {
   right: -12%;
   width: min(64vw, 580px);
   height: min(64vw, 580px);
-  background: radial-gradient(circle, rgba(90, 120, 160, 0.26) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(184, 174, 163, 0.12) 0%, transparent 70%);
 }
 
 .hero-ambient__orb--c {
@@ -1178,7 +1178,7 @@ body {
   left: 22%;
   width: min(70vw, 640px);
   height: min(48vw, 420px);
-  background: radial-gradient(circle, rgba(40, 90, 100, 0.3) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(90, 78, 62, 0.16) 0%, transparent 72%);
 }
 
 .hero-ambient__shimmer {
@@ -1187,7 +1187,7 @@ body {
   background: linear-gradient(
     115deg,
     transparent 35%,
-    rgba(180, 210, 230, 0.05) 48%,
+    rgba(212, 196, 168, 0.045) 48%,
     transparent 62%
   );
   animation: hero-shimmer 22s ease-in-out infinite;
@@ -1232,18 +1232,14 @@ body {
   top: 58%;
   bottom: 0;
   background-image:
-    radial-gradient(ellipse 130% 95% at 50% 100%, rgba(12, 38, 44, 0.35) 0%, transparent 58%),
-    radial-gradient(ellipse 75% 55% at 18% 92%, rgba(16, 34, 36, 0.22) 0%, transparent 52%),
-    radial-gradient(ellipse 70% 50% at 82% 88%, rgba(24, 36, 28, 0.18) 0%, transparent 48%),
+    radial-gradient(ellipse 130% 95% at 50% 100%, rgba(22, 20, 18, 0.35) 0%, transparent 58%),
     linear-gradient(
       180deg,
       transparent 0%,
-      rgba(0, 38, 56, 0.08) 18%,
-      rgba(10, 40, 46, 0.2) 34%,
-      rgba(14, 42, 40, 0.34) 50%,
-      rgba(20, 38, 32, 0.48) 64%,
-      rgba(22, 28, 22, 0.62) 78%,
-      rgba(18, 17, 14, 0.78) 90%,
+      rgba(18, 17, 15, 0.12) 24%,
+      rgba(16, 15, 13, 0.3) 48%,
+      rgba(14, 13, 11, 0.55) 70%,
+      rgba(12, 11, 10, 0.8) 88%,
       #0f0e0c 100%
     );
 }
