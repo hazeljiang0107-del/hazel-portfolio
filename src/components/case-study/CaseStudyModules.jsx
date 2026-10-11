@@ -496,7 +496,7 @@ function SocV2ReportView() {
   )
 }
 
-function SocReportCompare({ caption, accent }) {
+export function SocReportCompare({ caption, accent }) {
   const prefersReducedMotion = useReducedMotion()
 
   return (
