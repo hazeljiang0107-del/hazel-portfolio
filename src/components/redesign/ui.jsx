@@ -239,7 +239,11 @@ export function Caption({ item, className = '' }) {
 }
 
 /** Shared chapter header: number, big condensed title, one line, meta, my part, links. */
+export const HeadCtx = createContext(null)
+
 export function ChapterHead({ c, total = 6 }) {
+  const Custom = useContext(HeadCtx) // a page can swap in its own header (the magazine preview does)
+  if (Custom) return <Custom c={c} total={total} />
   return (
     <header className="rd-head">
       <div className="rd-head__l" data-rv>

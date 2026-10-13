@@ -130,7 +130,7 @@ export const CHAPTERS = [
   {
     ...head('stellantis-ivi', '03', 'stellantis'),
     mech: 'spread',
-    mine: 'Co-designed system logic, scenario flows and hi-fi surfaces with Gloria Yu. Owned the perceptual-alert framing and the dark-cockpit visual language.',
+    mine: 'Worked on system logic, scenario flows and hi-fi surfaces. Owned the perceptual-alert framing and the dark-cockpit visual language.',
     links: [{ label: 'Read case study', to: '/projects/stellantis-ivi' }],
     items: [
       img(`${A}st-center.webp`, 1366, 1024, 'Center display resting home screen: time, a white SUV, a media player and shortcuts.', 'Center display · home', 'Hi-fi screen'),

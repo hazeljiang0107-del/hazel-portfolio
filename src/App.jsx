@@ -11,15 +11,20 @@ import LuminiPetPreview from './pages/preview/LuminiPetPreview'
 const RedesignHome = lazy(() => import('./pages/preview/RedesignPreview'))
 const RedesignSocCase = lazy(() => import('./pages/preview/RedesignSocCase'))
 const RedesignLuminiCase = lazy(() => import('./pages/preview/RedesignLuminiCase'))
+const RedesignCase = lazy(() => import('./pages/preview/RedesignCase'))
+const MagazineHome = lazy(() => import('./pages/preview/MagazineHome'))
 const PortfolioPreview = lazy(() => import('./pages/preview/PortfolioPreview'))
 const LuminiPetCaseStudyPreview = lazy(() => import('./pages/preview/LuminiPetCaseStudyPreview'))
 const LuminiPetVisualPreview = lazy(() => import('./pages/preview/LuminiPetVisualPreview'))
 
-const lazyPage = (Page) => (
+const lazyPage = (Page, props) => (
   <Suspense fallback={null}>
-    <Page />
+    <Page {...props} />
   </Suspense>
 )
+
+// Case studies rendered from src/data/projects.js in the redesign's style.
+const RENDERED_CASES = ['stellantis-ivi', 'zingerman-deli', 'still-here', 'echoes-you-can-touch']
 
 /** Keeps the previous site reachable without letting it compete with the new pages in search. */
 function Classic({ children }) {
@@ -36,10 +41,13 @@ function Classic({ children }) {
 export default function App() {
   return (
     <Routes>
-      {/* Live: redesigned homepage and case studies (self-contained, no site Layout). */}
-      <Route path="/" element={lazyPage(RedesignHome)} />
+      {/* Live: magazine homepage + redesigned case studies (self-contained, no site Layout). */}
+      <Route path="/" element={lazyPage(MagazineHome)} />
       <Route path="projects/surveys-of-consumers" element={lazyPage(RedesignSocCase)} />
       <Route path="projects/luminipet-shopify" element={lazyPage(RedesignLuminiCase)} />
+      {RENDERED_CASES.map((slug) => (
+        <Route key={slug} path={`projects/${slug}`} element={lazyPage(RedesignCase, { slug })} />
+      ))}
 
       <Route element={<Layout />}>
         <Route path="about" element={<About />} />
@@ -57,8 +65,11 @@ export default function App() {
       </Route>
 
       <Route path="preview/portfolio" element={lazyPage(PortfolioPreview)} />
+      {/* Previous dark redesign homepage, kept for comparison. */}
+      <Route path="preview/redesign-home" element={lazyPage(RedesignHome)} />
 
-      {/* The redesign previews are now the live pages. */}
+      {/* The magazine + redesign previews are now the live pages. */}
+      <Route path="preview/magazine" element={<Navigate to="/" replace />} />
       <Route path="preview/redesign" element={<Navigate to="/" replace />} />
       <Route path="preview/redesign/surveys-of-consumers" element={<Navigate to="/projects/surveys-of-consumers" replace />} />
       <Route path="preview/redesign/luminipet" element={<Navigate to="/projects/luminipet-shopify" replace />} />

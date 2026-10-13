@@ -2637,3 +2637,479 @@ body:has(.rd) {
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Case studies rendered from data  (.rg-*)  — builds on .rc-* above
+   Alfa Romeo IVI · Zingerman's · Still Here · Echoes
+   ========================================================================== */
+.rg-sub {
+  max-width: 46ch;
+}
+.rg-letter-note {
+  margin-top: 16px;
+  font: 500 11px/1.5 var(--mono);
+  letter-spacing: 0.03em;
+  color: #6a6962;
+}
+
+/* hero: phones variant (Still Here) */
+.rg-stage--phones {
+  aspect-ratio: 2 / 1;
+}
+.rg-stage--phones .rd-media {
+  border-radius: clamp(14px, 2vw, 28px);
+}
+.rg-stage--phones .rc-hs--0 {
+  left: 3%;
+  top: 8%;
+  width: 17%;
+  --r: -2deg;
+  --s: -40px;
+}
+.rg-stage--phones .rc-hs--1 {
+  left: 23%;
+  top: 28%;
+  width: 17%;
+  --r: 1.6deg;
+  --s: -110px;
+}
+.rg-stage--phones .rc-hs--2 {
+  left: 43%;
+  top: 2%;
+  width: 17%;
+  --r: -1deg;
+  --s: -70px;
+}
+.rg-stage--phones .rc-hs--3 {
+  left: 63%;
+  top: 26%;
+  width: 17%;
+  --r: 2.2deg;
+  --s: -140px;
+}
+.rg-stage--phones .rc-hs--4 {
+  left: 82%;
+  top: 6%;
+  width: 16%;
+  --r: -1.6deg;
+  --s: -90px;
+  z-index: 4;
+}
+
+/* pinned reel cards: desktop screen with its phone beside it (Zingerman's) */
+.rg-pair {
+  position: relative;
+  margin-bottom: 36px;
+}
+.rd-reel__card .rg-pair__ph.rd-media {
+  position: absolute;
+  right: -7%;
+  bottom: -9%;
+  z-index: 2;
+  width: 21%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 24px 40px -14px rgba(0, 0, 0, 0.95);
+}
+.rg-pair--strip {
+  margin-bottom: 62px;
+}
+.rd-reel__card .rg-pair__strip.rd-media {
+  right: auto;
+  left: -3%;
+  bottom: -13%;
+  width: 66%;
+  border-radius: 6px;
+}
+.rg-extra {
+  display: block;
+  margin-top: 8px;
+  font: 500 10.5px/1.3 var(--mono);
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* competitors without pictures */
+.rg-comp {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 48px);
+  margin-top: clamp(34px, 6vh, 70px);
+}
+.rg-comp > li {
+  min-width: 0;
+  padding-top: 18px;
+  border-top: 2px solid #fff;
+}
+.rg-comp h3 {
+  margin-bottom: 14px;
+  font: 700 clamp(26px, 2.6vw, 42px) / 0.95 var(--disp);
+  text-transform: uppercase;
+}
+.rg-comp ul li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font: 400 13.5px/1.55 var(--body);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* field observations: a hairline grid of quotes */
+.rg-obs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(34px, 6vh, 70px);
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.rg-obs li {
+  padding: clamp(18px, 2vw, 30px);
+  background: #121212;
+}
+.rg-obs span {
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.rg-obs h3 {
+  margin: 12px 0 14px;
+  font: 700 clamp(22px, 2vw, 32px) / 0.98 var(--disp);
+  text-transform: uppercase;
+}
+.rg-obs blockquote {
+  margin: 0;
+  font: italic 400 14.5px/1.55 var(--body);
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* interviews */
+.rg-int {
+  margin-top: clamp(34px, 6vh, 70px);
+}
+.rg-int > li {
+  display: grid;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(20px, 4vw, 64px);
+  padding: clamp(26px, 4vh, 46px) 0;
+  border-top: 1px solid var(--line);
+}
+.rg-int h3 {
+  font: 700 clamp(28px, 3vw, 48px) / 0.95 var(--disp);
+  text-transform: uppercase;
+}
+.rg-int header > p {
+  margin-top: 8px;
+  font: 400 13px/1.5 var(--body);
+  color: var(--mut);
+}
+.rg-int header ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.rg-int header li {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mut);
+}
+.rg-int__p {
+  font: 500 11px/1.5 var(--mono);
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+.rg-int blockquote {
+  margin: 12px 0 0;
+  font: 400 clamp(16px, 1.5vw, 21px) / 1.5 var(--body);
+}
+.rg-int__g {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  font: 400 13px/1.5 var(--body);
+}
+.rg-int__g b {
+  display: block;
+  margin-bottom: 4px;
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a5a1f;
+}
+
+/* wearable + app: two paper sheets */
+.rg-eco {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 36px);
+  margin-top: clamp(34px, 6vh, 70px);
+}
+.rg-eco__col {
+  padding: clamp(20px, 2.4vw, 36px);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  box-shadow: 0 30px 50px -26px rgba(0, 0, 0, 0.85);
+  transform: rotate(var(--r, 0deg));
+  transition: transform 0.5s var(--ease), opacity 0.9s var(--ease) var(--d, 0ms);
+}
+.rg-eco__col:hover {
+  transform: rotate(0deg);
+}
+.rg-eco__k {
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6a6962;
+}
+.rg-eco__col h3 {
+  margin: 10px 0 12px;
+  font: 700 clamp(30px, 3vw, 48px) / 0.95 var(--disp);
+  text-transform: uppercase;
+}
+.rg-eco__s {
+  font: 400 14px/1.55 var(--body);
+  color: #33332f;
+}
+.rg-eco__col ol {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+.rg-eco__col ol > li {
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.rg-eco__col b {
+  display: block;
+  font: 700 clamp(20px, 1.7vw, 26px) / 1 var(--disp);
+  text-transform: uppercase;
+}
+.rg-eco__col ol p {
+  margin-top: 6px;
+  font: 400 13.5px/1.55 var(--body);
+  color: #33332f;
+}
+.rg-eco__col ol ul {
+  margin-top: 8px;
+}
+.rg-eco__col ol ul li {
+  padding: 2px 0;
+  font: 500 11px/1.5 var(--mono);
+  color: #6a6962;
+}
+.rg-eco__col ol ul li::before {
+  content: '· ';
+}
+
+/* phone screens: group title in a left column, up to four phones to its right */
+.rg-phones {
+  display: grid;
+  gap: clamp(60px, 10vh, 120px);
+  margin-top: clamp(34px, 6vh, 70px);
+}
+.rg-phones__g {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 4fr);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: start;
+}
+.rg-phones__g > h3 {
+  position: sticky;
+  top: 96px;
+  padding-top: 14px;
+  border-top: 2px solid #fff;
+  font: 700 clamp(26px, 2.8vw, 46px) / 0.95 var(--disp);
+  text-transform: uppercase;
+}
+.rg-phones__g > ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 36px);
+}
+.rg-phones .rd-media {
+  border-radius: clamp(16px, 2vw, 28px);
+}
+.rg-phones__t {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 16px;
+  font: 700 clamp(20px, 1.8vw, 28px) / 1 var(--disp);
+  text-transform: uppercase;
+}
+.rg-phones__t span {
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.rg-phones__d {
+  margin-top: 8px;
+  font: 400 13px/1.5 var(--body);
+  color: rgba(255, 255, 255, 0.8);
+}
+.rg-phones__f {
+  margin-top: 12px;
+}
+.rg-phones__f li {
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font: 400 12px/1.45 var(--body);
+  color: var(--mut);
+}
+
+/* final UI with numbered pins */
+.rg-ann {
+  display: grid;
+  gap: clamp(50px, 9vh, 100px);
+  margin-top: clamp(34px, 6vh, 70px);
+}
+.rg-ann__g {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.7fr);
+  gap: clamp(20px, 4vw, 64px);
+  align-items: start;
+  margin: 0;
+}
+.rg-ann__img {
+  position: relative;
+}
+.rg-dot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201, 168, 108, 0.3);
+  color: #151514;
+  font: 600 12px/1 var(--mono);
+  pointer-events: none;
+}
+.rg-ann h3 {
+  font: 700 clamp(28px, 2.8vw, 44px) / 0.95 var(--disp);
+  text-transform: uppercase;
+}
+.rg-ann figcaption > p {
+  margin-top: 10px;
+  font: 400 13.5px/1.55 var(--body);
+  color: rgba(255, 255, 255, 0.8);
+}
+.rg-ann ol {
+  margin-top: 20px;
+}
+.rg-ann ol li {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font: 400 13.5px/1.45 var(--body);
+}
+.rg-ann ol b {
+  flex: none;
+  min-width: 1.4em;
+  font: 500 12px/1.4 var(--mono);
+  color: var(--gold);
+}
+
+/* reflection: the three lessons, large */
+.rg-reflect {
+  display: grid;
+  gap: clamp(24px, 4.5vh, 48px);
+  max-width: 980px;
+  margin-top: clamp(34px, 6vh, 70px);
+}
+.rg-reflect li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 16px;
+  font: 600 clamp(22px, 2.6vw, 42px) / 1.08 var(--disp);
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+.rg-reflect span {
+  padding-top: 0.5em;
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+@media (max-width: 1100px) {
+  .rg-obs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rg-obs li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .rg-phones__g {
+    grid-template-columns: 1fr;
+  }
+  .rg-phones__g > h3 {
+    position: static;
+  }
+}
+@media (max-width: 800px) {
+  .rg-stage--phones {
+    aspect-ratio: 1 / 0.95;
+  }
+  .rg-stage--phones .rc-hs--0 {
+    left: 2%;
+    top: 6%;
+    width: 30%;
+  }
+  .rg-stage--phones .rc-hs--1 {
+    left: 35%;
+    top: 22%;
+    width: 30%;
+  }
+  .rg-stage--phones .rc-hs--2 {
+    left: 68%;
+    top: 4%;
+    width: 30%;
+  }
+  .rg-stage--phones .rc-hs--3,
+  .rg-stage--phones .rc-hs--4 {
+    display: none;
+  }
+  .rg-comp,
+  .rg-obs,
+  .rg-eco,
+  .rg-ann__g {
+    grid-template-columns: 1fr;
+  }
+  .rg-int > li {
+    grid-template-columns: 1fr;
+  }
+  .rg-phones__g > ul {
+    display: flex;
+    gap: 16px;
+    margin-inline: calc(var(--gut) * -1);
+    padding: 0 var(--gut) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .rg-phones__g > ul::-webkit-scrollbar {
+    display: none;
+  }
+  .rg-phones__g > ul > li {
+    flex: none;
+    width: 58vw;
+    max-width: 280px;
+    scroll-snap-align: start;
+    scroll-margin-left: var(--gut);
+  }
+  .rg-reflect li {
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+  }
+}

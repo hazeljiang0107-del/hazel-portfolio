@@ -52,7 +52,7 @@ export function Notes({ items, cols = 4 }) {
 }
 
 /** Big-number list (stat-cards) */
-function Stats({ items, note, wide }) {
+export function Stats({ items, note, wide }) {
   return (
     <div className="rc-statwrap" data-rv>
       <ul className={`rc-stats${wide ? ' rc-stats--wide' : ''}`}>
@@ -69,7 +69,7 @@ function Stats({ items, note, wide }) {
   )
 }
 
-function Insights({ items }) {
+export function Insights({ items }) {
   return (
     <ul className="rc-ins">
       {items.map((it) => (
@@ -86,7 +86,7 @@ function Insights({ items }) {
   )
 }
 
-function Table({ columns, rows }) {
+export function Table({ columns, rows }) {
   return (
     <div className="rc-tablewrap" data-rv>
       <table className="rc-table">
@@ -176,9 +176,6 @@ export function CaseHero() {
           <a className="rd-link" href={P.figmaUrl} target="_blank" rel="noopener noreferrer">
             Figma file <Arrow />
           </a>
-          <Link className="rd-link" to="/projects/surveys-of-consumers">
-            Published version <Arrow />
-          </Link>
         </p>
       </div>
 
