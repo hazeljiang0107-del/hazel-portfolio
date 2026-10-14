@@ -77,12 +77,12 @@ export const CHAPTERS = [
       {
         kind: 'img',
         src: `${A}lp-hero.webp`,
-        full: `${LV}st-home-hero.jpg`,
-        width: 2160,
-        height: 1290,
-        alt: 'Dev-theme homepage hero: headline “Custom Pet Portraits Made From the Pets You Love” beside a golden retriever, a framed 2D painted portrait of it and a smaller 3D relief, each badged 2D or 3D.',
-        cap: 'First screen: the pet beside its 2D and 3D piece.',
-        tag: 'Dev theme',
+        full: '/assets/luminipet/homepage-live.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'luminipet.com homepage: dark header with Shop All, Halloween Gifts, Find Your Style and About Us, over a living-room hero where a child holds a framed Halloween pet portrait beside the family dog, headline “Custom Pet Portraits, Hand-Painted by Real Artists” and a Book Yours button.',
+        cap: 'Current live homepage hero.',
+        tag: 'Live site',
       },
       {
         kind: 'video',
@@ -194,7 +194,7 @@ export const CHAPTERS = [
 
 /** Hero collage: positions are % of the stage (desktop) and of the stage again on phones. */
 export const COLLAGE = [
-  { to: 'luminipet', src: `${A}lp-hero.webp`, w: 1500, h: 896, alt: 'LuminiPet dev-theme homepage hero.', d: { l: 36, t: 4, w: 46, r: -4, z: 2, s: -70 }, m: { l: 4, t: 2, w: 74, r: -3 } },
+  { to: 'luminipet', src: `${A}lp-hero.webp`, w: 1500, h: 844, alt: 'luminipet.com live homepage hero: Halloween family scene with a framed custom pet portrait.', d: { l: 36, t: 4, w: 46, r: -4, z: 2, s: -70 }, m: { l: 4, t: 2, w: 74, r: -3 } },
   { to: 'stellantis', src: `${A}st-center.webp`, w: 1366, h: 1024, alt: 'Alfa Romeo IVI center display home screen.', d: { l: 6, t: 36, w: 25, r: 5, z: 3, s: -150 }, m: { l: 2, t: 30, w: 46, r: 4 } },
   { to: 'soc', src: `${A}soc-home.webp`, w: 1600, h: 1000, alt: 'Surveys of Consumers redesigned home page.', d: { l: 66, t: 44, w: 29, r: 3.5, z: 3, s: -110 }, m: { l: 46, t: 40, w: 50, r: -3 } },
   { to: 'still-here', src: `${A}sh-composite.webp`, w: 1500, h: 1125, alt: 'Two phones showing the Still Here app.', d: { l: 83.5, t: -2, w: 15, r: 7, z: 1, s: -190 }, m: { l: 62, t: 6, w: 34, r: 7 } },

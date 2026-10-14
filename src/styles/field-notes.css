@@ -1,0 +1,517 @@
+/**
+ * "Hazel's Field Notes" — isolated homepage concept preview.
+ * Scoped entirely under .fn-page so it never leaks into or inherits
+ * from the main site's design system. Only imported by FieldNotes.jsx.
+ */
+
+.fn-page {
+  --fn-charcoal: #171717;
+  --fn-paper: #f3f0e8;
+  --fn-lavender: #c4b5fd;
+  --fn-ink-on-dark: #f3f0e8;
+  --fn-ink-on-paper: #171717;
+  --fn-serif: 'Instrument Serif', Georgia, serif;
+  --fn-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --fn-mono: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  background: var(--fn-charcoal);
+  color: var(--fn-ink-on-dark);
+  font-family: var(--fn-sans);
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* :where() keeps this a zero-specificity default so any component-level
+   color rule (e.g. charcoal text on paper tags/folders) wins without
+   needing !important or selector chains. */
+:where(.fn-page) a {
+  color: inherit;
+}
+
+.fn-page *:focus-visible {
+  outline: 2px solid var(--fn-lavender);
+  outline-offset: 3px;
+}
+
+/* —— Nav —— */
+.fn-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  background: linear-gradient(180deg, rgba(23, 23, 23, 0.9) 0%, rgba(23, 23, 23, 0) 100%);
+}
+
+.fn-nav__name {
+  font-family: var(--fn-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+
+.fn-nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  font-family: var(--fn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fn-nav__links a {
+  text-decoration: none;
+  opacity: 0.72;
+  transition: opacity 0.25s ease;
+}
+
+.fn-nav__links a:hover,
+.fn-nav__links a:focus-visible {
+  opacity: 1;
+}
+
+/* —— Hero —— */
+.fn-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) 3rem;
+}
+
+.fn-hero__intro {
+  margin-top: clamp(2rem, 6vh, 4rem);
+  text-align: center;
+}
+
+.fn-hero__eyebrow {
+  font-family: var(--fn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.fn-hero__name {
+  font-family: var(--fn-serif);
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 1;
+  margin-top: 0.5rem;
+}
+
+.fn-hero__role {
+  font-family: var(--fn-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fn-lavender);
+  margin-top: 0.6rem;
+}
+
+.fn-hero__sentence {
+  margin: 1.1rem auto 0;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(243, 240, 232, 0.72);
+}
+
+/* —— Keyring cluster —— */
+.fn-ring-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  margin-top: clamp(1.5rem, 4vh, 3rem);
+}
+
+.fn-ring {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  width: 7.5rem;
+  height: 7.5rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 200deg,
+    #e4e4e4,
+    #8c8c8c,
+    #f1f1f1,
+    #6f6f6f,
+    #dedede,
+    #8c8c8c,
+    #e4e4e4
+  );
+  -webkit-mask: radial-gradient(circle, transparent 60%, black 62%);
+  mask: radial-gradient(circle, transparent 60%, black 62%);
+  opacity: 0.9;
+}
+
+.fn-tag-field {
+  position: relative;
+  width: min(100%, 52rem);
+  height: 100%;
+  min-height: 320px;
+}
+
+.fn-tag {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  width: clamp(9.5rem, 15vw, 12.5rem);
+  padding: 1.1rem 1.1rem 1.2rem;
+  background: var(--fn-paper);
+  color: var(--fn-ink-on-paper);
+  text-decoration: none;
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+}
+
+.fn-tag__hole {
+  position: absolute;
+  top: 0.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--fn-charcoal);
+}
+
+.fn-tag__label {
+  font-family: var(--fn-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+
+.fn-tag__title {
+  font-family: var(--fn-serif);
+  font-size: 1.15rem;
+  line-height: 1.15;
+}
+
+/* Four distinct physical silhouettes, same material + color system */
+.fn-tag--shape-rect {
+  border-radius: 0.2rem 0.2rem 0.2rem 1.4rem;
+}
+
+.fn-tag--shape-notch {
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 82% 100%, 0 100%);
+}
+
+.fn-tag--shape-hex {
+  clip-path: polygon(12% 0, 88% 0, 100% 50%, 88% 100%, 12% 100%, 0 50%);
+}
+
+.fn-tag--shape-disc {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  width: clamp(9rem, 13vw, 10.75rem);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.25rem;
+}
+
+.fn-tag:hover,
+.fn-tag:focus-visible {
+  box-shadow: 0 0 0 2px var(--fn-lavender), 0 18px 36px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* —— Caption —— */
+.fn-caption {
+  margin-top: 1.5rem;
+  min-height: 3rem;
+  text-align: center;
+}
+
+.fn-caption__title {
+  font-family: var(--fn-serif);
+  font-size: 1.1rem;
+}
+
+.fn-caption__desc {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: rgba(243, 240, 232, 0.6);
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fn-caption__placeholder {
+  font-family: var(--fn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 240, 232, 0.35);
+}
+
+/* —— View work link —— */
+.fn-view-work {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.75rem auto 0;
+  font-family: var(--fn-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fn-ink-on-dark);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 240, 232, 0.35);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.fn-view-work:hover,
+.fn-view-work:focus-visible {
+  border-color: var(--fn-lavender);
+  color: var(--fn-lavender);
+}
+
+/* —— Folder (selected work) —— */
+.fn-work {
+  padding: 5rem clamp(1.25rem, 4vw, 3rem) 6rem;
+  scroll-margin-top: 2rem;
+}
+
+.fn-work__heading {
+  font-family: var(--fn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.fn-folder {
+  position: relative;
+  max-width: 68rem;
+  margin: 0 auto;
+  background: var(--fn-paper);
+  color: var(--fn-ink-on-paper);
+  padding: 3.5rem clamp(1.5rem, 4vw, 3.5rem) 3rem;
+}
+
+.fn-folder__tab {
+  position: absolute;
+  top: -1.9rem;
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.6rem 1.4rem 0.9rem;
+  background: var(--fn-paper);
+  clip-path: polygon(0 100%, 0 0, 88% 0, 100% 40%, 100% 100%);
+}
+
+.fn-folder__tab-number {
+  font-family: var(--fn-mono);
+  font-size: 0.75rem;
+  color: var(--fn-lavender);
+}
+
+.fn-folder__tab-title {
+  font-family: var(--fn-serif);
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.fn-folder__grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .fn-folder__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    gap: 3.5rem;
+  }
+}
+
+.fn-folder__meta {
+  font-family: var(--fn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.fn-folder__statement {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.fn-folder__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.75rem;
+  color: var(--fn-ink-on-paper);
+  font-family: var(--fn-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.4);
+  padding-bottom: 0.15rem;
+  transition: border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.fn-folder__cta:hover,
+.fn-folder__cta:focus-visible {
+  border-color: var(--fn-ink-on-paper);
+  opacity: 0.7;
+}
+
+.fn-folder__image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(23, 23, 23, 0.06);
+}
+
+.fn-folder__image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* —— About index card —— */
+.fn-about {
+  padding: 2rem clamp(1.25rem, 4vw, 3rem) 6rem;
+}
+
+.fn-index-card {
+  position: relative;
+  max-width: 34rem;
+  margin: 0 auto;
+  background: var(--fn-paper);
+  color: var(--fn-ink-on-paper);
+  padding: 2.75rem clamp(1.5rem, 4vw, 2.5rem) 2.25rem;
+}
+
+.fn-index-card__hole {
+  position: absolute;
+  top: 1rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--fn-charcoal);
+}
+
+.fn-index-card__hole--left {
+  left: 1.25rem;
+}
+
+.fn-index-card__hole--right {
+  right: 1.25rem;
+}
+
+.fn-index-card__heading {
+  font-family: var(--fn-serif);
+  font-size: 2rem;
+}
+
+.fn-index-card__copy {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 28rem;
+}
+
+.fn-index-card__rows {
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 0;
+}
+
+.fn-index-card__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px dotted rgba(23, 23, 23, 0.3);
+}
+
+.fn-index-card__row:last-child {
+  border-bottom: none;
+}
+
+.fn-index-card__row-label {
+  font-family: var(--fn-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.fn-index-card__row-value {
+  font-size: 0.88rem;
+  text-align: right;
+}
+
+/* —— Mobile: collapse the ring into a readable vertical stack —— */
+@media (max-width: 767px) {
+  .fn-ring {
+    display: none;
+  }
+
+  .fn-ring-stage {
+    min-height: 0;
+  }
+
+  .fn-tag-field {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .fn-tag {
+    position: static !important;
+    transform: none !important;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+    border-radius: 0.2rem !important;
+    aspect-ratio: auto !important;
+  }
+
+  .fn-tag__hole {
+    display: none;
+  }
+
+  .fn-folder__tab {
+    left: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fn-page * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

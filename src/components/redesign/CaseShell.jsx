@@ -16,25 +16,28 @@ const FOOT_WORK = CHAPTERS.map((c) => ({ label: c.title, to: BACK }))
  * document title, scroll-reveals, a thin reading-progress line, header, footer and the two
  * floating bits. Self-contained (no site Layout).
  */
-export default function CaseShell({ title, nav, skipTo, children }) {
+export default function CaseShell({ title, nav, skipTo, children, className = '', fonts }) {
   const root = useRef(null)
   useReveal(root)
 
   useEffect(() => {
     const prev = document.title
     document.title = `${title} — Hazel Jiang`
-    const font = document.createElement('link')
-    font.rel = 'stylesheet'
-    font.href = FONTS
-    document.head.appendChild(font)
+    const links = [FONTS, ...(fonts ? [fonts] : [])].map((href) => {
+      const font = document.createElement('link')
+      font.rel = 'stylesheet'
+      font.href = href
+      document.head.appendChild(font)
+      return font
+    })
     document.documentElement.classList.add('rd-root')
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     return () => {
       document.title = prev
-      font.remove()
+      links.forEach((font) => font.remove())
       document.documentElement.classList.remove('rd-root')
     }
-  }, [title])
+  }, [title, fonts])
 
   // thin reading-progress line along the top edge (CSS variable, no re-render)
   useEffect(() => {
@@ -61,7 +64,7 @@ export default function CaseShell({ title, nav, skipTo, children }) {
 
   return (
     <LightboxProvider>
-      <div className="rd rc" id="top" ref={root}>
+      <div className={`rd rc${className ? ` ${className}` : ''}`} id="top" ref={root}>
         <a className="rd-skip" href={skipTo}>
           Skip to the case study
         </a>

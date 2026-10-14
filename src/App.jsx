@@ -16,6 +16,8 @@ const MagazineHome = lazy(() => import('./pages/preview/MagazineHome'))
 const PortfolioPreview = lazy(() => import('./pages/preview/PortfolioPreview'))
 const LuminiPetCaseStudyPreview = lazy(() => import('./pages/preview/LuminiPetCaseStudyPreview'))
 const LuminiPetVisualPreview = lazy(() => import('./pages/preview/LuminiPetVisualPreview'))
+const LuminiStoryPreview = lazy(() => import('./pages/preview/LuminiStoryPreview'))
+const SocStoryPreview = lazy(() => import('./pages/preview/SocStoryPreview'))
 
 const lazyPage = (Page, props) => (
   <Suspense fallback={null}>
@@ -65,6 +67,10 @@ export default function App() {
       </Route>
 
       <Route path="preview/portfolio" element={lazyPage(PortfolioPreview)} />
+      {/* LuminiPet 0→1 story preview — does not replace the published case. */}
+      <Route path="preview/luminipet-story" element={lazyPage(LuminiStoryPreview)} />
+      {/* Surveys of Consumers visual story preview — does not replace the published case. */}
+      <Route path="preview/soc-story" element={lazyPage(SocStoryPreview)} />
       {/* Previous dark redesign homepage, kept for comparison. */}
       <Route path="preview/redesign-home" element={lazyPage(RedesignHome)} />
 

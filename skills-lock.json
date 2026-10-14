@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "trip-map-builder": {
+      "source": "hiyeshu/trip-map-builder",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "de11eb46191b7f8da12c002e253784100b57f355ef88d5dfcd8417fd5fce248a"
+    }
+  }
+}
