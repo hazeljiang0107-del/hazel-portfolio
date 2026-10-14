@@ -18,6 +18,7 @@ const LuminiPetCaseStudyPreview = lazy(() => import('./pages/preview/LuminiPetCa
 const LuminiPetVisualPreview = lazy(() => import('./pages/preview/LuminiPetVisualPreview'))
 const LuminiStoryPreview = lazy(() => import('./pages/preview/LuminiStoryPreview'))
 const SocStoryPreview = lazy(() => import('./pages/preview/SocStoryPreview'))
+const GradeWithContext = lazy(() => import('./pages/preview/GradeWithContext'))
 
 const lazyPage = (Page, props) => (
   <Suspense fallback={null}>
@@ -71,6 +72,8 @@ export default function App() {
       <Route path="preview/luminipet-story" element={lazyPage(LuminiStoryPreview)} />
       {/* Surveys of Consumers visual story preview — does not replace the published case. */}
       <Route path="preview/soc-story" element={lazyPage(SocStoryPreview)} />
+      {/* Grade with Context — LMS assignment feedback design proposal. */}
+      <Route path="preview/grade-with-context" element={lazyPage(GradeWithContext)} />
       {/* Previous dark redesign homepage, kept for comparison. */}
       <Route path="preview/redesign-home" element={lazyPage(RedesignHome)} />
 
