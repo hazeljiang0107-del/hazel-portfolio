@@ -10,7 +10,6 @@ import LuminiPetPreview from './pages/preview/LuminiPetPreview'
 // The redesign (homepage + the two rebuilt case studies) is lazy-loaded and self-contained.
 const RedesignHome = lazy(() => import('./pages/preview/RedesignPreview'))
 const RedesignSocCase = lazy(() => import('./pages/preview/RedesignSocCase'))
-const RedesignLuminiCase = lazy(() => import('./pages/preview/RedesignLuminiCase'))
 const RedesignCase = lazy(() => import('./pages/preview/RedesignCase'))
 const MagazineHome = lazy(() => import('./pages/preview/MagazineHome'))
 const PortfolioPreview = lazy(() => import('./pages/preview/PortfolioPreview'))
@@ -47,7 +46,7 @@ export default function App() {
       {/* Live: magazine homepage + redesigned case studies (self-contained, no site Layout). */}
       <Route path="/" element={lazyPage(MagazineHome)} />
       <Route path="projects/surveys-of-consumers" element={lazyPage(RedesignSocCase)} />
-      <Route path="projects/luminipet-shopify" element={lazyPage(RedesignLuminiCase)} />
+      <Route path="projects/luminipet-shopify" element={lazyPage(LuminiStoryPreview)} />
       {RENDERED_CASES.map((slug) => (
         <Route key={slug} path={`projects/${slug}`} element={lazyPage(RedesignCase, { slug })} />
       ))}
@@ -68,7 +67,7 @@ export default function App() {
       </Route>
 
       <Route path="preview/portfolio" element={lazyPage(PortfolioPreview)} />
-      {/* LuminiPet 0→1 story preview — does not replace the published case. */}
+      {/* Same LuminiPet story as the published case, kept so the preview URL still opens. */}
       <Route path="preview/luminipet-story" element={lazyPage(LuminiStoryPreview)} />
       {/* Surveys of Consumers visual story preview — does not replace the published case. */}
       <Route path="preview/soc-story" element={lazyPage(SocStoryPreview)} />

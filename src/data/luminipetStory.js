@@ -1,5 +1,5 @@
 /**
- * LuminiPet UX story preview — /preview/luminipet-story
+ * LuminiPet UX story — /projects/luminipet-shopify
  *
  * SOURCE MAP:
  *   BEFORE – Shopify preview Backend Lumini Dev Export 20260813 Draft

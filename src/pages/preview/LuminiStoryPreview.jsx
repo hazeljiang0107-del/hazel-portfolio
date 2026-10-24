@@ -7,15 +7,15 @@ const MAG_FONTS =
   'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:opsz,wght@9..144,600;700;800&display=swap'
 
 /**
- * Working preview for the LuminiPet 0→1 visual story.
- * Does not replace the published case at /projects/luminipet-shopify.
+ * Published LuminiPet case at /projects/luminipet-shopify.
+ * Also mounted at /preview/luminipet-story.
  */
 export default function LuminiStoryPreview() {
   return (
     <CaseShell
-      title="LuminiPet · 0→1 story (preview)"
+      title="LuminiPet"
       nav={NAV}
-      skipTo="#brief"
+      skipTo="#outcome"
       className="ls"
       fonts={MAG_FONTS}
     >

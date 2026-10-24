@@ -109,7 +109,7 @@ export function StoryHero() {
   return (
     <section id="outcome" className="rc-hero ls-hero" aria-labelledby="ls-h1">
       <div className="rc-hero__text">
-        <p className="rd-head__n">Preview · UX story · not published</p>
+        <p className="rd-head__n">Case study · 02 / 06</p>
         <h1 id="ls-h1" className="rc-hero__h1 ls-h1">
           {h.title}
         </h1>
