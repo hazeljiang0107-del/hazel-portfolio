@@ -47,8 +47,8 @@ export function Reel({ c }) {
         <div className="rd-reel__view" ref={view}>
           <ul className="rd-reel__track" ref={track} onFocus={onFocus}>
             {c.items.map((it, i) => (
-              <li key={it.src} className="rd-reel__card" style={{ '--r': `${REEL_R[i % REEL_R.length]}deg`, '--y': REEL_Y[i % REEL_Y.length], '--ar': (it.width / it.height).toFixed(4) }}>
-                <Media item={it} eager={i < 2} />
+              <li key={it.src} className="rd-reel__card" style={{ '--r': `${REEL_R[i % REEL_R.length]}deg`, '--y': REEL_Y[i % REEL_Y.length], '--ar': (it.phone ? 9 / 17 : it.width / it.height).toFixed(4) }}>
+                <Media item={it} eager={i < 2} fit={!!it.phone} />
                 <Caption item={it} />
               </li>
             ))}

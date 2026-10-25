@@ -9,6 +9,9 @@ import { CHAPTERS, COLLAGE } from './redesignPreview'
 
 export { CHAPTERS, SITE, NAV, FOOTER, ABOUT } from './redesignPreview'
 
+/** The two projects that stay on the homepage. The rest live on /work. */
+export const FEATURED = CHAPTERS.slice(0, 2)
+
 const byTo = Object.fromEntries(COLLAGE.map((c) => [c.to, c]))
 const portal = CHAPTERS.find((c) => c.id === 'echoes').items.find((i) => i.src.includes('ec-portals'))
 

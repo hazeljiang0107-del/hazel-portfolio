@@ -6,8 +6,8 @@
  *   NOW    – https://luminipet.com/
  *   STYLE  – https://train-sable-79246720.figma.site (brand system I designed)
  *
- * Framing: “From an incomplete storefront to a coherent shopping experience.”
- * Captions stay short. No “team continued after departure” language on-page.
+ * Framing: “From an Incomplete Storefront to a Connected Shopping Experience.”
+ * Captions stay short. Seasonal campaigns and review counts belong to the live store.
  */
 import { assets as A } from './luminipetPreviewAssets'
 import { MEDIA as M } from './luminipetVisualMedia'
@@ -38,9 +38,9 @@ export const SOURCES = {
 export const STORY = {
   hero: {
     title: 'LuminiPet',
-    line: 'From an incomplete storefront to a coherent shopping experience.',
+    line: 'From an Incomplete Storefront to a Connected Shopping Experience.',
     intro:
-      'My director supplied the required pages. I designed the information architecture, navigation, homepage hierarchy, branding style guide, and Shopify implementation so shoppers can find a format, trust the craft, and move toward purchase.',
+      'My director named the pages the store needed. I designed three solutions that connect browsing, product proof, and customization.',
     meta: 'UX/UI Design Intern · Senaura · Jul–Aug 2026',
     live: SOURCES.now.url,
     style: SOURCES.style.url,
@@ -76,8 +76,32 @@ export const STORY = {
       },
       {
         k: 'Competitor observations',
-        v: 'Crown & Paw for category logic; Design Within Reach for context → compare → configure.',
+        v: 'What five portrait brands offer, and where shoppers hesitate.',
         src: 'Project notes.',
+        compare: [
+          { name: 'Crown & Paw', does: 'Emotional personalization and gifting', worry: 'Delivery and product quality' },
+          { name: 'West & Willow', does: 'Premium visual presentation', worry: 'Product likeness and customization' },
+          { name: 'Paint Your Life', does: 'Strong customization and revision experience', worry: 'Likeness' },
+          { name: 'PortraitFlip', does: 'Handmade craftsmanship', worry: 'Revisions and communication' },
+          { name: 'Cuddle Clones', does: 'Emotional keepsake value', worry: 'Delivery and likeness' },
+        ],
+        opportunities: [
+          {
+            h: 'Simplify discovery',
+            d: 'Clearer product categories and navigation.',
+            to: 'Find by format',
+          },
+          {
+            h: 'Build purchase confidence',
+            d: 'Stronger product examples, craftsmanship information, and consistent presentation.',
+            to: 'Prove the offer',
+          },
+          {
+            h: 'Reduce uncertainty',
+            d: 'Clearer customization, revision, and delivery expectations.',
+            to: 'One brand system',
+          },
+        ],
       },
       {
         k: 'Design priorities',
@@ -86,51 +110,75 @@ export const STORY = {
       },
     ],
   },
+  solved: {
+    k: 'What I solved',
+    h: 'Three design decisions that connected the shopping experience.',
+    note: 'These are documented design decisions and the pages that carry them.',
+    items: [
+      {
+        n: '01',
+        h: 'Simplified Product Discovery',
+        d: 'Reorganized navigation by product format and style, creating clearer pathways from browsing to individual products.',
+        media: 'liveMenu',
+      },
+      {
+        n: '02',
+        h: 'Strengthened Purchase Confidence',
+        d: 'Replaced text-heavy product introductions with visual proof, differentiated product formats, and clearer shopping information.',
+        media: 'liveFormats',
+      },
+      {
+        n: '03',
+        h: 'Standardized Customization',
+        d: 'Designed format-specific product pages within a shared purchase flow, making the experience more consistent and scalable.',
+        media: 'oldPdp',
+      },
+    ],
+  },
   chapters: {
     find: {
       id: 'find',
-      n: 1,
-      h: 'A clearer path from browse to the right product',
-      unclear: 'Format, style, and gifts lacked clear routes into collections.',
-      designed: 'I built format-first navigation and a guided chooser so shoppers decide how the portrait is made before they drown in options.',
-      shows: 'Live path: Shop All → Find Your Style → collection → product.',
-      annos: ['By Medium', 'By Style', 'Guided steps'],
+      h: 'Simplified Product Discovery',
+      lead: 'I restructured product discovery around how customers shop.',
+      problem: 'Product formats, styles, and collections were mixed together, making it difficult to identify the right product.',
+      solved:
+        'I designed a format-first information architecture, organizing products by medium, then style, and connecting navigation to dedicated collection pages. I also introduced a product chooser to guide shoppers toward relevant options.',
+      tags: 'Information Architecture · Navigation Design · User Flows',
     },
     trust: {
       id: 'trust',
-      n: 2,
-      h: 'Homepage hierarchy that proves the offer',
-      unclear: 'Without craft proof, shoppers could not see how formats differ.',
-      designed: 'I designed hero imagery and homepage sections that lead with handmade quality, then open into format choice.',
-      shows: 'Hero and format sections on the live storefront.',
-      annos: ['Craft first', 'Format cards', 'Trust next'],
+      h: 'Strengthened Purchase Confidence',
+      lead: 'I made the product’s value visible before asking customers to buy.',
+      problem: 'The homepage relied heavily on text and didn’t clearly communicate the differences between prints, paintings, and sculpted products.',
+      solved:
+        'I redesigned the homepage hierarchy to lead with visual product proof, including photo-to-artwork comparisons and clearer format differentiation. I placed product examples, craftsmanship information, and trust-building content closer to customers’ purchasing decisions.',
+      tags: 'Visual Hierarchy · E-commerce UX · Brand Consistency',
     },
     identity: {
       id: 'identity',
-      n: 3,
-      h: 'One brand system across the shopping experience',
-      unclear: 'Pages risked feeling like separate sites without shared type, color, and components.',
-      designed: 'I designed the LuminiPet brand style guide and applied its patterns across homepage, collections, and chooser flows.',
-      shows: 'Style guide foundations beside live page patterns.',
-      annos: ['Color system', 'Typography', 'Components'],
+      h: 'Standardized Customization',
+      lead: 'I unified the shopping flow while accommodating different customization needs.',
+      problem: 'One generic product template served multiple formats with fundamentally different options, creating an inconsistent purchasing experience.',
+      solved:
+        'I specified dedicated product-page structures for each format while maintaining a consistent Customize → Upload → Complete flow. Each product could present its own relevant customization options without requiring shoppers to learn a different interaction pattern.',
+      tags: 'Interaction Design · Scalable Components · Shopify UX',
     },
   },
   flow: {
     id: 'flow',
-    h: 'How the path simplifies shopping',
-    lead: 'Four screens on the live site: decide format, pick a style path, land in a collection, configure the product.',
+    h: 'From the menu to a product',
+    lead: 'On the current store, medium and style stay intact from the menu through the collection and the chooser.',
     steps: [
-      { k: '01 · Navigate', v: 'Shop All splits by medium, then style.', media: 'flowMenu' },
-      { k: '02 · Guide', v: 'Find Your Style asks product type first.', media: 'flowQuiz' },
-      { k: '03 · Browse', v: 'Collections stay format-specific.', media: 'flowCol' },
-      { k: '04 · Configure', v: 'Product pages match the chosen craft.', media: 'flowPdp' },
+      { k: '01 · Shop All', v: 'Medium, then style, each with its own collection.', media: 'liveMenu' },
+      { k: '02 · All products', v: 'Filters repeat product type and style.', media: 'liveCollection' },
+      { k: '03 · Product type', v: 'The chooser asks for a format and shows a starting price.', media: 'liveQuiz1' },
+      { k: '04 · A product', v: 'Style narrows the list inside that format.', media: 'liveQuiz2' },
     ],
   },
   delivered: {
     id: 'delivered',
-    n: 4,
     h: 'What I delivered',
-    body: 'Competitor analysis, IA, navigation, homepage hierarchy, the brand style guide, and Shopify pages for the required formats—so discovery, trust, and configuration share one storefront.',
+    body: 'Format-first navigation, visual product proof, and one Customize → Upload → Complete flow with options that change by format. These are the decisions and the pages that carry them. Campaign banners and review modules on the current store came later.',
   },
 }
 
@@ -276,17 +324,144 @@ export const SHOTS = {
   ),
 
   menuDetail: fromAsset(A.menuDetail, 'Shop All menu detail', SOURCES.before.short),
-  liveMenu: fromAsset(A.tourMenu, 'Shop All menu', SOURCES.now.short),
+  liveMenu: still(
+    '/assets/luminipet/live/menu.jpg',
+    1024,
+    525,
+    'Current Shop All menu organized by medium and by style, with collection tiles.',
+    'Shop All on the current store. Medium and style each open a collection.',
+    SOURCES.now.short,
+  ),
+  liveCollection: still(
+    '/assets/luminipet/live/collection.jpg',
+    1024,
+    549,
+    'All Products on the current store, filtered by product type and style.',
+    'All Products. The same two groups return as filters.',
+    SOURCES.now.short,
+  ),
+  liveQuiz1: still(
+    '/assets/luminipet/live/quiz-1.jpg',
+    1024,
+    609,
+    'Find Your Style step 1, choosing painted, sculpted, or gifts.',
+    'Find Your Style asks for a product type first, with a starting price.',
+    SOURCES.now.short,
+  ),
+  liveQuiz2: still(
+    '/assets/luminipet/live/quiz-2.jpg',
+    1024,
+    721,
+    'Find Your Style step 2, Realistic and Royal filters over two sculpted portraits.',
+    'Style then narrows the products inside that format.',
+    SOURCES.now.short,
+  ),
+  oldMenu: still(
+    '/assets/luminipet/live/old-menu.jpg',
+    1600,
+    847,
+    'Earlier theme Shop All dropdown listing By Medium and By Style.',
+    'Earlier theme. Medium and style are named inside a short dropdown.',
+    'Earlier theme',
+  ),
+  oldHome: still(
+    '/assets/luminipet/live/old-home.jpg',
+    1600,
+    872,
+    'Earlier theme homepage with a dog beside a painted portrait and a sculpted relief.',
+    'Earlier theme homepage. The pet sits with a painted portrait and a sculpted relief.',
+    'Earlier theme',
+  ),
+  oldFormats: still(
+    '/assets/luminipet/live/old-formats.jpg',
+    1600,
+    847,
+    'Earlier theme format row for print, painted, sculpted, and gifts.',
+    'Earlier theme. Print, painted, sculpted, and gifts are separate choices.',
+    'Earlier theme',
+  ),
+  oldPdp: still(
+    '/assets/luminipet/live/old-pdp.jpg',
+    1600,
+    847,
+    'Earlier theme product page with a photo-to-portrait comparison and size options on a Customize, Upload, Complete bar.',
+    'Earlier theme product page. This format asks for pet count and size on the shared step bar.',
+    'Earlier theme',
+  ),
+  liveHero: still(
+    '/assets/luminipet/live/live-hero.jpg',
+    1600,
+    900,
+    'Current homepage hero with a painted cat portrait hanging in a dining room.',
+    'Current homepage. The portrait is in the room before the shopper is asked to book.',
+    SOURCES.now.short,
+  ),
+  liveFormats: still(
+    '/assets/luminipet/live/live-formats.jpg',
+    1600,
+    900,
+    'Current homepage hand-painted row, each card showing the pet photo beside the finished portrait.',
+    'Current homepage. Each painted piece shows the photo, the artwork, the format, and the price.',
+    SOURCES.now.short,
+  ),
+  liveProof: still(
+    '/assets/luminipet/live/pdp-proof.jpg',
+    1308,
+    830,
+    'Current product gallery opening with the pet photo beside the finished portrait.',
+    'Current product page. The photo and the finished portrait open the gallery.',
+    SOURCES.now.short,
+  ),
+  liveFlow: still(
+    '/assets/luminipet/live/pdp-flow.jpg',
+    1308,
+    960,
+    'Current product title, price, and Customize, Upload, Complete steps.',
+    'Current product page. The format is in the title, and the bar is still Customize, Upload, Complete.',
+    SOURCES.now.short,
+  ),
+  liveParents: still(
+    '/assets/luminipet/live/parents.jpg',
+    1024,
+    610,
+    'Why They Love Luminipet, a row of pet-parent reactions.',
+    'Pet-parent reactions on the current store, placed with the work.',
+    SOURCES.now.short,
+  ),
+  liveReviews: still(
+    '/assets/luminipet/live/reviews.jpg',
+    1024,
+    648,
+    'Customer reviews module on the current store.',
+    'Reviews on the current product page. The rating is the store’s live module.',
+    SOURCES.now.short,
+  ),
+  liveRelated: still(
+    '/assets/luminipet/live/related.jpg',
+    1024,
+    569,
+    'You May Also Like, with painted and sculpted portraits and their prices.',
+    'Related products stay split by painted and sculpted formats.',
+    SOURCES.now.short,
+  ),
+  liveStudio: still(
+    '/assets/luminipet/live/studio.jpg',
+    1024,
+    721,
+    'Our Story studio photographs of a painted portrait, a relief, and framed work.',
+    'Our Story. The studio and the finished work, on the current site.',
+    SOURCES.now.short,
+  ),
   menuRec: clip(M.recMenu),
   pdpPainted: fromAsset(A.pdpPaintedConfig, 'Hand-painted options', SOURCES.before.short),
 }
 
 export const NAV = [
-  { label: 'Outcome', href: '#outcome' },
+  { label: 'Overview', href: '#outcome' },
   { label: 'Priorities', href: '#priorities' },
-  { label: 'Path', href: '#find' },
-  { label: 'Homepage', href: '#trust' },
-  { label: 'Brand', href: '#identity' },
+  { label: 'Discovery', href: '#find' },
+  { label: 'Confidence', href: '#trust' },
+  { label: 'Customization', href: '#identity' },
   { label: 'Delivered', href: '#delivered' },
 ]
 
@@ -309,7 +484,10 @@ export function storyWordCount() {
     h.intro,
     p.h,
     ...p.steps.flatMap((s) => [s.k, s.v]),
-    ...Object.values(c).flatMap((ch) => [ch.h, ch.unclear, ch.designed]),
+    STORY.solved.h,
+    STORY.solved.note,
+    ...STORY.solved.items.flatMap((s) => [s.h, s.d]),
+    ...Object.values(c).flatMap((ch) => [ch.h, ch.lead, ch.problem, ch.solved, ch.tags]),
     f.h,
     f.lead,
     ...f.steps.flatMap((s) => [s.k, s.v]),

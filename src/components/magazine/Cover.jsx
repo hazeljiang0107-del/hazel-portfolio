@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTrack, useReduced } from '../redesign/scrollFx'
 import { Arrow } from '../redesign/ui'
-import { SITE, CHAPTERS, COVERS, TICKER, ABOUT } from '../../data/magazine'
+import { SITE, CHAPTERS, COVERS, TICKER, ABOUT, FEATURED } from '../../data/magazine'
 import { COLLAGE } from '../../data/redesignPreview'
 import { RESUME_URL } from '../../data/projects'
 import { Hand, Marquee, Stamp, Tape, useInView, useTorn } from './paper'
 
 const num = (id) => CHAPTERS.find((c) => c.id === id)
 const TAPES = ['kraft', 'red', 'kraft', 'red', 'kraft']
+const FEATURED_IDS = new Set(FEATURED.map((c) => c.id))
 
 /* ───────────── cover: title + project collage + About on the same desk ───────────── */
 export function Cover() {
@@ -47,8 +49,8 @@ export function Cover() {
           <span>UX / Product</span>
           <span className="mg-h1__w">
             Designer
-            <svg className="mg-h1__ul" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
-              <path pathLength="1" d="M4 14 C 70 4, 150 19, 230 9 S 340 6, 396 12" />
+            <svg className="mg-h1__ul" viewBox="0 0 400 18" preserveAspectRatio="none" aria-hidden="true">
+              <path pathLength="1" d="M2 11 C 70 7, 140 14, 210 10 S 320 13, 398 8" />
             </svg>
           </span>
         </h1>
@@ -64,6 +66,9 @@ export function Cover() {
           <a className="rd-link" href="#work">
             Selected work <span aria-hidden="true">↓</span>
           </a>
+          <Link className="rd-link" to="/work">
+            All work <Arrow />
+          </Link>
           <a className="rd-link" href={RESUME_URL} target="_blank" rel="noopener noreferrer">
             Resume <Arrow />
           </a>
@@ -123,18 +128,31 @@ export function Cover() {
           {COLLAGE.map((c, i) => {
             const ch = num(c.to)
             const { d, m } = c
+            const to = FEATURED_IDS.has(c.to) ? `#${c.to}` : `/work#${c.to}`
+            const label = `${ch.title}: ${FEATURED_IDS.has(c.to) ? 'jump to project' : 'open project'} ${ch.n}`
+            const picture = (
+              <>
+                <img src={c.src} width={c.w} height={c.h} alt={c.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" fetchPriority={i === 0 ? 'high' : undefined} />
+                <span className="rd-hc__lab">
+                  <b>{ch.n}</b> {ch.title.replace(/ Redesign$| Shopify Theme System$/, '')}
+                </span>
+              </>
+            )
             return (
               <div
                 key={c.to}
                 className="rd-hc"
                 style={{ '--l': d.l, '--t': d.t, '--w': d.w, '--r': `${d.r}deg`, '--z': d.z, '--s': `${d.s}px`, '--ml': m.l, '--mt': m.t, '--mw': m.w, '--mr': `${m.r}deg`, '--k': i, '--k2': (0.55 + (i % 3) * 0.45).toFixed(2) }}
               >
-                <a className="rd-hc__in" href={`#${c.to}`} aria-label={`${ch.title}: jump to project ${ch.n}`} data-cursor="go">
-                  <img src={c.src} width={c.w} height={c.h} alt={c.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" fetchPriority={i === 0 ? 'high' : undefined} />
-                  <span className="rd-hc__lab">
-                    <b>{ch.n}</b> {ch.title.replace(/ Redesign$| Shopify Theme System$/, '')}
-                  </span>
-                </a>
+                {to.startsWith('#') ? (
+                  <a className="rd-hc__in" href={to} aria-label={label} data-cursor="go">
+                    {picture}
+                  </a>
+                ) : (
+                  <Link className="rd-hc__in" to={to} aria-label={label} data-cursor="go">
+                    {picture}
+                  </Link>
+                )}
                 <Tape rot={(i % 2 ? 1 : -1) * (4 + i)} tone={TAPES[i % TAPES.length]} className="mg-hc__tape" />
               </div>
             )
@@ -150,7 +168,7 @@ export function Cover() {
 }
 
 /* ───────────── contents (a ripped notebook page) ───────────── */
-export function Contents() {
+export function Contents({ chapters = CHAPTERS, id }) {
   const page = useRef(null)
   const peek = useRef(null)
   const reduce = useReduced()
@@ -190,7 +208,7 @@ export function Contents() {
   }, [on, reduce, fine])
 
   return (
-    <section className="mg-toc" aria-labelledby="mg-toc-t">
+    <section id={id} className="mg-toc" aria-labelledby="mg-toc-t">
       <div className={`mg-toc__sheet${seen ? ' is-in' : ''}`} ref={page}>
         <div className="mg-toc__page" style={{ clipPath: clip }}>
           <header className="mg-toc__head">
@@ -205,7 +223,7 @@ export function Contents() {
             </Hand>
           </header>
           <ol className="mg-toc__list" onPointerLeave={() => setOn(null)}>
-            {CHAPTERS.map((c, i) => (
+            {chapters.map((c, i) => (
               <li key={c.id} style={{ '--i': i }}>
                 <a href={`#${c.id}`} onPointerEnter={() => setOn(c.id)} onFocus={() => setOn(c.id)} onBlur={() => setOn(null)} data-cursor="go">
                   <b>{c.n}</b>
@@ -217,6 +235,16 @@ export function Contents() {
                 </a>
               </li>
             ))}
+            {chapters.length < CHAPTERS.length && (
+              <li style={{ '--i': chapters.length }}>
+                <Link to="/work" data-cursor="go">
+                  <b>→</b>
+                  <span className="mg-toc__name">All work</span>
+                  <em>{CHAPTERS.length - chapters.length} more projects</em>
+                  <i aria-hidden="true">→</i>
+                </Link>
+              </li>
+            )}
           </ol>
         </div>
       </div>

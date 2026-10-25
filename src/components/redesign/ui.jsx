@@ -232,7 +232,10 @@ export const Arrow = () => (
 export function Caption({ item, className = '' }) {
   return (
     <p className={`rd-cap ${className}`}>
-      <span>{item.cap}</span>
+      <span>
+        {item.cap}
+        {item.sub && <span className="rd-cap__sub">{item.sub}</span>}
+      </span>
       {item.tag && <em>{item.tag}</em>}
     </p>
   )

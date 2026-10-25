@@ -9,7 +9,7 @@ const FONTS =
   'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap'
 
 const BACK = '/'
-const FOOT_WORK = CHAPTERS.map((c) => ({ label: c.title, to: BACK }))
+const FOOT_WORK = CHAPTERS.map((c) => ({ label: c.title, to: `/work#${c.id}` }))
 
 /**
  * Shared page shell for every redesign case study (/projects/<slug>): fonts,

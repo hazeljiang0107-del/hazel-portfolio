@@ -70,7 +70,7 @@ export const CHAPTERS = [
   },
   {
     ...head('luminipet-shopify', '02', 'luminipet'),
-    mech: 'stack',
+    mech: 'reel',
     mine: 'Owned the information architecture and the front-end build: navigation, four product templates, homepage sections.',
     links: [{ label: 'Read case study', to: '/projects/luminipet-shopify' }],
     items: [
@@ -141,7 +141,7 @@ export const CHAPTERS = [
   },
   {
     ...head('zingerman-deli', '04', 'zingerman'),
-    mech: 'float',
+    mech: 'reel',
     mine: 'Solo, end to end: heuristics, competitive review, usability testing (n=3), and a hi-fi prototype.',
     links: [{ label: 'Read case study', to: '/projects/zingerman-deli' }],
     items: [
@@ -154,7 +154,7 @@ export const CHAPTERS = [
   },
   {
     ...head('still-here', '05', 'still-here'),
-    mech: 'drift',
+    mech: 'reel',
     dark: true,
     mine: 'End to end: field synthesis, problem framing, hi-fi app flows and a working Arduino glove prototype.',
     links: [{ label: 'Read case study', to: '/projects/still-here' }],
@@ -218,7 +218,7 @@ export const ABOUT = {
 }
 
 export const FOOTER = {
-  work: CHAPTERS.map((c) => ({ label: c.title, href: `#${c.id}` })),
+  work: CHAPTERS.map((c) => ({ label: c.title, to: `/work#${c.id}` })),
   elsewhere: [
     { label: 'Email', href: `mailto:${SITE.email}` },
     { label: 'LinkedIn', href: SITE.linkedin, external: true },
@@ -227,6 +227,6 @@ export const FOOTER = {
   site: [
     { label: 'Home', to: '/' },
     { label: 'About page', to: '/about' },
-    { label: 'All projects', to: '/projects' },
+    { label: 'All projects', to: '/work' },
   ],
 }

@@ -1,6 +1,6 @@
-import { Fragment, useEffect, useId, useRef, useState } from 'react'
-import { useTrack, useReduced } from './scrollFx'
-import { Arrow, Media, Shot } from './ui'
+import { Fragment, useId, useRef, useState } from 'react'
+import { useTrack } from './scrollFx'
+import { Arrow, Shot } from './ui'
 import { Sec, pad } from './SocCase'
 import { CaseEnd } from './CaseKit'
 import { STORY, SHOTS, FACTS, SOURCES } from '../../data/luminipetStory'
@@ -17,84 +17,115 @@ function Cap({ item }) {
   )
 }
 
-function Anno({ children, className = '' }) {
-  return (
-    <span className={`ls-anno ${className}`} aria-hidden="true">
-      {children}
-    </span>
-  )
-}
-
-function ProblemLead({ unclear, designed, shows }) {
+function ProblemLead({ problem, solved, tags }) {
   return (
     <div className="ls-plead" data-rv>
       <p>
-        <b>Unclear</b>
-        {unclear}
+        <b>The problem</b>
+        {problem}
       </p>
       <p>
-        <b>Decision</b>
-        {designed}
+        <b>How I solved it</b>
+        {solved}
       </p>
-      {shows && (
-        <p>
-          <b>Shows</b>
-          {shows}
-        </p>
-      )}
+      <p className="ls-plead__tags">{tags}</p>
     </div>
   )
 }
 
-/** Accessible Earlier / Current toggle — short labels only. */
-function Compare({ before, now, annos = [], label = 'Feature comparison' }) {
-  const [side, setSide] = useState('now')
-  const btns = useRef([])
-  const uid = useId()
-  const cur = side === 'before' ? before : now
-
-  const onKey = (e, i) => {
-    const order = ['before', 'now']
-    let n = null
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') n = i ^ 1
-    else if (e.key === 'Home') n = 0
-    else if (e.key === 'End') n = 1
-    if (n === null) return
-    e.preventDefault()
-    setSide(order[n])
-    btns.current[n]?.focus()
-  }
-
+function Frames({ items, label }) {
   return (
-    <div className="ls-cmp" data-rv>
-      <div className="ls-cmp__tabs" role="tablist" aria-label={label}>
-        {[
-          ['before', SOURCES.before.short],
-          ['now', SOURCES.now.short],
-        ].map(([id, text], i) => (
-          <button
-            key={id}
-            ref={(el) => (btns.current[i] = el)}
-            type="button"
-            role="tab"
-            id={`${uid}-t-${id}`}
-            aria-selected={side === id}
-            aria-controls={`${uid}-p`}
-            tabIndex={side === id ? 0 : -1}
-            onClick={() => setSide(id)}
-            onKeyDown={(e) => onKey(e, i)}
-          >
-            {text}
-          </button>
+    <ul className="ls-shots" aria-label={label}>
+      {items.map((it) => (
+        <li key={it.src}>
+          <Shot item={it} className="ls-frame" />
+          <Cap item={it} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+const GUIDE_COLORS = [
+  ['Ink', '#101010', '#fff'],
+  ['Warm white', '#FFF6E9', '#101010'],
+  ['Camel', '#CFA776', '#101010'],
+  ['Sunshine', '#FFD543', '#101010'],
+  ['Paper', '#FFFFFF', '#101010'],
+  ['Body', '#484242', '#fff'],
+]
+
+const GUIDE_PARTS = ['Foundations', 'Color', 'Typography', 'Components', 'Photography', 'Voice']
+
+function StyleSystem() {
+  return (
+    <div className="ls-sys">
+      <div className="ls-sys__copy">
+        <p className="ls-sys__k">Brand system</p>
+        <h3>Color, type, and voice in one set.</h3>
+        <p>
+          Warm white carries most of the page. Ink and sunshine are the small, deliberate accents. Display type is Playfair;
+          the reading face is a plain grotesque.
+        </p>
+        <a className="rd-link" href={SOURCES.style.url} target="_blank" rel="noopener noreferrer">
+          Open the brand style guide <Arrow />
+        </a>
+      </div>
+      <ul className="ls-sys__swatches">
+        {GUIDE_COLORS.map(([name, hex, ink]) => (
+          <li key={name} style={{ background: hex, color: ink }}>
+            <span>{name}</span>
+            <span>{hex}</span>
+          </li>
         ))}
+      </ul>
+      <p className="ls-sys__ratio">
+        <span style={{ flex: 60 }}>60% Warm white</span>
+        <span style={{ flex: 25 }}>25% Paper</span>
+        <span style={{ flex: 10 }}>10% Ink</span>
+        <span style={{ flex: 5 }}>5%</span>
+      </p>
+      <div className="ls-sys__type">
+        <div>
+          <p className="ls-sys__face">Display · Playfair Display</p>
+          <p className="ls-sys__display">Every pet is a work of art.</p>
+        </div>
+        <div>
+          <p className="ls-sys__face">Body · Archivo</p>
+          <p className="ls-sys__read">We turn your favorite photo into a one-of-a-kind portrait, lovingly made by a real artist.</p>
+        </div>
       </div>
-      <div className="ls-cmp__stage ls-crop" role="tabpanel" id={`${uid}-p`} aria-labelledby={`${uid}-t-${side}`}>
-        <Media item={cur} eager />
-        {annos[0] && <Anno className="ls-anno--tl">{annos[0]}</Anno>}
-        {annos[1] && side === 'before' && <Anno className="ls-anno--br">{annos[1]}</Anno>}
-        {annos[2] && side === 'now' && <Anno className="ls-anno--sm">{annos[2]}</Anno>}
-      </div>
-      <Cap item={cur} />
+      <ol className="ls-sys__parts">
+        {GUIDE_PARTS.map((name, i) => (
+          <li key={name}>
+            <i>{pad(i + 1)}</i>
+            {name}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
+function Solved() {
+  const s = STORY.solved
+  return (
+    <div className="ls-solved">
+      <p className="ls-solved__k">{s.k}</p>
+      <h2 className="ls-solved__h" id="ls-solved-h">
+        {s.h}
+      </h2>
+      <ol className="ls-solved__grid">
+        {s.items.map((item) => (
+          <li key={item.n}>
+            <Shot item={SHOTS[item.media]} className="ls-frame" />
+            <p className="ls-solved__n">{item.n}</p>
+            <h3>{item.h}</h3>
+            <p>{item.d}</p>
+          </li>
+        ))}
+      </ol>
+      <p className="ls-solved__note">{s.note}</p>
     </div>
   )
 }
@@ -104,29 +135,34 @@ export function StoryHero() {
   const stage = useRef(null)
   useTrack(stage, { mode: 'view', ease: 1, rest: 0.5 })
   const h = STORY.hero
-  const feat = STORY.features.map((f) => ({ ...SHOTS[f.media], short: f.label, blurb: f.note }))
 
   return (
     <section id="outcome" className="rc-hero ls-hero" aria-labelledby="ls-h1">
-      <div className="rc-hero__text">
-        <p className="rd-head__n">Case study · 02 / 06</p>
-        <h1 id="ls-h1" className="rc-hero__h1 ls-h1">
-          {h.title}
-        </h1>
-        <p className="ls-storyline">{h.line}</p>
-        <p className="rc-hero__sub">{h.intro}</p>
-        <p className="rc-hero__links">
-          <a className="rd-link" href={h.live} target="_blank" rel="noopener noreferrer">
-            Visit luminipet.com <Arrow />
-          </a>
-          <a className="rd-link" href={h.style} target="_blank" rel="noopener noreferrer">
-            Open style guide <Arrow />
-          </a>
-        </p>
-        <p className="ls-meta">{h.meta}</p>
+      <div className="ls-hero__top">
+        <div className="rc-hero__text" ref={stage}>
+          <p className="rd-head__n">Case study · 02 / 06</p>
+          <h1 id="ls-h1" className="rc-hero__h1 ls-h1">
+            {h.title}
+          </h1>
+          <p className="ls-storyline">{h.line}</p>
+          <p className="rc-hero__sub">{h.intro}</p>
+          <p className="rc-hero__links">
+            <a className="rd-link" href={h.live} target="_blank" rel="noopener noreferrer">
+              Visit luminipet.com <Arrow />
+            </a>
+            <a className="rd-link" href={h.style} target="_blank" rel="noopener noreferrer">
+              Open style guide <Arrow />
+            </a>
+          </p>
+          <p className="ls-meta">{h.meta}</p>
+        </div>
+        <div className="ls-hero__shot">
+          <Shot item={SHOTS.liveHero} className="ls-frame" eager />
+          <Cap item={SHOTS.liveHero} />
+        </div>
       </div>
 
-      <FeatureReel items={feat} stageRef={stage} />
+      <Solved />
 
       <dl className="rc-facts rc-facts--3">
         {FACTS.map(([k, v]) => (
@@ -140,66 +176,43 @@ export function StoryHero() {
   )
 }
 
-function FeatureReel({ items, stageRef }) {
-  const [i, setI] = useState(0)
-  const btns = useRef([])
-  const uid = useId()
-  const reduce = useReduced()
-
-  useEffect(() => {
-    if (reduce || items.length < 2) return undefined
-    const t = setInterval(() => setI((n) => (n + 1) % items.length), 4800)
-    return () => clearInterval(t)
-  }, [reduce, items.length])
-
-  const onKey = (e, idx) => {
-    let n = null
-    if (e.key === 'ArrowRight') n = (idx + 1) % items.length
-    else if (e.key === 'ArrowLeft') n = (idx - 1 + items.length) % items.length
-    if (n === null) return
-    e.preventDefault()
-    setI(n)
-    btns.current[n]?.focus()
-  }
-
-  const cur = items[i]
+function CompetitorNotes({ step, open, panelId }) {
   return (
-    <div className="ls-feat" ref={stageRef}>
-      <div className="ls-feat__stage" data-rv>
-        {items.map((it, idx) => (
-          <div
-            key={it.short}
-            id={`${uid}-p-${idx}`}
-            role="tabpanel"
-            aria-labelledby={`${uid}-t-${idx}`}
-            aria-hidden={i !== idx}
-            className={`ls-feat__panel${i === idx ? ' is-on' : ''}`}
-          >
-            <Media item={it} eager={idx === 0} />
-            <Anno className="ls-anno--hero">{it.short}</Anno>
-          </div>
+    <div className="ls-comp" id={panelId} hidden={!open}>
+      <table className="ls-comp__table">
+        <caption className="ls-comp__cap">Competitor observations</caption>
+        <thead>
+          <tr>
+            <th scope="col">Brand</th>
+            <th scope="col">Offers</th>
+            <th scope="col">Concern</th>
+          </tr>
+        </thead>
+        <tbody>
+          {step.compare.map((b) => (
+            <tr key={b.name}>
+              <th scope="row">{b.name}</th>
+              <td data-label="Offers">
+                <i className="ls-comp__mark" aria-hidden="true" />
+                {b.does}
+              </td>
+              <td data-label="Concern">{b.worry}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <ol className="ls-comp__ops">
+        {step.opportunities.map((o, i) => (
+          <li key={o.h}>
+            <p className="ls-comp__to">
+              <i>{pad(i + 1)}</i>
+              {o.to}
+            </p>
+            <strong>{o.h}</strong>
+            <p>{o.d}</p>
+          </li>
         ))}
-        <p className="ls-feat__blurb">{cur.blurb}</p>
-        <Cap item={cur} />
-      </div>
-      <div className="ls-feat__tabs" role="tablist" aria-label="Standout features">
-        {items.map((it, idx) => (
-          <button
-            key={it.short}
-            ref={(el) => (btns.current[idx] = el)}
-            type="button"
-            role="tab"
-            id={`${uid}-t-${idx}`}
-            aria-selected={i === idx}
-            aria-controls={`${uid}-p-${idx}`}
-            tabIndex={i === idx ? 0 : -1}
-            onClick={() => setI(idx)}
-            onKeyDown={(e) => onKey(e, idx)}
-          >
-            {pad(idx + 1)} {it.short}
-          </button>
-        ))}
-      </div>
+      </ol>
     </div>
   )
 }
@@ -207,20 +220,37 @@ function FeatureReel({ items, stageRef }) {
 /* ───────────── 2 · priorities ───────────── */
 export function ChPriorities() {
   const p = STORY.process
+  const comp = p.steps.find((s) => s.compare)
+  const [open, setOpen] = useState(false)
+  const panelId = useId()
   return (
     <S id={p.id} n={1} title={p.h}>
       <ol className="ls-process">
-        {p.steps.map((s, i) => (
-          <li key={s.k} data-rv style={{ '--d': `${i * 80}ms` }}>
-            <b>
-              <i>{pad(i + 1)}</i>
-              {s.k}
-            </b>
-            <p>{s.v}</p>
-            <small>{s.src}</small>
-          </li>
-        ))}
+        {p.steps.map((s, i) =>
+          s.compare ? (
+            <li key={s.k} className="is-toggle" data-open={open || undefined} data-rv style={{ '--d': `${i * 80}ms` }}>
+              <button type="button" className="ls-process__btn" aria-expanded={open} aria-controls={panelId} onClick={() => setOpen((v) => !v)}>
+                <b>
+                  <i>{pad(i + 1)}</i>
+                  {s.k}
+                  <span className="ls-process__hint">{s.compare.length} brands</span>
+                </b>
+                <p>{s.v}</p>
+              </button>
+            </li>
+          ) : (
+            <li key={s.k} data-rv style={{ '--d': `${i * 80}ms` }}>
+              <b>
+                <i>{pad(i + 1)}</i>
+                {s.k}
+              </b>
+              <p>{s.v}</p>
+              <small>{s.src}</small>
+            </li>
+          ),
+        )}
       </ol>
+      {comp && <CompetitorNotes step={comp} open={open} panelId={panelId} />}
       <ul className="ls-prio" aria-label="Three design priorities">
         {['Find by format', 'Prove the offer', 'One brand system'].map((t) => (
           <li key={t} data-rv>
@@ -237,27 +267,18 @@ export function ChFind() {
   const c = STORY.chapters.find
   const flow = STORY.flow
   return (
-    <S id={c.id} n={2} title={c.h} className="ls-ch--problem">
-      <ProblemLead unclear={c.unclear} designed={c.designed} shows={c.shows} />
-      <div className="ls-org">
-        <div className="ls-org__media" data-rv>
-          <Media item={SHOTS.menuRec} />
-          <Cap item={SHOTS.menuRec} />
-          <Anno className="ls-anno--tl">{c.annos[0]}</Anno>
-        </div>
-        <Compare before={SHOTS.menuDetail} now={SHOTS.liveMenu} annos={c.annos} label="Navigation comparison" />
-      </div>
-
-      <div className="ls-flow" data-rv>
+    <S id={c.id} n={2} title={c.h} lead={c.lead} className="ls-ch--problem">
+      <ProblemLead problem={c.problem} solved={c.solved} tags={c.tags} />
+      <Frames items={[SHOTS.oldMenu, SHOTS.liveMenu]} label="Navigation on the earlier theme and the current store" />
+      <div className="ls-flow">
         <h3 className="ls-flow__h">{flow.h}</h3>
         <p className="ls-flow__lead">{flow.lead}</p>
         <ol className="ls-flow__grid">
           {flow.steps.map((step) => (
             <li key={step.k}>
-              <Media item={SHOTS[step.media]} />
+              <Shot item={SHOTS[step.media]} className="ls-frame" />
               <p className="ls-flow__k">{step.k}</p>
               <p className="ls-flow__v">{step.v}</p>
-              <Cap item={SHOTS[step.media]} />
             </li>
           ))}
         </ol>
@@ -270,12 +291,12 @@ export function ChFind() {
 export function ChTrust() {
   const c = STORY.chapters.trust
   return (
-    <S id={c.id} n={3} title={c.h} className="ls-ch--problem">
-      <ProblemLead unclear={c.unclear} designed={c.designed} shows={c.shows} />
-      <div className="ls-pair ls-pair--wide">
-        <Compare before={SHOTS.beforeHome} now={SHOTS.nowHome} annos={[c.annos[0], c.annos[2]]} label="Homepage hero comparison" />
-        <Compare before={SHOTS.beforeFormats} now={SHOTS.nowFormats} annos={[c.annos[1]]} label="Format section comparison" />
-      </div>
+    <S id={c.id} n={3} title={c.h} lead={c.lead} className="ls-ch--problem">
+      <ProblemLead problem={c.problem} solved={c.solved} tags={c.tags} />
+      <Frames items={[SHOTS.oldHome, SHOTS.liveHero]} label="Homepage, earlier theme and current store" />
+      <Frames items={[SHOTS.oldFormats, SHOTS.liveFormats]} label="Format sections, earlier theme and current store" />
+      <Frames items={[SHOTS.liveProof, SHOTS.liveParents]} label="Product proof and pet-parent reactions" />
+      <Frames items={[SHOTS.liveReviews, SHOTS.liveStudio]} label="Reviews and the studio story" />
     </S>
   )
 }
@@ -283,28 +304,14 @@ export function ChTrust() {
 /* ───────────── 3c · brand system ───────────── */
 export function ChIdentity() {
   const c = STORY.chapters.identity
-  const guides = [SHOTS.guideHome, SHOTS.guideColor, SHOTS.guideType, SHOTS.guideComponents]
   return (
-    <S id={c.id} n={4} title={c.h} className="ls-ch--problem">
-      <ProblemLead unclear={c.unclear} designed={c.designed} shows={c.shows} />
-      <p className="ls-guide-link" data-rv>
-        <a className="rd-link" href={SOURCES.style.url} target="_blank" rel="noopener noreferrer">
-          Open the brand style guide I designed <Arrow />
-        </a>
-      </p>
-      <ul className="ls-guide">
-        {guides.map((it, i) => (
-          <li key={it.src} data-rv style={{ '--d': `${i * 70}ms` }}>
-            <Shot item={it} />
-            <Cap item={it} />
-            {c.annos[i] && <Anno className="ls-anno--sm">{c.annos[i]}</Anno>}
-          </li>
-        ))}
-      </ul>
-      <div className="ls-pair ls-pair--wide">
-        <Compare before={SHOTS.beforeCol} now={SHOTS.nowCol} annos={['Collection pattern']} label="Collection comparison" />
-        <Compare before={SHOTS.beforeChooser} now={SHOTS.nowQuiz} annos={['Chooser pattern']} label="Chooser comparison" />
-      </div>
+    <S id={c.id} n={4} title={c.h} lead={c.lead} className="ls-ch--problem">
+      <ProblemLead problem={c.problem} solved={c.solved} tags={c.tags} />
+      <Frames
+        items={[SHOTS.oldPdp, SHOTS.liveFlow]}
+        label="Product pages on the earlier theme and the current store"
+      />
+      <StyleSystem />
     </S>
   )
 }
@@ -313,21 +320,20 @@ export function ChIdentity() {
 export function ChDelivered() {
   const d = STORY.delivered
   const mine = [
-    { ...SHOTS.featHome, short: 'Homepage' },
-    { ...SHOTS.featGuide, short: 'Style guide' },
     { ...SHOTS.liveMenu, short: 'Navigation' },
-    { ...SHOTS.flowQuiz, short: 'Guided path' },
-    { ...SHOTS.nowCol, short: 'Collection' },
-    { ...SHOTS.pdpPainted, short: 'PDP options' },
+    { ...SHOTS.liveFormats, short: 'Homepage' },
+    { ...SHOTS.liveQuiz1, short: 'Chooser' },
+    { ...SHOTS.oldPdp, short: 'Product page' },
+    { ...SHOTS.liveParents, short: 'Reactions' },
+    { ...SHOTS.liveFlow, short: 'Purchase flow' },
   ]
   return (
     <S id={d.id} n={5} title={d.h} lead={d.body} className="rc-sec--last">
       <ul className="ls-deliver">
         {mine.map((it) => (
-          <li key={it.short} data-rv>
-            <Media item={it} />
+          <li key={it.short}>
+            <Shot item={it} className="ls-frame" />
             <p className="ls-deliver__label">{it.short}</p>
-            <Cap item={it} />
           </li>
         ))}
       </ul>

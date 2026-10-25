@@ -12,6 +12,7 @@ const RedesignHome = lazy(() => import('./pages/preview/RedesignPreview'))
 const RedesignSocCase = lazy(() => import('./pages/preview/RedesignSocCase'))
 const RedesignCase = lazy(() => import('./pages/preview/RedesignCase'))
 const MagazineHome = lazy(() => import('./pages/preview/MagazineHome'))
+const MagazineWork = lazy(() => import('./pages/preview/MagazineWork'))
 const PortfolioPreview = lazy(() => import('./pages/preview/PortfolioPreview'))
 const LuminiPetCaseStudyPreview = lazy(() => import('./pages/preview/LuminiPetCaseStudyPreview'))
 const LuminiPetVisualPreview = lazy(() => import('./pages/preview/LuminiPetVisualPreview'))
@@ -45,6 +46,7 @@ export default function App() {
     <Routes>
       {/* Live: magazine homepage + redesigned case studies (self-contained, no site Layout). */}
       <Route path="/" element={lazyPage(MagazineHome)} />
+      <Route path="work" element={lazyPage(MagazineWork)} />
       <Route path="projects/surveys-of-consumers" element={lazyPage(RedesignSocCase)} />
       <Route path="projects/luminipet-shopify" element={lazyPage(LuminiStoryPreview)} />
       {RENDERED_CASES.map((slug) => (
